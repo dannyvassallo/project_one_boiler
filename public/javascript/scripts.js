@@ -1,7 +1,5 @@
-console.warn('Project One JS Initialized');
-
 function myCoolFunkyStuff() {
-  alert('ayyyooo');
+  return 'ayyyooo';
 }
 
 myCoolFunkyStuff();
