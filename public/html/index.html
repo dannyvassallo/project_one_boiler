@@ -10,26 +10,44 @@
     <link rel="stylesheet" href="./static/css/style.css">
   </head>
   <body>
-    <nav class="navbar">
-      <a class="navbar-brand" href="/">
-        <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
-      </a>
-    </nav>
-    <div class="container-fluid">
-      <div class="row mt-4">
-        <div class="col-sm-12 col-md-6 offset-md-3">
-          <div class="jumbotron">
-            <img class="img-fluid" src="./static/images/computer.jpg">
-            <h1 class="display-4">This is a brand new screen!</h1>
-            <p class="lead">This is screen includes bootstrap, fontawesome, jquery, and links to your own custom js and css files!</p>
-          </div>
+    <!-- use bideo to make a background and form with bootstrap -->
+    <div class="container">
+      <div class="row form-row">
+        <div class="col-12">
+          <form>
+            <div class="form-group">
+              <label for="eventName">Event or Artist Name</label>
+              <input type="email" class="form-control" id="eventName" aria-describedby="eventNameSub" placeholder="Ex: The Bots">
+              <small id="eventNameSub" class="form-text">Don't worry about buying Miley Cyrus tickets. No shame.</small>
+            </div>
+            <div class="form-group">
+              <label for="userLocation">Location</label>
+              <input type="number" class="form-control" id="userLocation" placeholder="Ex: 07090">
+            </div>
+            <div class="form-group">
+              <label for="userRange">Range (Miles)</label>
+              <input type="number" class="form-control" id="userRange" placeholder="25">
+            </div>
+            <button type="submit" class="btn btn-dark">Submit</button>
+          </form>
         </div>
       </div>
     </div>
+
+    <video id="background_video" loop muted></video>
+    <div id="video_cover"></div>
+    <div id="overlay"></div>
+
+    <section id="main_content">
+      <h1 class="f1 b">Test</h1>
+    </section>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="./static/javascript/bideo.js"></script>
     <script src="./static/javascript/scripts.js"></script>
   </body>
 </html>
