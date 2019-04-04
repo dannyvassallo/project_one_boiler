@@ -6,11 +6,11 @@
  * - http://www.w3schools.com/tags/ref_av_dom.asp
  */
 
-(function (global) {
+/* eslint-disable */
 
+(function (global) {
   // Define Bideo constructor on the global object
   global.Bideo = function () {
-
     // Plugin options
     this.opt = null;
     // The Video element
@@ -41,7 +41,7 @@
       // If not set then set to an empty object
       this.opt = opt = opt || {};
 
-      var self = this;
+      const self = this;
 
       self._resize = self.resize.bind(this);
 
@@ -53,7 +53,7 @@
 
       // Fired when enough has been buffered to begin the video
       // self.videoEl.readyState === 4 (HAVE_ENOUGH_DATA)
-      self.videoEl.addEventListener('canplay', function () {
+      self.videoEl.addEventListener('canplay', () => {
         // Play the video when enough has been buffered
         if (!self.opt.isMobile) {
           self.opt.onLoad && self.opt.onLoad();
@@ -70,10 +70,10 @@
       this.startTime = (new Date()).getTime();
 
       // Create `source` for video
-      this.opt.src.forEach(function (srcOb, i, arr) {
-        var key
-          , val
-          , source = document.createElement('source');
+      this.opt.src.forEach((srcOb, i, arr) => {
+        let key;
+        let val;
+        const source = document.createElement('source');
 
         // Set all the attribute key=val supplied in `src` option
         for (key in srcOb) {
@@ -89,7 +89,7 @@
 
       if (self.opt.isMobile) {
         if (self.opt.playButton) {
-          self.opt.videoEl.addEventListener('timeupdate', function () {
+          self.opt.videoEl.addEventListener('timeupdate', () => {
             if (!self.onLoadCalled) {
               self.opt.onLoad && self.opt.onLoad();
               self.onLoadCalled = true;
@@ -112,9 +112,7 @@
           }, false);
         }
       }
-
-      return;
-    }
+    };
 
     // Called once video metadata is available
     //
@@ -124,28 +122,28 @@
       if ('object-fit' in document.body.style) return;
 
       // Video's intrinsic dimensions
-      var w = this.videoEl.videoWidth
-        , h = this.videoEl.videoHeight;
+      const w = this.videoEl.videoWidth;
+      const h = this.videoEl.videoHeight;
 
       // Intrinsic ratio
       // Will be more than 1 if W > H and less if H > W
-      var videoRatio = (w / h).toFixed(2);
+      const videoRatio = (w / h).toFixed(2);
 
       // Get the container DOM element and its styles
       //
       // Also calculate the min dimensions required (this will be
       // the container dimentions)
-      var container = this.opt.container
-        , containerStyles = global.getComputedStyle(container)
-        , minW = parseInt( containerStyles.getPropertyValue('width') )
-        , minH = parseInt( containerStyles.getPropertyValue('height') );
+      const { container } = this.opt;
+      const containerStyles = global.getComputedStyle(container);
+      let minW = parseInt(containerStyles.getPropertyValue('width'));
+      let minH = parseInt(containerStyles.getPropertyValue('height'));
 
       // If !border-box then add paddings to width and height
       if (containerStyles.getPropertyValue('box-sizing') !== 'border-box') {
-        var paddingTop = containerStyles.getPropertyValue('padding-top')
-          , paddingBottom = containerStyles.getPropertyValue('padding-bottom')
-          , paddingLeft = containerStyles.getPropertyValue('padding-left')
-          , paddingRight = containerStyles.getPropertyValue('padding-right');
+        let paddingTop = containerStyles.getPropertyValue('padding-top');
+        let paddingBottom = containerStyles.getPropertyValue('padding-bottom');
+        let paddingLeft = containerStyles.getPropertyValue('padding-left');
+        let paddingRight = containerStyles.getPropertyValue('padding-right');
 
         paddingTop = parseInt(paddingTop);
         paddingBottom = parseInt(paddingBottom);
@@ -169,24 +167,21 @@
       // scale 500 to 700 and then calculate what should be the
       // right width. If we scale 1000 to 1200 then the height
       // will become 600 proportionately.
-      var widthRatio = minW / w;
-      var heightRatio = minH / h;
+      const widthRatio = minW / w;
+      const heightRatio = minH / h;
 
       // Whichever ratio is more, the scaling
       // has to be done over that dimension
       if (widthRatio > heightRatio) {
         var new_width = minW;
-        var new_height = Math.ceil( new_width / videoRatio );
-      }
-      else {
+        var new_height = Math.ceil(new_width / videoRatio);
+      } else {
         var new_height = minH;
-        var new_width = Math.ceil( new_height * videoRatio );
+        var new_width = Math.ceil(new_height * videoRatio);
       }
 
-      this.videoEl.style.width = new_width + 'px';
-      this.videoEl.style.height = new_height + 'px';
+      this.videoEl.style.width = `${new_width}px`;
+      this.videoEl.style.height = `${new_height}px`;
     };
-
   };
-
 }(window));
