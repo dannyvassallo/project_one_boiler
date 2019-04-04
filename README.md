@@ -1,3 +1,4 @@
+test
 # Project One Awesome Boilerplate 🍛
 
 Before getting started, as a general rule of thumb, you should be running the commands you see within the project directory. If you experience errors, your first check should be to run `pwd` and ensure the folder name you see returned is the one you should be in.
