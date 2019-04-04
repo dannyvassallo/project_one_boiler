@@ -2,6 +2,14 @@
 console.warn('Project One JS Initialized');
 /* eslint-enable */
 
+// global variables
+const { $ } = window;
+/* eslint-disable *
+let eventName;
+let userLocation;
+let userRange;
+let formBlock = [];
+/* eslint-enable */
 function loadVideoBackground() {
   const bv = new Bideo(); // eslint-disable-line no-undef
   bv.init({
@@ -37,3 +45,17 @@ function loadVideoBackground() {
 }
 
 loadVideoBackground();
+
+function retrieveForm(event) {
+  event.preventDefault();
+
+  /* eslint-disable *
+  eventName = $('#eventName').val().trim();
+  userLocation = $('#userLocation').val().trim();
+  userRange = $('#userRange').val().trim();
+
+  formBlock = [eventName, userLocation, userRange];
+  /* eslint-enable */
+}
+
+$('#submit-btn').on('click', retrieveForm());
