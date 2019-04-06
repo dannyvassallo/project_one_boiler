@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 // eslint-disable-next-line no-unused-expressions
 window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = []; window.myWidgetParam.push({
   id: 18, cityid: '', appid: 'e1eb6cf9d4bcb08d8495b7bd15e2947f', units: 'imperial', containerid: 'openweathermap-widget-18',
