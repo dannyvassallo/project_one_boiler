@@ -71,15 +71,22 @@ $.ajax({
 }).then((response) => {
   console.log(response);
 
-  // THIS IS FOR lyrics
-  $.ajax({
-    url: lyricsURL,
-    method: 'GET',
-  }).then((response) => {
-    console.log(response);
-    // THIS IS FOR LYRICS SEARCH
+
+    //THIS IS FOR lyrics
+    $.ajax({
+      url: lyricsURL,
+      method: "GET"
+    }).then(function(response){
+      console.log(response);
+      //THIS IS FOR LYRICS SEARCH
+      //updated
+
+    });
+
   });
-});
+
+//http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=123003777&apikey=09856f0a7bc6623dc9e1a3c333f42318
+//gets lyrics with track id
 
 // http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=123003777&apikey=09856f0a7bc6623dc9e1a3c333f42318
 // gets lyrics with track id
@@ -100,4 +107,3 @@ function getSongs() {
   });
 }
 getSongs();
-
