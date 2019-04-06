@@ -11,17 +11,15 @@ $(document).ready(() => {
 
   $('#signup').on('click', (event) => {
     event.preventDefault();
-    var email = $('#exampleInputEmail1').val().trim();
+    const email = $('#exampleInputEmail1').val().trim();
     // password = $('#exampleInputPassword1').val().trim();
-    var myPassword = 'Password';
-    var password = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), myPassword);
-    var res = String(password);
-    window.alert(res);
-    window.alert(`Username: ${email} ` + `Password: ${password}`);
+    const myPassword = 'Password';
+    const password = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), myPassword);
+    const res = String(password);
 
     firebase.auth().createUserWithEmailAndPassword(email, res);
 
-    var user = firebase.auth().currentUser;
+    const user = firebase.auth().currentUser;
 
     user.sendEmailVerification().then(() => {
       // Email sent.
@@ -32,20 +30,18 @@ $(document).ready(() => {
 
   $('#login').on('click', (event) => {
     event.preventDefault();
-    var email = $('#exampleInputEmail1').val().trim();
+    const email = $('#exampleInputEmail1').val().trim();
     // password = $('#exampleInputPassword1').val().trim();
-    var myPassword = 'Password';
-    var password = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), myPassword);
-    var resLogin = String(password);
-    window.alert(resLogin);
-    window.alert(`Username: ${email} ` + `Password: ${password}`);
+    const myPassword = 'Password';
+    const password = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), myPassword);
+    const resLogin = String(password);
 
     firebase.auth().signInWithEmailAndPassword(email, resLogin);
 
 
-    var user = firebase.auth().currentUser;
+    const user = firebase.auth().currentUser;
     if (user) {
-      window.alert('Success!');
+
     }
   });
 });
