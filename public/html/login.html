@@ -17,26 +17,27 @@
     </nav>
     <div class="container-fluid">
       <div class="row mt-4">
-        <div class="col-sm-12 col-md-6 offset-md-3">
-          <div class="jumbotron">
-            <strong><label>Original String:</label></strong>
-            <span id="demo0"></span>
-            <br>
-            <br>
-            <strong><label>Encrypted:</label></strong>
-            <span id="demo1"></span>
-            <br>
-            <br>
-            <strong><label>Decrypted:</label></strong>
-            <span id="demo2"></span>
-            <br>
-            <br>
-            <strong><label>String after Decryption:</label></strong>
-            <span id="demo3"></span>
+        <form class="m-5">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
-        </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="form-group form-check">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary" id="login">Login</button>
+          <button type="submit" class="btn btn-primary" id="signup">Signup</button>
+        </form>
       </div>
     </div>
+    <!-- <script type="text/javascript" src="path-to/bower_components/crypto-js/crypto-js.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
