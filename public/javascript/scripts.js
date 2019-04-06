@@ -55,25 +55,33 @@ function retrieveForm(event) {
   userRange = $('#userRange').val().trim();
 
   formBlock = [eventName, userLocation, userRange];
+  
+  requestTicketmaster();
   /* eslint-enable */
 }
 
-// function printTicketmasterInfo(reponse) {
-//  let dynamicDiv = $('<div>').addClass('')
-// }
+/* eslint-disable */
+function requestTicketmaster() {
+  let myUrl = `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=IOLEuwOBaextS3XP3HR0L3NUcF3eaFqf&keyword=${eventName}&postalCode=${userLocation}&radius=${userRange}&unit=miles`;
 
-// function requestTicketmaster() {
-//   let searchTerm = formBlock[0];
-
-//   let myUrl = `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=IOLEuwOBaextS3XP3HR0L3NUcF3eaFqf&keyword=${searchTerm}`;
-
-//   $.ajax({
-//     url: myUrl,
-//     method: 'GET',
-//   }).then(printTicketmasterInfo);
-// }
-
-
-// requestTicketmaster();
+  $.ajax({
+    url: myUrl,
+    method: 'GET',
+  }).then(function(response) {
+    let responseX = response['_embedded'];
+  for (let i = 0; i < responseX.events.length; i += 1) {
+    let eventName = responseX.events[i].name;
+    let eventImg = responseX.events[i].images
+    let eventDate = responseX.events[i].dates.start.localDate;
+    let eventTime = responseX.events[i].dates.start.localTime;
+    let eventUrl = responseX.events[i].url;
+    let eventVenueName = responseX.events[i]['_embedded'].venues.name;
+    let eventVenueLong = responseX.events[i]['_embedded'].venues.location.longitude;
+    let eventVenueLati = responseX.events[i]['_embedded'].venues.location.latitude;
+    // let dynamicDiv = $('<div>').addClass('col-9');
+    // let dynamicP
+  }
+  });
+}
 
 $('#submit-btn').on('click', retrieveForm());
