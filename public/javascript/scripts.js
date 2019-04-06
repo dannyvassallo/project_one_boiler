@@ -15,12 +15,6 @@ const yandexBaseUrl = 'https://translate.yandex.net/api/v1.5/tr.json/translate';
 const yandexAPIKey =
   'trnsl.1.1.20190406T143223Z.056b981f8fc972d3.8e9576d91e670036aa4c8e89760c7acfa28805f4';
 
-
-
-const translateLang = 'en-ru';
-const rawTranslateText = 'hello this is the text I want to translate';
-const translateText = rawTranslateText.replace (/ /g, '+');
-const queryURL = `${yandexBaseUrl}?key=${yandexAPIKey}&lang=${translateLang}&text=${translateText}&f
 // YANDEX TRANSLATE API
 
 $ ('#submit-button').on ('click', function () {
@@ -69,11 +63,12 @@ $.ajax({
     }).then(function(response){
       console.log(response);
       //THIS IS FOR LYRICS SEARCH
+      //updated
 
     });
 
   });
-  
+
 //http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=123003777&apikey=09856f0a7bc6623dc9e1a3c333f42318
 //gets lyrics with track id
 
@@ -94,4 +89,3 @@ function getSongs(){
 
 }
 getSongs();
-
