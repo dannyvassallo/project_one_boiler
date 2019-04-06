@@ -42,12 +42,16 @@ $('#submit-button').on ('click', function () {
   });
 
     function getSongs(){
-      var youtubeQueryUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=artist%7Csongs&safeSearch=moderate&type=video&key=AIzaSyDm3Avv6gF5Xgw2YEm3GB5ILBO5-caJfwU';
+      const youtubeQueryUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q={song}&type=music&key=AIzaSyDm3Avv6gF5Xgw2YEm3GB5ILBO5-caJfwU';
       $.ajax({
         url:  youtubeQueryUrl,
         method: 'GET',
       }).then((response) => {
+        $("#videos-go-here").empty();
         console.log(response);
+        $("#song-title-input").val().trim();
+        $("#song-artisit-input").val().trim();
+
       });
     }
   getSongs();
@@ -95,15 +99,3 @@ $.ajax({
 // pulls artist and track name and if it has lyrics
 
 // http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=51725924&apikey=09856f0a7bc6623dc9e1a3c333f42318
-
-function getSongs() {
-  const youtubeQueryUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${song}&type=music&key=AIzaSyDm3Avv6gF5Xgw2YEm3GB5ILBO5-caJfwU`;
-  var song = 'Ring of Fire';
-  $.ajax({
-    url: youtubeQueryUrl,
-    method: 'GET',
-  }).then((response) => {
-    console.log(response);
-  });
-}
-getSongs();
