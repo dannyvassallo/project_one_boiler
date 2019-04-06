@@ -35,13 +35,13 @@ html, body {
   background-size: cover;
   background-position: center;
 }
-a {
-  color: #59a0d7;
+
+nav {
+  z-index: 3;
 }
 .navbar-trans {
   background: transparent;
 }
-
 a.navbar-brand, a.logo {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #fff !important;
@@ -57,8 +57,26 @@ li.nav-item .btn {
   margin-left: .4rem;
 }
 li.nav-item .btn-white {
-  color: #46484a;
+  color: #fff;
 }
+.cover {
+  background: #2b2d34 url(http://dev.turquoiseltd.com/wp-content/uploads/2017/05/081020159999_1_slide-970x677.jpg) center;
+  background-size: cover;
+  min-height: 50rem;
+  height: auto;
+  border-radius: 0;
+  width: 100%;
+  color: #fff;
+  padding-top: 1rem;
+}
+
+  .cover .cover-container {
+    display: table;
+    height: 100%;
+    min-height: 44rem;
+    margin: 0 auto;
+  }
+
 .btn-outline-white {
   font-size: .75rem;
   text-transform: uppercase;
@@ -66,6 +84,17 @@ li.nav-item .btn-white {
   border-radius: .3rem;
   border-width: 0.15rem;
 }
+.btn-white {
+  border-color: #fff;
+  background-color: #fff;
+  color: #46484a; }
+
+.btn-white:hover, .btn-white:focus, .btn-white:active {
+  border-color: #dfe1e5;
+  background-color: #dfe1e5;
+  color: #46484a;
+}
+
 .btn-outline-white, .btn-outline-white:visited {
   background: none;
   color: #fff;
@@ -76,3 +105,13 @@ li.nav-item .btn-white {
   color: #46484a;
   background: #fff;
 }
+.link-white, link-white:visited {
+  font-size: .75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: .3rem;
+  border: 0;
+  color: #fff; }
+
+.link-white:hover, .link-white:focus, .link-white:active {
+  color: #dfe1e5 !important; }
