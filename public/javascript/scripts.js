@@ -4,12 +4,12 @@ console.warn('Project One JS Initialized');
 
 // global variables
 const { $ } = window;
-/* eslint-disable *
+
 let eventName;
 let userLocation;
 let userRange;
 let formBlock = [];
-/* eslint-enable */
+
 function loadVideoBackground() {
   const bv = new Bideo(); // eslint-disable-line no-undef
   bv.init({
@@ -49,13 +49,32 @@ loadVideoBackground();
 function retrieveForm(event) {
   event.preventDefault();
 
-  /* eslint-disable *
   eventName = $('#eventName').val().trim();
   userLocation = $('#userLocation').val().trim();
   userRange = $('#userRange').val().trim();
 
   formBlock = [eventName, userLocation, userRange];
-  /* eslint-enable */
+
+
+  // var queryURL = "https://api.eventful.com/rest/events/get?" + eventName + "&limit=10&lang=en";
+
+
+  var API_KEY = "sVJJH5rghHKW4MpB";
+  var queryURL = "http://api.eventful.com/rest/events/search?...&keywords=books&location=San+Diego&date=Future&api_key=" + API_KEY;
+  //   // Performing an AJAX request with the queryURL
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+  //After data comes back from the request
+  .then(function (response) {
+    // console.log(queryURL);
+    // var results = response.data;
+    console.log(response);
+    console.log(event.url);
+  })
+
+
 }
 
-$('#submit-btn').on('click', retrieveForm());
+$('#submit-btn').on('click', retrieveForm);
