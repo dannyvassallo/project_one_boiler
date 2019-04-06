@@ -35,83 +35,20 @@ html, body {
   background-size: cover;
   background-position: center;
 }
-
-nav {
-  z-index: 3;
-}
-.navbar-trans {
-  background: transparent;
-}
-a.navbar-brand, a.logo {
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #fff !important;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-top: 0; }
-
-a.logo:hover, a.logo:active, a.logo:focus {
-  text-decoration: none; }
-
-li.nav-item .btn {
-  margin-top: .2rem;
-  margin-left: .4rem;
-}
-li.nav-item .btn-white {
-  color: #fff;
-}
-.cover {
-  background: #2b2d34 url(http://dev.turquoiseltd.com/wp-content/uploads/2017/05/081020159999_1_slide-970x677.jpg) center;
-  background-size: cover;
-  min-height: 50rem;
-  height: auto;
-  border-radius: 0;
-  width: 100%;
-  color: #fff;
-  padding-top: 1rem;
+.view {
+  background: url("https://mdbootstrap.com/img/Photos/Others/img (40).jpg")no-repeat center center;
 }
 
-  .cover .cover-container {
-    display: table;
-    height: 100%;
-    min-height: 44rem;
-    margin: 0 auto;
+.navbar {
+  background-color: transparent;
+}
+
+.top-nav-collapse {
+  background-color: #4285F4;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+      background-color: #4285F4;
   }
-
-.btn-outline-white {
-  font-size: .75rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  border-radius: .3rem;
-  border-width: 0.15rem;
 }
-.btn-white {
-  border-color: #fff;
-  background-color: #fff;
-  color: #46484a; }
-
-.btn-white:hover, .btn-white:focus, .btn-white:active {
-  border-color: #dfe1e5;
-  background-color: #dfe1e5;
-  color: #46484a;
-}
-
-.btn-outline-white, .btn-outline-white:visited {
-  background: none;
-  color: #fff;
-  border-color: #fff;
-}
-
-.btn-outline-white:hover, .btn-outline-white:focus, .btn-outline-white:active {
-  color: #46484a;
-  background: #fff;
-}
-.link-white, link-white:visited {
-  font-size: .75rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  border-radius: .3rem;
-  border: 0;
-  color: #fff; }
-
-.link-white:hover, .link-white:focus, .link-white:active {
-  color: #dfe1e5 !important; }
