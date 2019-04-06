@@ -12,11 +12,11 @@ firebase.initializeApp(config);
 
 // http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=51725924&apikey=09856f0a7bc6623dc9e1a3c333f42318
 
-youtubeQueryUrl= "https://www.googleapis.com/youtube/v3/search?part=snippet&q=&type=music&key=AIzaSyDm3Avv6gF5Xgw2YEm3GB5ILBO5-caJfwU";
+youtubeQueryUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=&type=music&key=AIzaSyDm3Avv6gF5Xgw2YEm3GB5ILBO5-caJfwU';
 
 $.ajax({
-  url: "youtubeQueryUrl",
-  method: "GET"
-}).then(function (response) {
+  url: 'youtubeQueryUrl',
+  method: 'GET',
+}).then((response) => {
   console.log(response);
-  })
+});
