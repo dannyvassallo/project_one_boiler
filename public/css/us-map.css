@@ -1,0 +1,15 @@
+
+.button1 {
+  background-color: #890a80;
+  font-family: sans-serif;
+  font-size: 10px;
+  color: white;
+  padding: 5px;
+}
+
+.button1:focus { border: none; box-shadow: none; }
+
+#mapReset {
+  position: absolute;
+  top: 380px; left:  545px;
+}
