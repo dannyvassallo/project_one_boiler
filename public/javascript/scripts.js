@@ -58,4 +58,22 @@ function retrieveForm(event) {
   /* eslint-enable */
 }
 
+// function printTicketmasterInfo(reponse) {
+//  let dynamicDiv = $('<div>').addClass('')
+// }
+
+// function requestTicketmaster() {
+//   let searchTerm = formBlock[0];
+
+//   let myUrl = `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=IOLEuwOBaextS3XP3HR0L3NUcF3eaFqf&keyword=${searchTerm}`;
+
+//   $.ajax({
+//     url: myUrl,
+//     method: 'GET',
+//   }).then(printTicketmasterInfo);
+// }
+
+
+// requestTicketmaster();
+
 $('#submit-btn').on('click', retrieveForm());
