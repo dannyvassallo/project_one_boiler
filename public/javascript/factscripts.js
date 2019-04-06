@@ -1,0 +1,57 @@
+/* eslint-disable */
+console.warn('Project One JS Initialized');
+/* eslint-enable */
+var states = ["Alabama",
+              "Alaska",
+              "Arizona",
+              "Arkansas",
+              "California",
+              "Colorado",
+              "Connecticut",
+              "Delaware",
+              "Florida",
+              "Georgia",
+              "Hawaii",
+              "Idaho",
+              "Illinois",
+              "Indiana",
+              "Iowa",
+              "Kansas",
+              "Kentucky",
+              "Louisiana",
+              "Maine",
+              "Maryland",
+              "Massachusetts",
+              "Michigan",
+              "Minnesota",
+              "Mississippi",
+              "Missouri",
+
+              "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio", "Oklahoma", "Oregon", "Palau", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virgin Islands", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
+
+var funfacts = ["There's a store in Alabama that sells unclaimed baggage.",
+                "Alaska has more coastline than any other state.",
+                "The bolo tie is the official state neckwear of Arizona.",
+                "The most valuable diamond ever discovered in the US was found in Arkansas.",
+                "California is the only state that has hosted both the summer and winter Olympics.",
+                "There has never been a US president or vice president born in Colorado.",
+                "The first phone book in the US was printed in New Haven in 1878.",
+                "Chickens outnumber people 200-to-1 in Delaware.",
+                "It is illegal to spread a loved one's ashes at Disney World (although many people try).",
+                "There were four other state capitals(Savannah, Augusta, Louisville, and Milledgeville) before Atlanta.",
+                "Hawaii has the highest life expectancy out of any state, with 82.4 years of age.",
+                "At 7,993 feet deep, the Snake River in Hells Canyon is the deepest river gorge in North America.",
+                "The state is home to the world's largest bottle of 'catsup.'",
+                "Wabash - Indiana was the first US city to use electric street lights.",
+                "Pigs outnumber the human population in Iowa about 7-to-1.",
+                "Helium was discovered in Kansas.",
+                "There are more barrels of bourbon than people in Kentucky."
+                "Milk is the official state drink of Louisiana.",
+                "Portland -> Oregon is actually named after Portland -> Maine.",
+                "The first Ouija board was invented in Maryland.",
+                "Both volleyball and basketball were invented in the state.",
+                "No matter where you are in the state, you'll never be more than 85 miles from one of the Great Lakes."
+                "Minnesota has more golfers per capital than any other state.",
+                "Barq's Root Beer was invented in Biloxi."
+                "The first successful parachute jump from a moving plane (what we now call skydiving) was completed in Missouri.",
+                ""]
