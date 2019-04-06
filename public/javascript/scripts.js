@@ -4,7 +4,7 @@ console.warn('Project One JS Initialized');
 
 // global variables
 const { $ } = window;
-/* eslint-disable *
+/* eslint-disable */
 let eventName;
 let userLocation;
 let userRange;
@@ -49,7 +49,7 @@ loadVideoBackground();
 function retrieveForm(event) {
   event.preventDefault();
 
-  /* eslint-disable *
+  /* eslint-disable */
   eventName = $('#eventName').val().trim();
   userLocation = $('#userLocation').val().trim();
   userRange = $('#userRange').val().trim();
@@ -57,5 +57,23 @@ function retrieveForm(event) {
   formBlock = [eventName, userLocation, userRange];
   /* eslint-enable */
 }
+
+// function printTicketmasterInfo(reponse) {
+//  let dynamicDiv = $('<div>').addClass('')
+// }
+
+// function requestTicketmaster() {
+//   let searchTerm = formBlock[0];
+
+//   let myUrl = `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=IOLEuwOBaextS3XP3HR0L3NUcF3eaFqf&keyword=${searchTerm}`;
+
+//   $.ajax({
+//     url: myUrl,
+//     method: 'GET',
+//   }).then(printTicketmasterInfo);
+// }
+
+
+// requestTicketmaster();
 
 $('#submit-btn').on('click', retrieveForm());
