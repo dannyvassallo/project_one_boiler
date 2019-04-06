@@ -1,35 +1,94 @@
 <!DOCTYPE html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Project One</title>
-    <meta name="description" content="Project 1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./static/css/style.css">
-  </head>
-  <body>
-    <nav class="navbar">
-      <a class="navbar-brand" href="/">
-        <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
-      </a>
-    </nav>
-    <div class="container-fluid">
-      <div class="row mt-4">
-        <div class="col-sm-12 col-md-6 offset-md-3">
-          <div class="jumbotron">
-            <img class="img-fluid" src="./static/images/computer.jpg">
-            <h1 class="display-4">This is a brand new screen!</h1>
-            <p class="lead">This is screen includes bootstrap, fontawesome, jquery, and links to your own custom js and css files!</p>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Project One</title>
+  <meta name="description" content="Project 1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body>
+
+<!-- header -->
+  <div class="jumbotron jumbotron-fluid bg-dark">
+    <div class="container">
+      <h1 class="display-4 text-center text-white">ge<img height="80px" width="auto" src="./static/images/earth.gif">ST<img height="80px" width="auto" src="./static/images/cute cloud.jpg">RM</h1>
+    </div>
+  </div>
+
+<!-- home page -->
+  <div class="container-fluid">
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="jumbotron">
+          <div class="row">
+            <div class="col-md-8">MAP</div>
+            <div class="col-md-4" id="legend" ></i></i>
+              <p><button class='btn-lg btn-secondary' id="linkBtn">LINKS <i class="fas fa-home"></i></button></p>
+              <p><button class='btn-lg btn-secondary' id="triviaBtn">Trivia <i class="fas fa-award"></i></button></p>
+              <p><button class='btn-lg btn-secondary' id="factsBtn">Fun Facts <i class="fas fa-bacon"></i></button></p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="./static/javascript/scripts.js"></script>
-  </body>
+  </div>
+
+<!-- page 2 -->
+  <div class="container-fluid">
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="jumbotron">
+          <div class="row">
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-8 card">
+                  map
+                </div>
+                <div class="text-center col-md-4 card">
+                  <div class="row text-center">FUN FACTS</div>
+                  <div class="row">
+                    <table id="table-area" class="table text-left">
+                      <thead>
+                        <tr>
+                          <th>State</th>
+                          <th>Headliners</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>fun fact about state clicked</td>
+                          <td>headliner about state clicked</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div id="trivia"  class="row">
+                <div id="question" class="col-md-6 card">question</div>
+                <div id="options" class="col-md-6 card">answer options</div>
+              </div>
+            </div>
+            <div class="col-md-2" id="legend" ></i></i>
+              <p><button class='btn-lg btn-secondary' id="linkBtn">LINKS <i class="fas fa-home"></i></button></p>
+              <p><button class='btn-lg btn-secondary' id="triviaBtn">Trivia <i class="fas fa-award"></i></button></p>
+              <p><button class='btn-lg btn-secondary' id="factsBtn">Fun Facts <i class="fas fa-bacon"></i></button></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- footer -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="./static/javascript/scripts.js"></script>
+</body>
 </html>
