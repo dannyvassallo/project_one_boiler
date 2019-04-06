@@ -10,36 +10,33 @@ const config = {
 };
 firebase.initializeApp(config);
 
-var trackId;
-var trackSearch;
-var artistSearch;
-var lyricsApiKey = "09856f0a7bc6623dc9e1a3c333f42318";
-//var lyricsURL = "http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + trackId + "&track.search?q_track=" + trackSearch + "&track.search?q_artist=" + artistSearch + "&apikey=" + lyricsApiKey;
-var lyricsURL = "http://api.musixmatch.com/ws/1.1/track.lyrics.get?q_artist=" + artistSearch + "&apikey=" + lyricsApiKey;
+let trackId;
+let trackSearch;
+let artistSearch;
+const lyricsApiKey = '09856f0a7bc6623dc9e1a3c333f42318';
+// var lyricsURL = "http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + trackId + "&track.search?q_track=" + trackSearch + "&track.search?q_artist=" + artistSearch + "&apikey=" + lyricsApiKey;
+const lyricsURL = `http://api.musixmatch.com/ws/1.1/track.lyrics.get?q_artist=${artistSearch}&apikey=${lyricsApiKey}`;
 
 
-
-//THIS IS FOR ARTSIT SEARCH and track
+// THIS IS FOR ARTSIT SEARCH and track
 $.ajax({
   url: lyricsURL,
-  method: "GET"
-}).then(function(response){
+  method: 'GET',
+}).then((response) => {
   console.log(response);
 
-    //THIS IS FOR lyrics
-    $.ajax({
-      url: lyricsURL,
-      method: "GET"
-    }).then(function(response){
-      console.log(response);
-      //THIS IS FOR LYRICS SEARCH
-
-    });
-
+  // THIS IS FOR lyrics
+  $.ajax({
+    url: lyricsURL,
+    method: 'GET',
+  }).then((response) => {
+    console.log(response);
+    // THIS IS FOR LYRICS SEARCH
   });
-  
-//http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=123003777&apikey=09856f0a7bc6623dc9e1a3c333f42318
-//gets lyrics with track id
+});
 
-//http://api.musixmatch.com/ws/1.1/track.search?q=justin%20bieber%20Sorry&apikey=09856f0a7bc6623dc9e1a3c333f42318&f_has_lyrics=true
-//pulls artist and track name and if it has lyrics
+// http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=123003777&apikey=09856f0a7bc6623dc9e1a3c333f42318
+// gets lyrics with track id
+
+// http://api.musixmatch.com/ws/1.1/track.search?q=justin%20bieber%20Sorry&apikey=09856f0a7bc6623dc9e1a3c333f42318&f_has_lyrics=true
+// pulls artist and track name and if it has lyrics
