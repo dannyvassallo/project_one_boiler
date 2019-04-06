@@ -4,7 +4,7 @@ console.warn('Project One JS Initialized');
 
 // global variables
 const { $ } = window;
-/* eslint-disable *
+/* eslint-disable */
 let eventName;
 let userLocation;
 let userRange;
@@ -49,7 +49,7 @@ loadVideoBackground();
 function retrieveForm(event) {
   event.preventDefault();
 
-  /* eslint-disable *
+  /* eslint-disable */
   eventName = $('#eventName').val().trim();
   userLocation = $('#userLocation').val().trim();
   userRange = $('#userRange').val().trim();
