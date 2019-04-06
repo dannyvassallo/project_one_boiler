@@ -6,9 +6,7 @@ const rawTranslateText = 'hello this is the text I want to translate';
 const translateText = rawTranslateText.replace (/ /g, '+');
 const queryURL = `${yandexBaseUrl}?key=${yandexAPIKey}&lang=${translateLang}&text=${translateText}&format=plain`;
 
-/* eslint-disable */
-console.warn ('Project One JS Initialized');
-/* eslint-enable */
+
 
 // YANDEX TRANSLATE API
 $.ajax ({
