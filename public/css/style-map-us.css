@@ -1,6 +1,8 @@
 body {
   background-color: darkgray;
   font-family: 'Quicksand', sans-serif;
+  text-shadow: 1px 1px #7e7373af;
+
 }
 #legend{
   text-align: center;
@@ -10,5 +12,13 @@ body {
   padding-bottom: 300px;
 }
 button{
-  display: inline-block;
+  margin-top: 10px;
+}
+#footer{
+  background-image: linear-gradient(#257ee4, #333685);
+  padding: 25px;
+}
+#header{
+
+  background-image: linear-gradient(#257ee4, #333685);
 }

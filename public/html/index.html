@@ -5,16 +5,16 @@
   <title>Project One</title>
   <meta name="description" content="Project 1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand|Righteous" rel="stylesheet">  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/style.css">
 </head>
 <body>
 
 <!-- header -->
-  <div class="jumbotron jumbotron-fluid bg-dark">
+  <div class="jumbotron jumbotron-fluid bg-dark" id="header">
     <div class="container">
-      <h1 class="display-4 text-center text-white">ge<img height="80px" width="auto" src="./static/images/earth.gif">ST<img height="80px" width="auto" src="./static/images/cute cloud.jpg">RM</h1>
+      <h1 class="display-4 text-center text-white">ge<img height="80px" width="auto" src="./static/images/rotating-earth-1.gif">ST<img height="auto" width="150px" src="./static/images/lightning_PNG29.png">RM</h1>
     </div>
   </div>
 
@@ -24,9 +24,9 @@
       <div class="col-md-12">
         <div class="jumbotron">
           <div class="row">
-            <div class="col-md-8">MAP</div>
+            <div id="vmap" class="col-md-8">MAP</div>
             <div class="col-md-4" id="legend" ></i></i>
-              <p><button class='btn-lg btn-secondary' id="linkBtn">LINKS <i class="fas fa-home"></i></button></p>
+              <p>LINKS <i class="fas fa-home"></i></p>
               <p><button class='btn-lg btn-secondary' id="triviaBtn">Trivia <i class="fas fa-award"></i></button></p>
               <p><button class='btn-lg btn-secondary' id="factsBtn">Fun Facts <i class="fas fa-bacon"></i></button></p>
             </div>
@@ -35,6 +35,13 @@
       </div>
     </div>
   </div>
+
+  <div class="jumbotron jumbotron-fluid bg-dark" id="footer">
+      <div class="container">
+        <h5 class="text-center text-white"><i class="far fa-copyright"></i> Rachael Michelle Sushmita Kevin</h5>
+      </div>
+    </div>
+
 
 <!-- page 2 -->
   <div class="container-fluid">
@@ -73,7 +80,7 @@
               </div>
             </div>
             <div class="col-md-2" id="legend" ></i></i>
-              <p><button class='btn-lg btn-secondary' id="linkBtn">LINKS <i class="fas fa-home"></i></button></p>
+              <p>LINKS <i class="fas fa-home"></i></p>
               <p><button class='btn-lg btn-secondary' id="triviaBtn">Trivia <i class="fas fa-award"></i></button></p>
               <p><button class='btn-lg btn-secondary' id="factsBtn">Fun Facts <i class="fas fa-bacon"></i></button></p>
             </div>
@@ -82,6 +89,8 @@
       </div>
     </div>
   </div>
+
+
 
 <!-- footer -->
 
