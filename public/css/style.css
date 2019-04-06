@@ -35,3 +35,44 @@ html, body {
   background-size: cover;
   background-position: center;
 }
+a {
+  color: #59a0d7;
+}
+.navbar-trans {
+  background: transparent;
+}
+
+a.navbar-brand, a.logo {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #fff !important;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 0; }
+
+a.logo:hover, a.logo:active, a.logo:focus {
+  text-decoration: none; }
+
+li.nav-item .btn {
+  margin-top: .2rem;
+  margin-left: .4rem;
+}
+li.nav-item .btn-white {
+  color: #46484a;
+}
+.btn-outline-white {
+  font-size: .75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: .3rem;
+  border-width: 0.15rem;
+}
+.btn-outline-white, .btn-outline-white:visited {
+  background: none;
+  color: #fff;
+  border-color: #fff;
+}
+
+.btn-outline-white:hover, .btn-outline-white:focus, .btn-outline-white:active {
+  color: #46484a;
+  background: #fff;
+}
