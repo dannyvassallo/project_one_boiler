@@ -76,6 +76,15 @@ input {
 .slider::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background: #4caf50;
+  background: #41aa44;
   cursor: pointer;
+}
+#results{
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#navbar-title{
+  margin-left:5%;
 }
