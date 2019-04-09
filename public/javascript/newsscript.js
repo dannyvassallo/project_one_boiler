@@ -14,7 +14,6 @@ const queryURL = `https://www.googleapis.com/customsearch/v1?key=AIzaSyDP85R1SUK
 const articleTitle = [];
 const articleUrl = [];
 
-
 // function grabjson(searchterm) {
 $.ajax({
   url: queryURL,
