@@ -25,8 +25,3 @@ for (var i = 0; i < results.length; i++) {
   var results = $("<img>");
 
 });
-
-  if
-
-
-  else

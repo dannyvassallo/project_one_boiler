@@ -8,7 +8,7 @@ const { $ } = window;
 let eventName;
 let userLocation;
 let userRange;
-let formBlock = [];
+//let formBlock = [];
 
 function loadVideoBackground() {
   const bv = new Bideo(); // eslint-disable-line no-undef
@@ -119,7 +119,11 @@ function createTable() {
   button.attr ("class", "btn btn-primary");
   button.attr ("data-toggle", "modal");
   button.attr ("data-target", "#exampleModal");
-  button.text ("test");
+  //added attr to show up info inside the modal
+  button.attr("data-title", name);
+  button.attr("data-price", price);
+  button.text("Modal");
+  // var table = $("<table
 
  //tier 7
   var resultRow = $("<tr>").append(
@@ -139,5 +143,13 @@ function createTable() {
   table.append(tableBody);
  //tier 4
   newCardBody.append(table);
+//added data to the modal to show title and price
+$(document).on("click", ".modal-toggle", function(){
+  let title = $(this).data("title")
+  $("#exampleModal .modal-title").text(title)
+  let price = $(this).data("price")
+  $("#exampleModal .modal-title").text(price)
+});
+
 
 });
