@@ -1,3 +1,16 @@
 body {
   background-color: darkgray;
 }
+
+form {
+  text-align: center;
+}
+
+#translator-displays {
+  margin: 30px auto;
+  text-align: center;
+  line-height: 3;
+  background: lightskyblue;
+  font-weight: bold;
+  width: 500px;
+}
