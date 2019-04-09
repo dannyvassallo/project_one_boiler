@@ -6,6 +6,10 @@
   /* background-color: rgba(119,136,153,30%) */
 }
 
+.cardZone {
+  z-index: 2;
+}
+
 * {
   margin: 0; padding: 0;
 }

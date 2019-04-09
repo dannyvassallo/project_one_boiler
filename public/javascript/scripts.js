@@ -92,25 +92,32 @@ loadVideoBackground();
 
 function createBlocks () {
   //
-   let newCard = $("<div class='card'>");
-   $("#tableZone").append(newCard);
+  let newCard = $("<div class='card'>");
+  $("#tableZone").append(newCard);
   //
-   let cardHeader = $("<h3 class='card-header'>");
-   $(".card").append(cardHeader);
-   $(".card").text(this.eventTitle);
+  let cardHeader = $("<div class='card-header'>");
+  $(".card").append(cardHeader);
+  $(".card").text(eventTitle);
   //
-   let cardBody = $("<div class='card-body'>");
-   $(".card-header").append(cardBody);
+  let cardBody = $("<div class='card-body'>");
+  $(".card-header").append(cardBody);
+  //
+  let button = $("<button>");
+  button.attr("type", "button");
+  button.attr("class", "btn btn-primary");
+  button.attr("data-toggle", "modal");
+  button.attr("data-target", "#exampleModal");
+  button.text("Modal");
   //tier 7
-   let info = $("<div>").append(
-    //tier 8
-     $("<p>").text(this.eventDate),
-     $("<p>").text(this.eventTime),
-     $("<p>").text(this.eventVenueName),
-     $("<input>").addClass("type='submit' id='sub-btn'")
+  let info = $("<div>").append(
+  //tier 8
+  $("<p>").text(this.eventDate),
+  $("<p>").text(this.eventTime),
+  $("<p>").text(this.eventVenueName),
+  $("<div>").append(button)
     );
-    //
-    $(".card-body").append(info);
+  //
+  $(".card-body").append(info);
    };
 
 /* eslint-disable */
@@ -119,14 +126,6 @@ function createBlocks () {
 function requestTicketmaster() {
   let myUrl = `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=IOLEuwOBaextS3XP3HR0L3NUcF3eaFqf&keyword=${eventName}&postalCode=${userLocation}&radius=${userRange}&unit=miles`;
   console.log("API URL, Notice its broken if inout is spaced: ", myUrl);
-  let eventTitle;
-  let eventImg;
-  let eventDate;
-  let eventTime;
-  let eventUrl;
-  let eventVenueName;
-  let eventVenueLong;
-  let eventVenueLati;
 
   $.ajax({
     url: myUrl,
@@ -135,29 +134,55 @@ function requestTicketmaster() {
     let responseX = response['_embedded'];
     console.log("responseX: ", responseX);
   for (let i = 0; i < responseX.events.length; i += 1) {
-    eventTitle = responseX.events[i].name;
+    let eventTitle = responseX.events[i].name;
     console.log("eventTitle: ", eventTitle);
-    eventImg = responseX.events[i].images;
+    let eventImg = responseX.events[i].images;
     console.log("eventImg: ", eventImg);
-    eventDate = responseX.events[i].dates.start.localDate;
+    let eventDate = responseX.events[i].dates.start.localDate;
     console.log("eventDate: ", eventDate);
-    eventTime = responseX.events[i].dates.start.localTime;
+    let eventTime = responseX.events[i].dates.start.localTime;
     console.log("eventTime: ", eventTime);
-    eventUrl = responseX.events[i].url;
+    let eventUrl = responseX.events[i].url;
     console.log("eventUrl: ", eventUrl);
-    eventVenueName = responseX.events[i]['_embedded'].venues[0].name;
+    let eventVenueName = responseX.events[i]['_embedded'].venues[0].name;
     console.log("eventVenueName: ", eventVenueName);
-    eventVenueLong = responseX.events[i]['_embedded'].venues[0].location.longitude;
+    let eventVenueLong = responseX.events[i]['_embedded'].venues[0].location.longitude;
     console.log("eventVenueLong: ", eventVenueLong);
-    eventVenueLati = responseX.events[i]['_embedded'].venues[0].location.latitude;
+    let eventVenueLati = responseX.events[i]['_embedded'].venues[0].location.latitude;
     console.log("eventVenueLati", eventVenueLati);
 
-    createBlocks();
+    //
 
-  }
-
-  })
-  };
+    let newCard = $("<div class='card'>");
+    $("#cardZone").append(newCard);
+    //
+    let cardHeader = $("<div class='card-header'>");
+    $(".card").append(cardHeader);
+    $(".card-header").text(eventTitle);
+    //
+    let cardBody = $("<div class='card-body'>");
+    $(".card-header").append(cardBody);
+    //
+    let button = $("<button>");
+    button.attr("type", "button");
+    button.attr("class", "btn btn-primary");
+    button.attr("data-toggle", "modal");
+    button.attr("data-target", "#exampleModal");
+    button.text("Modal");
+    //tier 7
+    let info = $("<div>").append(
+    //tier 8
+    $("<p>").text(eventDate),
+    $("<p>").text(eventTime),
+    $("<p>").text(eventVenueName),
+    $("<div>").append(button)
+      );
+    //
+    $(".card-body").append(info);
+     };
+    }
+  )
+};
 
 
 function retrieveForm(event) {
@@ -175,7 +200,7 @@ function retrieveForm(event) {
   console.log(formBlock);
 
 
-  requestTicketmast;  /* eslint-enable */
+  requestTicketmaster(); /* eslint-enable */
 }
 
 $('#submit-btn').on('click', retrieveForm);
