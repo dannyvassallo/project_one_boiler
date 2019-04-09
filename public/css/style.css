@@ -1,3 +1,90 @@
 body {
-  background-color: darkgray;
+  background-color: white;
+  margin: 3%;
+}
+.jumbotron {
+  background-color: blue;
+  opacity: 0.8;
+  color: white;
+}
+.center {
+  justify-content: center;
+}
+.form {
+  background-color: #f0ad4e;
+  padding: 1%;
+  margin: 2%;
+  margin-bottom: 1%;
+}
+#signInTitle {
+  justify-self: center;
+  color: white;
+  padding: 2%;
+  display: inline;
+  justify-self: center;
+}
+.signInBtns {
+  justify-content: space-around;
+  display: flex;
+  margin: 2%;
+  width: 15%;
+}
+input {
+  margin-bottom: 1%;
+}
+#name {
+  justify-content: flex;
+  display: flex;
+}
+.formspacing {
+  margin: 2%;
+  padding: 1%;
+}
+#signupform {
+  justify-content: left;
+  display: flex;
+}
+
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4caf50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #41aa44;
+  cursor: pointer;
+}
+#results{
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#navbar-title{
+  margin-left:5%;
 }
