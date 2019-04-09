@@ -42,16 +42,27 @@ $('#submit-button').on ('click', function () {
   });
 
     function getSongs(){
-      const youtubeQueryUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q={song}&type=music&key=AIzaSyDm3Avv6gF5Xgw2YEm3GB5ILBO5-caJfwU';
+      const song = $("#song-title-input").val();
+      const artist = $("#song-artist-input").val();
+      const youtubeQueryUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + song +' '+ artist + '&type=music&key=AIzaSyDm3Avv6gF5Xgw2YEm3GB5ILBO5-caJfwU';
+      const watchVideoUrl = 'https://www.youtube.com/embed/'
+
+
+
       $.ajax({
         url:  youtubeQueryUrl,
         method: 'GET',
       }).then((response) => {
         $("#videos-go-here").empty();
-        console.log(response);
-        $("#song-title-input").val().trim();
-        $("#song-artisit-input").val().trim();
+        var results = response.items[0].id.videoId;
+        var youTubeVid = watchVideoUrl + results;
+      console.log(response.items[0].id);
+      console.log(youtubeQueryUrl);
+        var videos = $("<iframe>");
+        // videos.css({width: 420}, {height: 315});
+        videos.attr('src', youTubeVid);
 
+        $("#videos-go-here").append(videos);
       });
     }
   getSongs();
