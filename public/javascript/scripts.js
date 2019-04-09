@@ -10,33 +10,41 @@ const config = {
 };
 firebase.initializeApp(config);
 
-let trackId;
-let trackSearch;
-let artistSearch;
-const lyricsApiKey = '09856f0a7bc6623dc9e1a3c333f42318';
-// var lyricsURL = "http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + trackId + "&track.search?q_track=" + trackSearch + "&track.search?q_artist=" + artistSearch + "&apikey=" + lyricsApiKey;
-const lyricsURL = `http://api.musixmatch.com/ws/1.1/track.lyrics.get?q_artist=${artistSearch}&apikey=${lyricsApiKey}`;
 
+function musixmatch() {
+  let trackId;
+  let trackSearch = $("#song-title-input").val().trim();
+  let artistSearch = $("#song-artist-input").val().trim();
+  let hasLyrics = true;
+  const matchApiKey = "601f04e0a4bfae6c0d2125b377f1b935";
+  const matchURL = "https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q=" + artistSearch + " " + trackSearch + "&apikey=" + matchApiKey + "&has_lyrics=" + hasLyrics;
+  const lyricsURL = "https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=95443255&apikey=601f04e0a4bfae6c0d2125b377f1b935"
+  console.log(trackSearch);
 
-// THIS IS FOR ARTSIT SEARCH and track
-$.ajax({
-  url: lyricsURL,
-  method: 'GET',
-}).then((response) => {
-  console.log(response);
-
-  // THIS IS FOR lyrics
+  // THIS IS FOR ARTSIT SEARCH and track
   $.ajax({
-    url: lyricsURL,
-    method: 'GET',
+    url: matchURL,
+    method: "GET",
   }).then((response) => {
-    console.log(response);
-    // THIS IS FOR LYRICS SEARCH
-  });
-});
+     response = JSON.parse(response)
+     var songDiv = $("<div>");
+     songDiv.attr("class", "artist");
+     songDiv.html(response.message.body.track_list[0].track.track_name);
+     $("#song-name").append(songDiv);
+     $(".artist").css("color", "red");
 
-// http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=123003777&apikey=09856f0a7bc6623dc9e1a3c333f42318
-// gets lyrics with track id
+    });
+     //THIS IS FOR lyrics
+      $.ajax({
+        url: lyricsURL,
+        method: "GET"
+      }).then(function(response){
+        response = JSON.parse(response)
+       var lyricsDiv = $("<div>");
+       lyricsDiv.attr("class", "lyrics");
+       lyricsDiv.html(response.message.body.lyrics.lyrics_body);
+       $("#lyrics").append(lyricsDiv);
+       $(".lyrics").css("color", "red");
 
-// http://api.musixmatch.com/ws/1.1/track.search?q=justin%20bieber%20Sorry&apikey=09856f0a7bc6623dc9e1a3c333f42318&f_has_lyrics=true
-// pulls artist and track name and if it has lyrics
+      });
+  }
