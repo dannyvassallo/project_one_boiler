@@ -1,4 +1,23 @@
-# Project One Awesome Boilerplate 🍛
+# Project One ShowSpotter 📅
+=============================================
+
+ShowSpotter - a search engine where you can find Arts/Music events within a given radius. Once information is submitted through the form it will return a list of events where you can view the Event Title, Date, Time, Venue.
+
+![Website Screenshot](images/web1.png)
+![Response Screenshot](image url)
+
+## Built With
+
+* TicketMaster API - The api used to pull events
+* GoogleMaps API - The api used to show the map and link for address for venue
+* Bideo - The video background
+* Bootstrap - The web framework used
+
+## 
+
+
+
+
 
 Before getting started, as a general rule of thumb, you should be running the commands you see within the project directory. If you experience errors, your first check should be to run `pwd` and ensure the folder name you see returned is the one you should be in.
 
