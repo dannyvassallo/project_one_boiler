@@ -16,8 +16,8 @@ const yandexAPIKey = 'trnsl.1.1.20190406T143223Z.056b981f8fc972d3.8e9576d91e6700
 
 // YANDEX TRANSLATE API
 
-$('#submit-button').on ('click', function () {
-  event.preventDefault ();
+$('#submit-button').on('click', () => {
+  event.preventDefault();
 
 
   const translateLang = $('#language-input').val();
@@ -41,13 +41,11 @@ $('#submit-button').on ('click', function () {
     $('#translated-text-display').text(translatedTextDisplay);
   });
 
-    function getSongs(){
+   function getSongs(){
       const song = $("#song-title-input").val();
       const artist = $("#song-artist-input").val();
       const youtubeQueryUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + song +' '+ artist + '&type=music&key=AIzaSyDm3Avv6gF5Xgw2YEm3GB5ILBO5-caJfwU';
       const watchVideoUrl = 'https://www.youtube.com/embed/'
-
-
 
       $.ajax({
         url:  youtubeQueryUrl,
@@ -56,57 +54,50 @@ $('#submit-button').on ('click', function () {
         $("#videos-go-here").empty();
         var results = response.items[0].id.videoId;
         var youTubeVid = watchVideoUrl + results;
-      console.log(response.items[0].id);
-      console.log(youtubeQueryUrl);
         var videos = $("<iframe>");
-        // videos.css({width: 420}, {height: 315});
         videos.attr('src', youTubeVid);
-
         $("#videos-go-here").append(videos);
       });
     }
   getSongs();
+  musixmatch();
 });
 
 
-// http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=51725924&apikey=09856f0a7bc6623dc9e1a3c333f42318
+function musixmatch() {
+  let trackId;
+  const trackSearch = $('#song-title-input').val().trim();
+  const artistSearch = $('#song-artist-input').val().trim();
+  const hasLyrics = true;
+  const matchApiKey = '601f04e0a4bfae6c0d2125b377f1b935';
+  const matchURL = `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q=${artistSearch} ${trackSearch}&apikey=${matchApiKey}&has_lyrics=${hasLyrics}`;
+  const lyricsURL = 'https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=95443255&apikey=601f04e0a4bfae6c0d2125b377f1b935';
+  console.log(trackSearch);
+  console.log(matchURL);
+  console.log(lyricsURL);
 
-let trackId;
-let trackSearch;
-let artistSearch;
-const lyricsApiKey = '09856f0a7bc6623dc9e1a3c333f42318';
-// var lyricsURL = "http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + trackId + "&track.search?q_track=" + trackSearch + "&track.search?q_artist=" + artistSearch + "&apikey=" + lyricsApiKey;
-const lyricsURL = `http://api.musixmatch.com/ws/1.1/track.lyrics.get?q_artist=${artistSearch}&apikey=${lyricsApiKey}`;
-
-
-// THIS IS FOR ARTSIT SEARCH and track
-$.ajax({
-  url: lyricsURL,
-  method: 'GET',
-}).then((response) => {
-  console.log(response);
-
-
-    //THIS IS FOR lyrics
-    $.ajax({
-      url: lyricsURL,
-      method: "GET"
-    }).then(function(response){
-      console.log(response);
-      //THIS IS FOR LYRICS SEARCH
-      //updated
-
-    });
-
+  // THIS IS FOR ARTSIT SEARCH and track
+  $.ajax({
+    url: matchURL,
+    method: 'GET',
+  }).then((response) => {
+    response = JSON.parse(response);
+    const songDiv = $('<div>');
+    songDiv.attr('class', 'artist');
+    songDiv.html(response.message.body.track_list[0].track.track_name);
+    $('#song-name').append(songDiv);
+    $('.artist').css('color', 'red');
   });
-
-//http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=123003777&apikey=09856f0a7bc6623dc9e1a3c333f42318
-//gets lyrics with track id
-
-// http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=123003777&apikey=09856f0a7bc6623dc9e1a3c333f42318
-// gets lyrics with track id
-
-// http://api.musixmatch.com/ws/1.1/track.search?q=justin%20bieber%20Sorry&apikey=09856f0a7bc6623dc9e1a3c333f42318&f_has_lyrics=true
-// pulls artist and track name and if it has lyrics
-
-// http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=51725924&apikey=09856f0a7bc6623dc9e1a3c333f42318
+  // THIS IS FOR lyrics
+  $.ajax({
+    url: lyricsURL,
+    method: 'GET',
+  }).then((response) => {
+    response = JSON.parse(response);
+    const lyricsDiv = $('<div>');
+    lyricsDiv.attr('class', 'lyrics');
+    lyricsDiv.html(response.message.body.lyrics.lyrics_body);
+    $('#lyrics').append(lyricsDiv);
+    $('.lyrics').css('color', 'red');
+  });
+}
