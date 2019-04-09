@@ -9,6 +9,10 @@ let eventName;
 let userLocation;
 let userRange;
 let formBlock = [];
+let eventVenueLong;
+let eventVenueLati;
+let venueDistance;
+let venueTravelTime;
 /* eslint-enable */
 function loadVideoBackground() {
   const bv = new Bideo(); // eslint-disable-line no-undef
@@ -71,17 +75,31 @@ function requestTicketmaster() {
     let responseX = response['_embedded'];
   for (let i = 0; i < responseX.events.length; i += 1) {
     let eventName = responseX.events[i].name;
-    let eventImg = responseX.events[i].images
+    // let eventImg = responseX.events[i].images
     let eventDate = responseX.events[i].dates.start.localDate;
     let eventTime = responseX.events[i].dates.start.localTime;
     let eventUrl = responseX.events[i].url;
     let eventVenueName = responseX.events[i]['_embedded'].venues.name;
-    let eventVenueLong = responseX.events[i]['_embedded'].venues.location.longitude;
-    let eventVenueLati = responseX.events[i]['_embedded'].venues.location.latitude;
+    eventVenueLong = responseX.events[i]['_embedded'].venues.location.longitude;
+    eventVenueLati = responseX.events[i]['_embedded'].venues.location.latitude;
     // let dynamicDiv = $('<div>').addClass('col-9');
     // let dynamicP
+    responseX.events[i].images.findIndex(x => x.ratio === '4_3')
   }
   });
+}
+
+function findDistance() {
+  let myUrl = 'http://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyBix0KNYLf70SQQTX8ghmRR59vDqArz2Wk&units=imperial&origins=' + eventVenueLong 
+  + ',' + eventVenueLati + '&destinations=' + userLocation
+
+  $.ajax({
+    url: myUrl,
+    method: 'GET'
+  }).then(function(response){
+    venueDistance = response.rows.elements.distance.text;
+    venueTravelTime = reponse.rows.elements.duration.text;
+  })
 }
 
 $('#submit-btn').on('click', retrieveForm());
