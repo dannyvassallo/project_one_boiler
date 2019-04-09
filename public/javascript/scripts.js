@@ -112,11 +112,11 @@ function requestTicketmaster() {
     console.log("eventTime: ", eventTime);
     let eventUrl = responseX.events[i].url;
     console.log("eventUrl: ", eventUrl);
-    let eventVenueName = responseX.events[i]['_embedded'].venues[i].name;
+    let eventVenueName = responseX.events[i]['_embedded'].venues[0].name;
     console.log("eventVenueName: ", eventVenueName);
-    let eventVenueLong = responseX.events[i]['_embedded'].venues[i].location.longitude;
+    let eventVenueLong = responseX.events[i]['_embedded'].venues[0].location.longitude;
     console.log("eventVenueLong: ", eventVenueLong);
-    let eventVenueLati = responseX.events[i]['_embedded'].venues[i].location.latitude;
+    let eventVenueLati = responseX.events[i]['_embedded'].venues[0].location.latitude;
     console.log("eventVenueLati", eventVenueLati);
     // let dynamicDiv = $('<div>').addClass('col-9');
     // let dynamicP
