@@ -1,10 +1,14 @@
 .form-row {
   position: absolute;
-  top: 40%;
+  top: 40vh;
   z-index: 2;
   color: white;
-  width: 100vw;
+  width: 95vw;
   /* background-color: rgba(119,136,153,30%) */
+}
+
+form {
+  width: 300px;
 }
 
 * {
@@ -50,5 +54,12 @@ html, body {
 @media only screen and (max-width: 768px) {
   .navbar {
       background-color: #4285F4;
+  }
+}
+
+@media only screen and (max-height: 540px) {
+  .form-row {
+    position: absolute;
+    top: 15px;
   }
 }
