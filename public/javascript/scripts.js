@@ -119,14 +119,14 @@ function createBlocks () {
 function requestTicketmaster() {
   let myUrl = `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=IOLEuwOBaextS3XP3HR0L3NUcF3eaFqf&keyword=${eventName}&postalCode=${userLocation}&radius=${userRange}&unit=miles`;
   console.log("API URL, Notice its broken if inout is spaced: ", myUrl);
-  let eventTitle = "";
-  let eventImg = "";
-  let eventDate = "";
-  let eventTime = "";
-  let eventUrl = "";
-  let eventVenueName = "";
-  let eventVenueLong = "";
-  let eventVenueLati = "";
+  let eventTitle;
+  let eventImg;
+  let eventDate;
+  let eventTime;
+  let eventUrl;
+  let eventVenueName;
+  let eventVenueLong;
+  let eventVenueLati;
 
   $.ajax({
     url: myUrl,
@@ -175,8 +175,7 @@ function retrieveForm(event) {
   console.log(formBlock);
 
 
-  requestTicketmaster();
-  /* eslint-enable */
+  requestTicketmast;  /* eslint-enable */
 }
 
 $('#submit-btn').on('click', retrieveForm);
