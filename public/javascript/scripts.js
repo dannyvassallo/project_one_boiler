@@ -46,6 +46,7 @@ function loadVideoBackground() {
 }
 
 loadVideoBackground();
+
 /* eslint-disable */
 // function createBlocks (event) {
 //  //tier 4
@@ -89,12 +90,44 @@ loadVideoBackground();
 //  //tier 4
 //   newCardBody.append(table);
 
+function createBlocks () {
+  //
+   let newCard = $("<div class='card'>");
+   $("#tableZone").append(newCard);
+  //
+   let cardHeader = $("<h3 class='card-header'>");
+   $(".card").append(cardHeader);
+   $(".card").text(this.eventTitle);
+  //
+   let cardBody = $("<div class='card-body'>");
+   $(".card-header").append(cardBody);
+  //tier 7
+   let info = $("<div>").append(
+    //tier 8
+     $("<p>").text(this.eventDate),
+     $("<p>").text(this.eventTime),
+     $("<p>").text(this.eventVenueName),
+     $("<input>").addClass("type='submit' id='sub-btn'")
+    );
+    //
+    $(".card-body").append(info);
+   };
+
 /* eslint-disable */
 
 /* eslint-disable */
 function requestTicketmaster() {
   let myUrl = `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=IOLEuwOBaextS3XP3HR0L3NUcF3eaFqf&keyword=${eventName}&postalCode=${userLocation}&radius=${userRange}&unit=miles`;
   console.log("API URL, Notice its broken if inout is spaced: ", myUrl);
+  let eventTitle = "";
+  let eventImg = "";
+  let eventDate = "";
+  let eventTime = "";
+  let eventUrl = "";
+  let eventVenueName = "";
+  let eventVenueLong = "";
+  let eventVenueLati = "";
+
   $.ajax({
     url: myUrl,
     method: 'GET',
@@ -102,29 +135,28 @@ function requestTicketmaster() {
     let responseX = response['_embedded'];
     console.log("responseX: ", responseX);
   for (let i = 0; i < responseX.events.length; i += 1) {
-    let eventTitle = responseX.events[i].name;
+    eventTitle = responseX.events[i].name;
     console.log("eventTitle: ", eventTitle);
-    let eventImg = responseX.events[i].images;
+    eventImg = responseX.events[i].images;
     console.log("eventImg: ", eventImg);
-    let eventDate = responseX.events[i].dates.start.localDate;
+    eventDate = responseX.events[i].dates.start.localDate;
     console.log("eventDate: ", eventDate);
-    let eventTime = responseX.events[i].dates.start.localTime;
+    eventTime = responseX.events[i].dates.start.localTime;
     console.log("eventTime: ", eventTime);
-    let eventUrl = responseX.events[i].url;
+    eventUrl = responseX.events[i].url;
     console.log("eventUrl: ", eventUrl);
-    let eventVenueName = responseX.events[i]['_embedded'].venues[0].name;
+    eventVenueName = responseX.events[i]['_embedded'].venues[0].name;
     console.log("eventVenueName: ", eventVenueName);
-    let eventVenueLong = responseX.events[i]['_embedded'].venues[0].location.longitude;
+    eventVenueLong = responseX.events[i]['_embedded'].venues[0].location.longitude;
     console.log("eventVenueLong: ", eventVenueLong);
-    let eventVenueLati = responseX.events[i]['_embedded'].venues[0].location.latitude;
+    eventVenueLati = responseX.events[i]['_embedded'].venues[0].location.latitude;
     console.log("eventVenueLati", eventVenueLati);
-    // let dynamicDiv = $('<div>').addClass('col-9');
-    // let dynamicP
+
+    createBlocks();
+
   }
 
   })
-
-  //createBlocks();
   };
 
 
