@@ -14,49 +14,66 @@
   <body>
       <div class="container">
         <div class="d-flex justify-content-center h-100">
-          <div class="card">
+          <div class="card signup-card">
             <div class="card-header">
-              <h3>Sign In</h3>
+              <h3>Sign Up</h3>
             </div>
             <div class="card-body">
               <form>
                 <div class="input-group form-group">
                   <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                  </div>
+                  <input type="text" class="form-control" id="name" placeholder="Enter your full name">
+                </div>
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
+                  </div>
+                  <input type="tel" class="form-control" id="ph-number" placeholder="Enter your phone number">
+                </div>
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span>
+                  </div>
+                  <input type="number" class="form-control" id="zip-code" placeholder="Enter Zip code" required>
+                </div>
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                   </div>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  placeholder="Enter email" required>
+                    placeholder="Enter email" required>
                 </div>
                 <div class="form-group">
-                    <small id="emailHelp" class="form-text text-warning">We'll never share your email with anyone else.</small>
+                  <small id="emailHelp" class="form-text text-warning">We'll never share your email with anyone
+                    else.</small>
                 </div>
                 <div class="input-group form-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                   </div>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                    required>
                 </div>
                 <div class="form-group">
-                  <small id="signin-error" class="form-text text-danger"></small>
+                  <small id="signup-error" class="form-text text-danger"></small>
                 </div>
                 <div class="form-group">
-                  <input type="submit" value="Login" class="btn float-right login_btn" id="login">
+                  <input type="submit" value="Signup" class="btn float-right login_btn" id="signup">
                 </div>
               </form>
             </div>
             <div class="card-footer">
-              <div class="d-flex justify-content-center links text-light">
-                Don't have an account?<a class="text-warning" href="http://localhost:3000/signup">Sign Up</a>
-              </div>
-              <div class="d-flex justify-content-center">
-                <a class="text-warning" href="http://localhost:3000/forgot">Forgot your password?</a>
+              <div class="d-flex justify-content-center links">
+                <a class="text-warning" href="http://localhost:3000/login">Log In</a>
               </div>
             </div>
           </div>
         </div>
       </div>
-    <!-- <script type="text/javascript" src="path-to/bower_components/crypto-js/crypto-js.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
