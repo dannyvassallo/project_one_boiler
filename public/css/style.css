@@ -1,0 +1,46 @@
+body {
+  background-color: darkgray;
+  font-family: 'Quicksand', sans-serif;
+  text-shadow: 1px 1px #7e7373af;
+
+}
+#legend{
+  text-align: center;
+  font-size: 25px;
+  border-style: solid;
+  border-width: 2px;
+  color: black;
+  padding-bottom: 300px;
+}
+button{
+  margin-top: 10px;
+  text-shadow: 1px 1px #7e7373af;
+}
+#footer{
+  font-family: 'Special Elite', cursive;
+  background-image: linear-gradient(#257ee4, #333685);
+  padding: 25px;
+  border-top: 8px solid #ffffff;
+}
+#header{
+  padding: 5px;
+  font-family: 'Comfortaa', cursive;
+  background-image: linear-gradient(#257ee4, #333685);
+  border-bottom: 8px solid #ffffff;
+  box-shadow: 1px 1px #7e7373af;
+}
+.clickMap{
+  text-align: center;
+  font-size: 30px;
+  line-height: 30px;
+}
+#vmap{
+  background-image: linear-gradient(#257ee4, #333685);
+  opacity: 0.9;
+  fill: #333685;
+}
+
+.jumbotron {
+  margin: 5px;
+  padding: 20px;
+}
