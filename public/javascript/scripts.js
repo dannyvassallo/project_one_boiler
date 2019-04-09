@@ -41,15 +41,24 @@ $('#submit-button').on('click', () => {
     $('#translated-text-display').text(translatedTextDisplay);
   });
 
-  function getSongs() {
-    const youtubeQueryUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=artist%7Csongs&safeSearch=moderate&type=video&key=AIzaSyDm3Avv6gF5Xgw2YEm3GB5ILBO5-caJfwU';
-    $.ajax({
-      url: youtubeQueryUrl,
-      method: 'GET',
-    }).then((response) => {
-      console.log(response);
-    });
-  }
+   function getSongs(){
+      const song = $("#song-title-input").val();
+      const artist = $("#song-artist-input").val();
+      const youtubeQueryUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + song +' '+ artist + '&type=music&key=AIzaSyDm3Avv6gF5Xgw2YEm3GB5ILBO5-caJfwU';
+      const watchVideoUrl = 'https://www.youtube.com/embed/'
+
+      $.ajax({
+        url:  youtubeQueryUrl,
+        method: 'GET',
+      }).then((response) => {
+        $("#videos-go-here").empty();
+        var results = response.items[0].id.videoId;
+        var youTubeVid = watchVideoUrl + results;
+        var videos = $("<iframe>");
+        videos.attr('src', youTubeVid);
+        $("#videos-go-here").append(videos);
+      });
+    }
   getSongs();
   musixmatch();
 });
@@ -64,6 +73,8 @@ function musixmatch() {
   const matchURL = `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q=${artistSearch} ${trackSearch}&apikey=${matchApiKey}&has_lyrics=${hasLyrics}`;
   const lyricsURL = 'https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=95443255&apikey=601f04e0a4bfae6c0d2125b377f1b935';
   console.log(trackSearch);
+  console.log(matchURL);
+  console.log(lyricsURL);
 
   // THIS IS FOR ARTSIT SEARCH and track
   $.ajax({
@@ -90,15 +101,3 @@ function musixmatch() {
     $('.lyrics').css('color', 'red');
   });
 }
-
-function getSongs() {
-  const youtubeQueryUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${song}&type=music&key=AIzaSyDm3Avv6gF5Xgw2YEm3GB5ILBO5-caJfwU`;
-  var song = 'Ring of Fire';
-  $.ajax({
-    url: youtubeQueryUrl,
-    method: 'GET',
-  }).then((response) => {
-    console.log(response);
-  });
-}
-getSongs();
