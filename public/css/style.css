@@ -10,7 +10,6 @@
 
 .cardZone {
   z-index: 2;
-  margin: 20px;
 }
 .card-header {
 background-color: rgba(54, 53, 53, 0.863);
@@ -18,8 +17,8 @@ background-color: rgba(54, 53, 53, 0.863);
 .card-body {
   background-color: rgba(53, 49, 49, 0.363);
 }
-$('.card-header > eventTitle'){
-  font: outline;
+.card-header > eventTitle {
+  font-weight: bolder;
 }
 
 .card {
