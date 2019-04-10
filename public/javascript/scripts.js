@@ -41,24 +41,24 @@ $('#submit-button').on('click', () => {
     $('#translated-text-display').text(translatedTextDisplay);
   });
 
-   function getSongs(){
-      const song = $("#song-title-input").val();
-      const artist = $("#song-artist-input").val();
-      const youtubeQueryUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + song +' '+ artist + '&type=music&key=AIzaSyDm3Avv6gF5Xgw2YEm3GB5ILBO5-caJfwU';
-      const watchVideoUrl = 'https://www.youtube.com/embed/'
+  function getSongs() {
+    const song = $('#song-title-input').val();
+    const artist = $('#song-artist-input').val();
+    const youtubeQueryUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${song} ${artist}&type=music&key=AIzaSyDm3Avv6gF5Xgw2YEm3GB5ILBO5-caJfwU`;
+    const watchVideoUrl = 'https://www.youtube.com/embed/';
 
-      $.ajax({
-        url:  youtubeQueryUrl,
-        method: 'GET',
-      }).then((response) => {
-        $("#videos-go-here").empty();
-        var results = response.items[0].id.videoId;
-        var youTubeVid = watchVideoUrl + results;
-        var videos = $("<iframe>");
-        videos.attr('src', youTubeVid);
-        $("#videos-go-here").append(videos);
-      });
-    }
+    $.ajax({
+      url: youtubeQueryUrl,
+      method: 'GET',
+    }).then((response) => {
+      $('#videos-go-here').empty();
+      const results = response.items[0].id.videoId;
+      const youTubeVid = watchVideoUrl + results;
+      const videos = $('<iframe>');
+      videos.attr('src', youTubeVid);
+      $('#videos-go-here').append(videos);
+    });
+  }
   getSongs();
   musixmatch();
 });
@@ -77,7 +77,7 @@ function musixmatch() {
     url: matchURL,
     method: 'GET',
   }).then((response) => {
-    $("#song-name").empty();
+    $('#song-name').empty();
     response = JSON.parse(response);
     const songDiv = $('<div>');
     songDiv.attr('class', 'artist');
@@ -89,18 +89,17 @@ function musixmatch() {
     $('.artist').css('color', 'red');
     getLyrics(trackId);
   });
-
 }
-function getLyrics(trackId){
+function getLyrics(trackId) {
   // THIS IS FOR lyrics
-  const lyricsURL = 'https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=' + trackId + '&apikey=601f04e0a4bfae6c0d2125b377f1b935';
+  const lyricsURL = `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${trackId}&apikey=601f04e0a4bfae6c0d2125b377f1b935`;
 
 
   $.ajax({
     url: lyricsURL,
     method: 'GET',
   }).then((response) => {
-    $("#lyrics").empty();
+    $('#lyrics').empty();
 
     response = JSON.parse(response);
     const lyricsDiv = $('<div>');
@@ -109,5 +108,4 @@ function getLyrics(trackId){
     $('#lyrics').append(lyricsDiv);
     $('.lyrics').css('color', 'red');
   });
-
 }
