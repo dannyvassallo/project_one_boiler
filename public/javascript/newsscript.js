@@ -31,8 +31,8 @@ $.ajax({
       const hlink = $('<a>').attr('href', response.items[i].link).text('click here');
       trRow = $('<tr>').append($('<td>').html(hlink));
       $('.articleTitle').append(trRow);
-      trRow = $('<tr>').append($('<td>').html('============================================================'));
-      $('.articleTitle').append(trRow);
+      // trRow = $('<tr>').append($('<td>').html('============================================================'));
+      // $('.articleTitle').append(trRow);
     }
   });
 
