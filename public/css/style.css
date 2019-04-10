@@ -12,6 +12,7 @@
   z-index: 2;
 }
 
+
 .card {
   opacity: 0.8;
   color: black;
@@ -60,12 +61,12 @@ html, body {
 }
 
 .top-nav-collapse {
-  background-color: #4285F4;
+  background-color: rgba(252, 252, 253, 0);
 }
 
 @media only screen and (max-width: 768px) {
   .navbar {
-      background-color: #4285F4;
+      background-color: rgba(252, 252, 253, 0);
   }
 }
 
