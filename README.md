@@ -1,6 +1,6 @@
 # Project One ShowSpotter 🎟
 
-ShowSpotter - a search engine where you can find Arts/Music events within a given radius. Once information is submitted through the form it will return a list of events where you can view the Event Title, Date, Time, Venue.
+ShowSpotter - A search engine where you can find Art/Music events within a given radius. Once information is submitted through the form it will return a list of events where you can view the Event Title, Date, Time, Venue.
 
 ![Website Screenshot](web1.png)
 <!--![Response Screenshot](image url)-->
@@ -19,7 +19,11 @@ ShowSpotter - a search engine where you can find Arts/Music events within a give
 * Bideo - The video background
 * Bootstrap - The web framework used
 
+## Beyond our MVP
 
+*  Change background video with each search submitted
+* Query different event APIs for things other than music related events
+* Create a profile page for individual user where they can save events and favorite bands
 
 
 
