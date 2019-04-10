@@ -13,17 +13,20 @@
 
     <div id="vmap" style="width: 600px; height: 400px;"></div>
 
-    <button id="mapReset" class="button1" onclick="resetMap()">Reset Map</button>
+    <div>
+      <div id="questionAsked"></div>
+      <button id="startGame" class="button1" onclick="playGame()">Start</button>
+    </div>
 
 
 
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="javascript/jquery.vmap.js"></script>
+    <script src="javascript/jquery.vmap.usa.js" charset="utf-8"></script>
 
-    <script type="text/javascript" src="javascript/jquery.vmap.js"></script>
-    <script type="text/javascript" src="javascript/jquery.vmap.usa.js" charset="utf-8"></script>
-
-    <script type="text/javascript" src="javascript/us-map.js"></script>
+    <script src="javascript/us-states.js"></script>
+    <script src="javascript/us-map.js"></script>
 
   </body>
 </html>
