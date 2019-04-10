@@ -4,7 +4,9 @@ body {
   text-shadow: 1px 1px #7e7373af;
 
 }
-#legend{
+#legend,
+#factBox,
+#stateInfo {
   text-align: center;
   font-size: 25px;
   border-style: solid;
@@ -43,4 +45,13 @@ button{
 .jumbotron {
   margin: 5px;
   padding: 20px;
+}
+
+td,
+a {
+  font-size: 15px;
+}
+
+#ffphoto {
+  margin: 0 auto;
 }
