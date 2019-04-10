@@ -27,7 +27,6 @@ $(document).ready(() => {
     // const myPassword = 'Password';
     // var password = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), myPassword);
     // const res = String(password);
-
     firebase.auth().createUserWithEmailAndPassword(email, password)
       // .then((userCredential) => {
       //   if (user) {
@@ -39,6 +38,7 @@ $(document).ready(() => {
         // const errorToast = error;
         $('#signup-error').text(error.message);
       });
+
 
     firebase.database().ref(`/users/${user.uid}`).child('/profile').push(newUser);
 
@@ -53,6 +53,7 @@ $(document).ready(() => {
 
   $('#login').on('click', (event) => {
     event.preventDefault();
+
     const email = $('#exampleInputEmail1').val().trim();
     const password = $('#exampleInputPassword1').val().trim();
     // const myPassword = 'Password';
@@ -66,7 +67,6 @@ $(document).ready(() => {
     //     window.location = "http://localhost:3000"
     //   }
     // })
-
       .catch((error) => {
         const errorToast = error;
         $('#signin-error').text(errorToast.message);
@@ -81,7 +81,6 @@ $(document).ready(() => {
     event.preventDefault();
     const auth = firebase.auth();
     const emailAddress = $('#exampleInputEmail1').val().trim();
-
     auth.sendPasswordResetEmail(emailAddress).then(() => {
     // Email sent.
     // }).catch((error) => {
