@@ -10,31 +10,23 @@
     <link rel="stylesheet" href="./static/css/style.css">
   </head>
 <body>
-  <div>
-    <div class="jumbotron">
-      <h1 class="display-3">Eventualities</h1>
-      <p class="lead">Connect to events and activities</p>
-      <hr class="my-2 center">
-      <p>Whether you’re seeking adventure or a movie suggestion, Eventualites is here to provide  suggestions based on your interests.</p>
-      <p class="lead">
-        <a class="btn btn-primary btn-lg" href="./static/html/homepage.html" role="button">Homepage</a>
-      </p>
-    </div>
-   
+  <form class="form-group form col-lg-3">
+    <label id="signInTitle">Sign In</label>
+    <hr>
+    <input type="text" name="" id="username-input" class="form-control" placeholder="Username"
+      aria-describedby="helpId">
+    <input type="password" name="" id="password-input" class="form-control" placeholder="Password"
+      aria-describedby="helpId">
+  </form>
+  <div class="signInBtns col-lg-3">
+    <button type="button" class="btn btn-primary submitBtn">Submit</button>
+    <button type="button" href="../html/newuser.html" target="_parent" class="btn btn-primary signupBtn">Sign
+      Up</button>
   </div>
-    <form class="form-group form col-lg-3">
-      <label id="signInTitle">Sign In</label>
-      <hr>
-      <input type="text" name="" id="username-input" class="form-control" placeholder="Username" aria-describedby="helpId">
-      <input type="password" name="" id="password-input" class="form-control" placeholder="Password" aria-describedby="helpId">
-    </form>
-        <div class="signInBtns col-lg-3">
-          <a class="btn btn-primary btn-lg" href="./static/html/homepage.html" role="button">Homepage</a>  
-          <a class="btn btn-primary btn-lg" href="./static/html/newuser.html" role="button">Create an Account</a>
-        </div>
-        </div>
+  </div>
 </body>
 </html>
+<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

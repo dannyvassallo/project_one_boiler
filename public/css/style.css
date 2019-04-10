@@ -1,5 +1,45 @@
 /* Base */
 body {
+
+  background-image: url("../images/login-page.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  margin: 3%;
+}
+.jumbotron {
+  background-color: #95e1d3;
+  opacity: 0.8;
+  color: white;
+}
+.center {
+  justify-content: center;
+}
+.login-form {
+  /* background-color: #f0ad4e; */
+  background-color: rgba(0,0,0,0.5);
+  padding: 2%;
+}
+
+.login-form-div {
+  margin: auto;
+  padding: 10%;
+}
+
+.login_btn{
+  color: black;
+  background-color: #FFC312;
+  width: 100px;
+}
+.signup_btn{
+  color: black;
+  background-color: #95e1d3;
+  width: 100px;
+}
+#signInTitle {
+  justify-self: center;
+  color: white;
+  padding: 2%;
   line-height: 1.7;
   color: #4d4d4d;
   font-weight: 300;
