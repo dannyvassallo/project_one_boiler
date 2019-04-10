@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
     crossorigin="anonymous">
+  <link href="css/jqvmap.css" media="screen" rel="stylesheet">
+  <link href="css/us-map.css" media="screen" rel="stylesheet">
+
   <link rel="stylesheet" href="./static/css/style.css">
 </head>
 
@@ -29,11 +32,39 @@
       <div class="col-md-12">
         <div class="jumbotron">
           <div class="row">
-            <div class="col-md-10 clickMap">
+            <div class="col-md-8 clickMap">
               <p class="clickMap">How well do you know your United States?<br>Test that knowledge with our map.</p>
               <div id="vmap" style="height: 400px;"></div>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Open modal</button>
+              <button id="startGame" class="button1 btn-lg btn-primary" onclick="playGame()">Start <i class="fas fa-map"></i></button>
               <button id="mapReset" class="button1 btn-lg btn-primary" onclick="resetMap()">Reset Map <i class="fas fa-map"></i></button>
+
+              <!-- The Modal -->
+              <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Modal Heading</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      Modal body..
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
             </div>
+            <div class="col-md-2" id="stateInfo">STATE INFO <i class="fas fa-flag-usa"></i></div>
             <div class="col-md-2" id="legend"></i></i>
               <p>LINKS <i class="fas fa-home"></i></p>
               <p><button class='btn-lg btn-primary' id="triviaBtn">Trivia <i class="fas fa-award"></i></button></p>
@@ -51,58 +82,6 @@
     </div>
   </div>
 
-
-  <!-- page 2 -->
-  <div class="container-fluid">
-    <div class="row mt-4">
-      <div class="col-md-12">
-        <div class="jumbotron">
-          <div class="row">
-            <div class="col-md-10">
-              <div class="row">
-                <div class="col-md-8 card">
-                  map
-                </div>
-                <div class="text-center col-md-4 card">
-                  <div class="row text-center">FUN FACTS</div>
-                  <div class="row">
-                    <table id="table-area" class="table text-left">
-                      <thead>
-                        <tr>
-                          <th>State</th>
-                          <th>Headliners</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>fun fact about state clicked</td>
-                          <td>headliner about state clicked</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div id="trivia" class="row">
-                <div id="question" class="col-md-6 card">question</div>
-                <div id="options" class="col-md-6 card">answer options</div>
-              </div>
-            </div>
-            <div class="col-md-2" id="legend"></i></i>
-              <p>LINKS <i class="fas fa-home"></i></p>
-              <p><button class='btn-lg btn-primary' id="triviaBtn">Trivia <i class="fas fa-award"></i></button></p>
-              <p><button class='btn-lg btn-primary' id="factsBtn">Fun Facts <i class="fas fa-bacon"></i></button></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <!-- footer -->
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -113,6 +92,7 @@
   <script src="./static/javascript/jquery.vmap.js"></script>
   <script src="./static/javascript/jquery.vmap.usa.js"></script>
   <script src="./static/javascript/factscripts.js"></script>
+  <script src=".static/javascript/us-states.js"></script>
 </body>
 
 </html>

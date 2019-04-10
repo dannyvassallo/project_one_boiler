@@ -46,7 +46,7 @@
     var nextQuestionFound = false;
     while (! nextQuestionFound) {
       var i = Math.floor(Math.random() * 50);
-      
+
       if (! states[i].answered) {
 	      console.log('Where is ' + states[i].name + '?');
 
@@ -54,7 +54,7 @@
         states[i].answered = true;
         nextQuestionFound = true;
       }
-    }    
+    }
   }
 
 
@@ -68,7 +68,7 @@
 
 	bonusQuestion = function() {
 		var bonusCapital = prompt('What is the capital of ' + states[questionIndex].name + '?');
-		
+
 		if (bonusCapital == states[questionIndex].capital) {
 			console.log('Right Again! You scored 1 extra point.');
 			rightAnswers++
@@ -78,7 +78,7 @@
 
 	}
 
-  
+
   wrongAnswer = function(code) {
     numGuesses++;
     var guessText;
@@ -118,7 +118,7 @@
         code = code.toUpperCase();
         playGame(element, code, region);
       }
-    }); 
+    });
   }
 
 
@@ -137,4 +137,3 @@
   $(document).ready(function() {
 		initializeMap();
   });
-
