@@ -2,7 +2,7 @@
 
 ShowSpotter - a search engine where you can find Arts/Music events within a given radius. Once information is submitted through the form it will return a list of events where you can view the Event Title, Date, Time, Venue.
 
-![Website Screenshot](../images/web1.png)
+![Website Screenshot](web1.png)
 <!--![Response Screenshot](image url)-->
 
 ## Team Members
@@ -23,7 +23,7 @@ ShowSpotter - a search engine where you can find Arts/Music events within a give
 
 
 
-
+--------------------------------------------------------------------------------------------------------
 Before getting started, as a general rule of thumb, you should be running the commands you see within the project directory. If you experience errors, your first check should be to run `pwd` and ensure the folder name you see returned is the one you should be in.
 
 ## Install Yarn
