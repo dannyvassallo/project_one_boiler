@@ -1,10 +1,12 @@
 .form-row {
   position: absolute;
-  top: 40%;
+  top: 40vh;
   z-index: 2;
   color: white;
+  width: 95vw;
   /* background-color: rgba(119,136,153,30%) */
 }
+
 
 .cardZone {
   z-index: 2;
@@ -13,6 +15,10 @@
 .card {
   opacity: 0.8;
   color: black;
+
+form {
+  width: 300px;
+
 }
 
 * {
@@ -42,4 +48,28 @@ html, body {
   background: url('../images/thebots-blinded_moment2.jpg') no-repeat;
   background-size: cover;
   background-position: center;
+}
+.view {
+  background: url("https://mdbootstrap.com/img/Photos/Others/img (40).jpg")no-repeat center center;
+}
+
+.navbar {
+  background-color: transparent;
+}
+
+.top-nav-collapse {
+  background-color: #4285F4;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+      background-color: #4285F4;
+  }
+}
+
+@media only screen and (max-height: 540px) {
+  .form-row {
+    position: absolute;
+    top: 15px;
+  }
 }

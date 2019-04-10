@@ -9,6 +9,10 @@ let eventName;
 let userLocation;
 let userRange;
 let formBlock = [];
+let eventVenueLong;
+let eventVenueLati;
+let venueDistance;
+let venueTravelTime;
 /* eslint-enable */
 function loadVideoBackground() {
   const bv = new Bideo(); // eslint-disable-line no-undef
@@ -58,9 +62,9 @@ function retrieveForm(event) {
   console.log("Input: ", userRange);
 
   formBlock = [eventName, userLocation, userRange];
-  console.log(formBlock);
 
-  requestTicketmaster(); /* eslint-enable */
+  requestTicketmaster();
+  /* eslint-enable */
 }
 /* eslint-disable */
 function requestTicketmaster() {
@@ -94,35 +98,47 @@ function requestTicketmaster() {
       let eventVenueLati = event['_embedded'].venues[0].location.latitude;
       console.log("eventVenueLati", eventVenueLati);
 
-
       let newCard = $("<div class='card'>");
       $("#cardZone").append(newCard);
-      //
+      
       let cardHeader = $("<div class='card-header'>");
       newCard.append(cardHeader);
       cardHeader.text(eventTitle);
-      //
+      
       let cardBody = $("<div class='card-body'>");
       cardHeader.append(cardBody);
-      //
+      
       let button = $("<button>");
       button.attr("type", "button");
       button.attr("class", "btn btn-primary");
       button.attr("data-toggle", "modal");
       button.attr("data-target", "#exampleModal");
       button.text("More Info");
-      //tier 7
+      
       let info = $("<div>").append(
-      //tier 8
+
       $("<p>").text(eventDate),
       $("<p>").text(eventTime),
       $("<p>").text(eventVenueName),
       $("<div>").append(button)
         );
-      //
       cardBody.append(info);
     })
   })
 };
 
+function findDistance() {
+  let myUrl = 'http://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyBix0KNYLf70SQQTX8ghmRR59vDqArz2Wk&units=imperial&origins=' + eventVenueLong 
+  + ',' + eventVenueLati + '&destinations=' + userLocation
+
+  $.ajax({
+    url: myUrl,
+    method: 'GET'
+  }).then(function(response){
+    venueDistance = response.rows.elements.distance.text;
+    venueTravelTime = reponse.rows.elements.duration.text;
+  })
+}
+
 $('#submit-btn').on('click', retrieveForm);
+
