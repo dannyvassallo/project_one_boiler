@@ -26,14 +26,13 @@ $(document).ready(() => {
     const myPassword = 'Password';
     // eslint-disable-next-line no-undef
     password = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), myPassword);
-    let res = String(password);
-    // eslint-disable-next-line no-alert
+    const res = String(password);
     window.alert(res);
     window.alert(`Username: ${email} ` + `Password: ${password}`);
 
     firebase.auth().createUserWithEmailAndPassword(email, res);
 
-    let user = firebase.auth().currentUser;
+    const user = firebase.auth().currentUser;
 
     user.sendEmailVerification().then(() => {
       // Email sent.
@@ -48,7 +47,7 @@ $(document).ready(() => {
     // password = $('#exampleInputPassword1').val().trim();
     const myPassword = 'Password';
     password = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), myPassword);
-    let resLogin = String(password);
+    const resLogin = String(password);
     window.alert(resLogin);
     window.alert(`Username: ${email} ` + `Password: ${password}`);
 
