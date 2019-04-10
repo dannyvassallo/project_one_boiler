@@ -1,5 +1,33 @@
-# Project One Awesome Boilerplate 🍛
+# Project One ShowSpotter 🎟
 
+ShowSpotter - A search engine where you can find Art/Music events within a given radius. Once information is submitted through the form it will return a list of events where you can view the Event Title, Date, Time, Venue.
+
+![Website Screenshot](public/images/web1.png)
+<!--![Response Screenshot](public/images/image url)-->
+
+## Team Members
+
+* "Justin Parker" <https://github.com/Parker-Tech>
+* "David M. Bedford" <https://github.com/davidmbedford>
+* "Markus Maasikas" <https://github.com/estomm01>
+* "Danielle Blaney" <https://github.com/DaniBlaney>
+
+## Built With
+
+* TicketMaster API - The api used to pull event information
+* GoogleMaps API - The api used to show the map and link for address for venue
+* Bideo - The video background
+* Bootstrap - The web framework used
+
+## Beyond our MVP
+
+*  Change background video with each search submitted
+* Query different event APIs for things other than music related events
+* Create a profile page for individual user where they can save events and favorite bands
+
+
+
+--------------------------------------------------------------------------------------------------------
 Before getting started, as a general rule of thumb, you should be running the commands you see within the project directory. If you experience errors, your first check should be to run `pwd` and ensure the folder name you see returned is the one you should be in.
 
 ## Install Yarn
