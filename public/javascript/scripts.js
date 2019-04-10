@@ -34,7 +34,7 @@ $(document).ready(() => {
       //     firebase.auth().signOut();
       //     window.location = 'http://localhost:3000/login';
       //   }
-      //})
+      // })
       .catch((error) => {
         // const errorToast = error;
         $('#signup-error').text(error.message);
@@ -106,7 +106,7 @@ $(document).ready(() => {
     });
   });
 
-  firebase.auth().onAuthStateChanged((user) => {
+  //firebase.auth().onAuthStateChanged((user) => {
     // if (user) {
     //   // User is signed in.
     //   const { displayName } = user;
@@ -120,5 +120,5 @@ $(document).ready(() => {
     //   console.log(email);
     // } else {
     // }
-  });
+  //});
 });
