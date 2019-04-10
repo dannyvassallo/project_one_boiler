@@ -7,10 +7,10 @@ ShowSpotter - a search engine where you can find Arts/Music events within a give
 
 ## Team Members
 
--"Justin Parker" <https://github.com/Parker-Tech>
--"David M. Bedford" <https://github.com/davidmbedford>
--"Markus Maasikas" <https://github.com/estomm01>
--"Danielle Blaney" <https://github.com/DaniBlaney>
+* "Justin Parker" <https://github.com/Parker-Tech>
+* "David M. Bedford" <https://github.com/davidmbedford>
+* "Markus Maasikas" <https://github.com/estomm01>
+* "Danielle Blaney" <https://github.com/DaniBlaney>
 
 ## Built With
 
@@ -18,7 +18,6 @@ ShowSpotter - a search engine where you can find Arts/Music events within a give
 * GoogleMaps API - The api used to show the map and link for address for venue
 * Bideo - The video background
 * Bootstrap - The web framework used
-
 
 
 
