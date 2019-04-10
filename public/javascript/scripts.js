@@ -27,6 +27,8 @@ $(document).ready(() => {
     // eslint-disable-next-line no-undef
     password = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), myPassword);
     const res = String(password);
+    /* eslint-disable */
+
     window.alert(res);
     window.alert(`Username: ${email} ` + `Password: ${password}`);
 
@@ -58,6 +60,7 @@ $(document).ready(() => {
     console.log(user);
     if (user) {
       window.alert('Success!');
+        /* eslint-enable */
     }
   });
 });
