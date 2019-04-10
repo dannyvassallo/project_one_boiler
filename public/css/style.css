@@ -7,8 +7,18 @@
   /* background-color: rgba(119,136,153,30%) */
 }
 
+
+.cardZone {
+  z-index: 2;
+}
+
+.card {
+  opacity: 0.8;
+  color: black;
+
 form {
   width: 300px;
+
 }
 
 * {

@@ -55,39 +55,77 @@ function retrieveForm(event) {
 
   /* eslint-disable */
   eventName = $('#eventName').val().trim();
+  console.log("Input: ", eventName);
   userLocation = $('#userLocation').val().trim();
+  console.log("Input: ", userLocation);
   userRange = $('#userRange').val().trim();
+  console.log("Input: ", userRange);
 
   formBlock = [eventName, userLocation, userRange];
-  
+
   requestTicketmaster();
   /* eslint-enable */
 }
-
 /* eslint-disable */
 function requestTicketmaster() {
+  $("#cardZone").empty();
   let myUrl = `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=IOLEuwOBaextS3XP3HR0L3NUcF3eaFqf&keyword=${eventName}&postalCode=${userLocation}&radius=${userRange}&unit=miles`;
+  console.log("API URL, Notice its broken if inout is spaced: ", myUrl);
 
   $.ajax({
     url: myUrl,
     method: 'GET',
   }).then(function(response) {
     let responseX = response['_embedded'];
-  for (let i = 0; i < responseX.events.length; i += 1) {
-    let eventName = responseX.events[i].name;
-    // let eventImg = responseX.events[i].images
-    let eventDate = responseX.events[i].dates.start.localDate;
-    let eventTime = responseX.events[i].dates.start.localTime;
-    let eventUrl = responseX.events[i].url;
-    let eventVenueName = responseX.events[i]['_embedded'].venues.name;
-    eventVenueLong = responseX.events[i]['_embedded'].venues.location.longitude;
-    eventVenueLati = responseX.events[i]['_embedded'].venues.location.latitude;
-    // let dynamicDiv = $('<div>').addClass('col-9');
-    // let dynamicP
-    responseX.events[i].images.findIndex(x => x.ratio === '4_3')
-  }
-  });
-}
+    console.log("responseX: ", responseX);
+    const events = responseX.events
+
+    $.each(events, function(index, event){
+      let eventTitle = event.name;
+      console.log("eventTitle: ", eventTitle);
+      let eventImg = event.images;
+      console.log("eventImg: ", eventImg);
+      let eventDate = event.dates.start.localDate;
+      console.log("eventDate: ", eventDate);
+      let eventTime = event.dates.start.localTime;
+      console.log("eventTime: ", eventTime);
+      let eventUrl = event.url;
+      console.log("eventUrl: ", eventUrl);
+      let eventVenueName = event['_embedded'].venues[0].name;
+      console.log("eventVenueName: ", eventVenueName);
+      let eventVenueLong = event['_embedded'].venues[0].location.longitude;
+      console.log("eventVenueLong: ", eventVenueLong);
+      let eventVenueLati = event['_embedded'].venues[0].location.latitude;
+      console.log("eventVenueLati", eventVenueLati);
+
+      let newCard = $("<div class='card'>");
+      $("#cardZone").append(newCard);
+      
+      let cardHeader = $("<div class='card-header'>");
+      newCard.append(cardHeader);
+      cardHeader.text(eventTitle);
+      
+      let cardBody = $("<div class='card-body'>");
+      cardHeader.append(cardBody);
+      
+      let button = $("<button>");
+      button.attr("type", "button");
+      button.attr("class", "btn btn-primary");
+      button.attr("data-toggle", "modal");
+      button.attr("data-target", "#exampleModal");
+      button.text("More Info");
+      
+      let info = $("<div>").append(
+
+      $("<p>").text(eventDate),
+      $("<p>").text(eventTime),
+      $("<p>").text(eventVenueName),
+      $("<div>").append(button)
+        );
+      cardBody.append(info);
+    })
+  })
+};
 
 function findDistance() {
   let myUrl = 'http://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyBix0KNYLf70SQQTX8ghmRR59vDqArz2Wk&units=imperial&origins=' + eventVenueLong 
@@ -102,4 +140,5 @@ function findDistance() {
   })
 }
 
-$('#submit-btn').on('click', retrieveForm());
+$('#submit-btn').on('click', retrieveForm);
+
