@@ -71,28 +71,37 @@ function musixmatch() {
   const hasLyrics = true;
   const matchApiKey = '601f04e0a4bfae6c0d2125b377f1b935';
   const matchURL = `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q=${artistSearch} ${trackSearch}&apikey=${matchApiKey}&has_lyrics=${hasLyrics}`;
-  const lyricsURL = 'https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=95443255&apikey=601f04e0a4bfae6c0d2125b377f1b935';
-  console.log(trackSearch);
-  console.log(matchURL);
-  console.log(lyricsURL);
 
   // THIS IS FOR ARTSIT SEARCH and track
   $.ajax({
     url: matchURL,
     method: 'GET',
   }).then((response) => {
+    $("#song-name").empty();
     response = JSON.parse(response);
     const songDiv = $('<div>');
     songDiv.attr('class', 'artist');
     songDiv.html(response.message.body.track_list[0].track.track_name);
+    console.log(response);
+    trackId = response.message.body.track_list[0].track.track_id;
+    console.log(trackId);
     $('#song-name').append(songDiv);
     $('.artist').css('color', 'red');
+    getLyrics(trackId);
   });
+
+}
+function getLyrics(trackId){
   // THIS IS FOR lyrics
+  const lyricsURL = 'https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=' + trackId + '&apikey=601f04e0a4bfae6c0d2125b377f1b935';
+
+
   $.ajax({
     url: lyricsURL,
     method: 'GET',
   }).then((response) => {
+    $("#lyrics").empty();
+
     response = JSON.parse(response);
     const lyricsDiv = $('<div>');
     lyricsDiv.attr('class', 'lyrics');
@@ -100,4 +109,5 @@ function musixmatch() {
     $('#lyrics').append(lyricsDiv);
     $('.lyrics').css('color', 'red');
   });
+
 }
