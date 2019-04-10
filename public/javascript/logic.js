@@ -6,6 +6,7 @@ $(document).ready(() => {
   let newEndDate = '';
   let newStartDate;
   let catogoryID;
+  /* eslint-disable */
 
   // Adding Spinner for 5 seconds while loading API
   function spining() {
@@ -105,6 +106,7 @@ $(document).ready(() => {
     $('#resultBlock').append(cardHTML);
   }
 
+  /* eslint-enable */
 
   // window.onscroll = function() {scrollFunction()};
 
@@ -116,14 +118,18 @@ $(document).ready(() => {
   //   }
   // }
   // function topFunction() {window.location.reload();}
+  /* eslint-disable */
   $('#gotop').on('click', () => {
     location.reload();
   });
+  /* eslint-enable */
 
   $('#eventType').on('change', () => {
     // catogoryID = $('#eventType').attr('data-catogory');
     catogoryID = $('#eventType option:selected').attr('data-catogory');
     // console.log(catogoryID)
+    /* eslint-disable */
+
     if ($('#eventType').val() == 'other') { $('#refinedDiv').css('display', 'block'); } else { $('#refinedDiv').css('display', 'none'); }
   });
   $('#submit').on('click', () => {
@@ -132,6 +138,7 @@ $(document).ready(() => {
     } else {
       eventType = $('#eventType').val();
     }
+  /* eslint-enable */
 
     //  catogoryID = $('#eventType').attr('data-catogory');
     //  console.log(catogoryID)
