@@ -71,7 +71,7 @@ function musixmatch() {
   const hasLyrics = true;
   const matchApiKey = '601f04e0a4bfae6c0d2125b377f1b935';
   const matchURL = `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q=${artistSearch} ${trackSearch}&apikey=${matchApiKey}&has_lyrics=${hasLyrics}`;
-  const lyricsURL = 'https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=95443255&apikey=601f04e0a4bfae6c0d2125b377f1b935';
+  const lyricsURL = 'https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=&apikey=601f04e0a4bfae6c0d2125b377f1b935';
   console.log(trackSearch);
   console.log(matchURL);
   console.log(lyricsURL);
