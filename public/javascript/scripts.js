@@ -1,3 +1,4 @@
+
 /* eslint-disable */
 console.warn('Project One JS Initialized');
 /* eslint-enable */
@@ -138,115 +139,92 @@ function requestTicketmaster() {
   $.ajax({
     url: myUrl,
     method: 'GET',
-  }).then(function(response) {
+  }).then(function (response) {
     let responseX = response['_embedded'];
-    console.log("responseX: ", responseX);
-    const events = responseX.events
+    
+//if else statements added
+    if (reponseX === undifined) {
+      console.log("tryagain");
+      var noResults = $("<div");
+      noResults.text("Try Again")
+      $(".someclass").append(noResults);
+    } else {
+      if (responseX.length === 0) {
+        var noResults = $("<div");
+        noResults.text("Try Again")
+        $(".someclass").append(noResults);
+    } else {
 
-    $.each(events, function(index, event){
-      let eventTitle = event.name;
-      console.log("eventTitle: ", eventTitle);
-      let eventImg = event.images;
-      console.log("eventImg: ", eventImg);
-      let eventDate = event.dates.start.localDate;
-      console.log("eventDate: ", eventDate);
-      let eventTime = event.dates.start.localTime;
-      console.log("eventTime: ", eventTime);
-      let eventUrl = event.url;
-      console.log("eventUrl: ", eventUrl);
-      let eventVenueName = event['_embedded'].venues[0].name;
-      console.log("eventVenueName: ", eventVenueName);
-      let eventVenueLong = event['_embedded'].venues[0].location.longitude;
-      console.log("eventVenueLong: ", eventVenueLong);
-      let eventVenueLati = event['_embedded'].venues[0].location.latitude;
-      console.log("eventVenueLati", eventVenueLati);
+        console.log(response);
+        console.log("responseX: ", responseX);
+        const events = responseX.events
 
-      let newCard = $("<div class='card'>");
-      $("#cardZone").append(newCard);
+        $.each(events, function (index, event) {
+          let eventTitle = event.name;
+          console.log("eventTitle: ", eventTitle);
+          let eventImg = event.images;
+          console.log("eventImg: ", eventImg);
+          let eventDate = event.dates.start.localDate;
+          console.log("eventDate: ", eventDate);
+          let eventTime = event.dates.start.localTime;
+          console.log("eventTime: ", eventTime);
+          let eventUrl = event.url;
+          console.log("eventUrl: ", eventUrl);
+          let eventVenueName = event['_embedded'].venues[0].name;
+          console.log("eventVenueName: ", eventVenueName);
+          let eventVenueLong = event['_embedded'].venues[0].location.longitude;
+          console.log("eventVenueLong: ", eventVenueLong);
+          let eventVenueLati = event['_embedded'].venues[0].location.latitude;
+          console.log("eventVenueLati", eventVenueLati);
 
-      let cardHeader = $("<div class='card-header'>");
-      newCard.append(cardHeader);
-      cardHeader.text(eventTitle);
+          let newCard = $("<div class='card'>");
+          $("#cardZone").append(newCard);
 
-      let cardBody = $("<div class='card-body'>");
-      newCard.append(cardBody);
+          let cardHeader = $("<div class='card-header'>");
+          newCard.append(cardHeader);
+          cardHeader.text(eventTitle);
 
-      let buttonOne = $("<button>");
-      buttonOne.attr("type", "button");
-      buttonOne.attr("class", "btn btn-primary");
-      buttonOne.attr("data-toggle", "modal");
-      buttonOne.attr("data-target", "#exampleModal");
-      buttonOne.text("More Info");
+          let cardBody = $("<div class='card-body'>");
+          cardHeader.append(cardBody);
 
-      let buttonTwo = $("<button>");
-      buttonTwo.attr("type", "button");
-      buttonTwo.attr("class", "btn btn-primary save-btn");
-      buttonTwo.attr("data-toggle", "");
-      buttonTwo.attr("data-target", "");
-      buttonTwo.text("Save");
+          let button = $("<button>");
+          button.attr("type", "button");
+          button.attr("class", "btn btn-primary");
+          button.attr("data-toggle", "modal");
+          button.attr("data-target", "#exampleModal");
+          button.text("More Info");
 
-      let info = $("<div>").append(
+          let info = $("<div>").append(
 
-      $("<p>").text(eventDate),
-      $("<p>").text(eventTime),
-      $("<p>").text(eventVenueName),
-      $("<div>").append(buttonOne),
-      $("<div>").append(buttonTwo)
-      );
-      cardBody.append(info);
-    })
+            $("<p>").text(eventDate),
+            $("<p>").text(eventTime),
+            $("<p>").text(eventVenueName),
+            $("<div>").append(button)
+          );
+          cardBody.append(info);
+        })
+      }
+    }
+
+
+
+
   })
 };
 
 function findDistance() {
   let myUrl = 'http://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyBix0KNYLf70SQQTX8ghmRR59vDqArz2Wk&units=imperial&origins=' + eventVenueLong
-  + ',' + eventVenueLati + '&destinations=' + userLocation
+    + ',' + eventVenueLati + '&destinations=' + userLocation
+
 
   $.ajax({
     url: myUrl,
     method: 'GET'
-  }).then(function(response){
+  }).then(function (response) {
     venueDistance = response.rows.elements.distance.text;
     venueTravelTime = reponse.rows.elements.duration.text;
   })
 }
 
-
-// function saveToProfile () {
-//   let newCard = $("<div class='card'>");
-//       $("#savedContent").append(newCard);
-
-//       let cardHeader = $("<div class='card-header'>");
-//       newCard.append(cardHeader);
-//       cardHeader.text(this.eventTitle);
-
-//       let cardBody = $("<div class='card-body'>");
-//       cardHeader.append(cardBody);
-
-//       let buttonOne = $("<button>");
-//       buttonOne.attr("type", "button");
-//       buttonOne.attr("class", "btn btn-primary");
-//       buttonOne.attr("data-toggle", "modal");
-//       buttonOne.attr("data-target", "#exampleModal");
-//       buttonOne.text("More Info");
-
-//       let buttonThree = $("<button>");
-//       buttonThree.attr("type", "button");
-//       buttonThree.attr("class", "btn btn-primary delete-btn");
-//       buttonThree.attr("data-toggle", "");
-//       buttonThree.attr("data-target", "");
-//       buttonThree.text("delete");
-
-//       let info = $("<div>").append(
-
-//       $("<p>").text(this.eventDate),
-//       $("<p>").text(this.eventTime),
-//       $("<p>").text(this.eventVenueName),
-//       $("<div>").append(buttonOne),
-//       $("<div>").append(buttonThree)
-//         );
-//       cardBody.append(info);
-//}
-
 $('#submit-btn').on('click', retrieveForm);
-// $(document).on("click", ".save-btn", saveToProfile);
+
