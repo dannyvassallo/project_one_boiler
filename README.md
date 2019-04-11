@@ -20,8 +20,8 @@ ShowSpotter - A search engine where you can find Art/Music events within a given
 ## Built With
 
 * TicketMaster API - The api used to pull event information
-* Google Distance Matrix API - The api used to show the distance and duration of travel between two points. 
-* Google Static API - Returns a static image of venue map 
+* Google Distance Matrix API - The api used to show the distance and duration of travel between two points 
+* Google Static API - Returns a static image of venue map
 * Bideo - The video background
 * Bootstrap - The web framework used
 
