@@ -13,7 +13,70 @@ let eventVenueLong;
 let eventVenueLati;
 let venueDistance;
 let venueTravelTime;
-/* eslint-enable */
+
+  // Initialize Firebase
+  const config = {
+    apiKey: "AIzaSyAuYurRhlpUCigwzBy1q4ear58FUZox8OA",
+    authDomain: "showspotter-10b13.firebaseapp.com",
+    databaseURL: "https://showspotter-10b13.firebaseio.com",
+    projectId: "showspotter-10b13",
+    storageBucket: "showspotter-10b13.appspot.com",
+    messagingSenderId: "846813024835"
+  };
+
+  firebase.initializeApp(config);
+
+  // Get elements and define buttons
+  const txtEmail = $("#txtEmail").val().trim();
+  const txtPassword = $("#txtPassword").val().trim();
+  const btnLogin = $("#btnLogin");
+  const btnSignUp = $("#btnSignUp");
+  const btnLogout = $("#btnLogout");
+
+  //add login event
+  btnLogin.on("click", function(event) {
+    event.preventDefault();
+    // get email and pass
+    const email = txtEmail;
+    const pass = txtPassword;
+    const auth = firebase.auth();
+    // sign in
+    const promise = auth.signInWithEmailAndPassword(email, pass);
+    promise.catch(e => console.log(e.message));
+  })
+
+  // add sign up event
+  btnSignUp.on("click", function(event) {
+    event.preventDefault();
+    // get email and pass
+    const email = txtEmail;
+    const pass = txtPassword;
+    const auth = firebase.auth();
+    // create user
+    const promise = auth.createUserWithEmailAndPassword(email, pass);
+    promise.catch(e => console.log(e.message));
+  })
+
+  // log out current user
+  btnLogout.on("click", function(event){
+    event.preventDefault();
+    firebase.auth().signOut();
+  })
+
+ // realtime listener, checks for signin
+  firebase.auth().onAuthStateChanged(firebaseUser => {
+    if(firebaseUser) {
+      console.log(firebaseUser);
+     // btnLogout.classList.remove('hide');
+    } else {
+      console.log('user not logged in');
+     // btnLogout.classList.add('hide');
+    }
+  });
+
+
+
+
 function loadVideoBackground() {
   const bv = new Bideo(); // eslint-disable-line no-undef
   bv.init({
@@ -100,35 +163,43 @@ function requestTicketmaster() {
 
       let newCard = $("<div class='card'>");
       $("#cardZone").append(newCard);
-      
+
       let cardHeader = $("<div class='card-header'>");
       newCard.append(cardHeader);
       cardHeader.text(eventTitle);
-      
+
       let cardBody = $("<div class='card-body'>");
-      cardHeader.append(cardBody);
-      
-      let button = $("<button>");
-      button.attr("type", "button");
-      button.attr("class", "btn btn-primary");
-      button.attr("data-toggle", "modal");
-      button.attr("data-target", "#exampleModal");
-      button.text("More Info");
-      
+      newCard.append(cardBody);
+
+      let buttonOne = $("<button>");
+      buttonOne.attr("type", "button");
+      buttonOne.attr("class", "btn btn-primary");
+      buttonOne.attr("data-toggle", "modal");
+      buttonOne.attr("data-target", "#exampleModal");
+      buttonOne.text("More Info");
+
+      let buttonTwo = $("<button>");
+      buttonTwo.attr("type", "button");
+      buttonTwo.attr("class", "btn btn-primary save-btn");
+      buttonTwo.attr("data-toggle", "");
+      buttonTwo.attr("data-target", "");
+      buttonTwo.text("Save");
+
       let info = $("<div>").append(
 
       $("<p>").text(eventDate),
       $("<p>").text(eventTime),
       $("<p>").text(eventVenueName),
-      $("<div>").append(button)
-        );
+      $("<div>").append(buttonOne),
+      $("<div>").append(buttonTwo)
+      );
       cardBody.append(info);
     })
   })
 };
 
 function findDistance() {
-  let myUrl = 'http://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyBix0KNYLf70SQQTX8ghmRR59vDqArz2Wk&units=imperial&origins=' + eventVenueLong 
+  let myUrl = 'http://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyBix0KNYLf70SQQTX8ghmRR59vDqArz2Wk&units=imperial&origins=' + eventVenueLong
   + ',' + eventVenueLati + '&destinations=' + userLocation
 
   $.ajax({
@@ -140,5 +211,42 @@ function findDistance() {
   })
 }
 
-$('#submit-btn').on('click', retrieveForm);
 
+// function saveToProfile () {
+//   let newCard = $("<div class='card'>");
+//       $("#savedContent").append(newCard);
+
+//       let cardHeader = $("<div class='card-header'>");
+//       newCard.append(cardHeader);
+//       cardHeader.text(this.eventTitle);
+
+//       let cardBody = $("<div class='card-body'>");
+//       cardHeader.append(cardBody);
+
+//       let buttonOne = $("<button>");
+//       buttonOne.attr("type", "button");
+//       buttonOne.attr("class", "btn btn-primary");
+//       buttonOne.attr("data-toggle", "modal");
+//       buttonOne.attr("data-target", "#exampleModal");
+//       buttonOne.text("More Info");
+
+//       let buttonThree = $("<button>");
+//       buttonThree.attr("type", "button");
+//       buttonThree.attr("class", "btn btn-primary delete-btn");
+//       buttonThree.attr("data-toggle", "");
+//       buttonThree.attr("data-target", "");
+//       buttonThree.text("delete");
+
+//       let info = $("<div>").append(
+
+//       $("<p>").text(this.eventDate),
+//       $("<p>").text(this.eventTime),
+//       $("<p>").text(this.eventVenueName),
+//       $("<div>").append(buttonOne),
+//       $("<div>").append(buttonThree)
+//         );
+//       cardBody.append(info);
+//}
+
+$('#submit-btn').on('click', retrieveForm);
+// $(document).on("click", ".save-btn", saveToProfile);

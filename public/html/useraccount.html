@@ -27,11 +27,35 @@
           </div>
       </nav>
     <!-- use bideo to make a background and form with bootstrap -->
+    <div class="container">
+      <div class="row calendar-row">
+      <div class="col-sm-12 col-12">
+        <div class="card">
+          <div class="card-header" id="current">
+            Your Showspotter Calendar
+            </div>
+          <div class=card-body">
+          <form>
+            <input id="txtEmail" type="email" placeholder="Email address">
+            <input id="txtPassword" type="Password" placeholder="Password">
+            <small id="eventNameSub" class="form-text">If its your first time here, use any email above! or skip ~ </small>
+            <button id="btnLogin" class="btn btn-secondary">Log In</button>
+            <button id="btnSignup" class="btn btn-secondary">Sign Up</button>
+            <button id=btnLogout" class="btn btn-secondary hide">Log Out</button>
+          </form>
+          </div
+        <div id="savedContent">
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
 
     <video id="background_video" loop muted></video>
     <div id="video_cover"></div>
     <div id="overlay"></div>
 
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
