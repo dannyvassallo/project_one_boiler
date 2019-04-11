@@ -10,25 +10,31 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./static/css/style.css">
   </head>
+
   <body>
-      <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-                      <a class="nav-link" href="#"><i class="fas fa-home"></i> <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="./useraccount"><i class="fas fa-user"></i></a>
-                  </li>
-              </ul>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><i class="fas fa-home"></i> <span class="sr-only">(current)</span></a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./useraccount"><i class="fas fa-user"></i></a>
+              </li>
+            <li>
+                <button type="button" id="btnLogin" class="btn btn-secondary" data-toggle="modal" data-target="loginModal">Log In</button>
+               </li>
+            </ul>
           </div>
       </nav>
+
     <!-- use bideo to make a background and form with bootstrap -->
     <div class="container">
       <div class="row form-row">
+        <!-- <img src="./static/images/logo.jpg" alt="Showspotter" class="logo"> -->
         <div class="col-sm-3 col-12">
           <form>
             <div class="form-group">
@@ -50,9 +56,6 @@
       <div class="offset-sm-1 col-sm-8 col-12" id="cardZone" style="height: 350px; overflow-y: scroll;">
       </div>
     </div>
-     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          Launch demo modal
-        </button> -->
 
         <!-- Modal & Popover added
         <!- <button type="button" class="btn btn-info" data-toggle="popover" title="You gotta see it to believe it"
@@ -74,14 +77,16 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
+
           </div>
         </div>
-
+      </div>
     </div>
     <video id="background_video" loop muted></video>
     <div id="video_cover"></div>
     <div id="overlay"></div>
 
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

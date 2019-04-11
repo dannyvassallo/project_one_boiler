@@ -1,10 +1,19 @@
-.form-row {
+.form-row,
+.calendar-row,
+.login-material {
   position: absolute;
   top: 40vh;
   z-index: 2;
   color: white;
   width: 95vw;
   /* background-color: rgba(119,136,153,30%) */
+}
+
+button {
+  margin: 2px;
+  opacity: 0.9;
+  border-color: aliceblue;
+  color: rgba(53, 49, 49, 0.363);
 }
 
 
