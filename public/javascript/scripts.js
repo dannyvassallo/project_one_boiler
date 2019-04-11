@@ -145,3 +145,36 @@ function translateLyrics(originalLyrics) {
     $('#translated-lyrics-display').show();
   });
 }
+$("#commentForm").validate();
+
+$("#submitBtn").on("click", function() {
+  event.preventDefault();
+  $("#cname").val().trim();
+  $("#ccomment").val().trim();
+
+  let newCommentCard = $("<div>");
+  newCommentCard.addClass("card text-center");
+
+  let newComment = $("<div>");
+  newComment.addClass("card-title");
+
+  let commentName = $("<h5>");
+  commentName.addClass("card-title");
+
+  let commentText = $("<p>");
+  commentText.addClass("card-text");
+
+  var newNameCard = $("#cname").val().trim();
+  var newUserComment= $("#ccomment").val().trim();
+
+  commentName.text(newNameCard);
+  commentText.text(newUserComment);
+
+  newCommentCard.appendTo(newNameCard).appendTo(newUserComment);
+
+  $("#card-text-center").append(commentName);
+  $("#card-text-center").append(commentText);
+  $("#cname").val("");
+  $("#cemail").val("");
+  $("#ccomment").val("");
+})
