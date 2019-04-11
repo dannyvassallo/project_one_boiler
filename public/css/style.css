@@ -50,7 +50,7 @@ form input, select {
   font-family: 'Andika', sans-serif;
 }
 
-#song-name {
+#song-name-display {
   margin: 30px auto;
   text-align: center;
   line-height: 2;
@@ -74,6 +74,6 @@ form input, select {
   font-family: 'Andika', sans-serif;
 }
 
-#videos-go-here {
+#videos-display {
   text-align: center;
 }
