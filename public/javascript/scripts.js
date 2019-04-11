@@ -58,9 +58,17 @@ $('#submit-button').on('click', () => {
       videos.attr('src', youTubeVid);
       $('#videos-go-here').append(videos);
     });
+    database.ref.push(song, artist);
   }
   getSongs();
   musixmatch();
+
+  $("#song-title-input").val("");
+  $("#song-artist-input").val("");
+  $("#translate-text-input").val("");
+  $("#language-input").val("");
+
+
 });
 
 
@@ -109,3 +117,37 @@ function getLyrics(trackId) {
     $('.lyrics').css('color', 'red');
   });
 }
+$("#commentForm").validate();
+
+$("#submitBtn").on("click", function() {
+  event.preventDefault();
+  $("#cname").val().trim();
+  $("#ccomment").val().trim();
+
+  let newCommentCard = $("<div>");
+  newCommentCard.addClass("card text-center");
+
+  let newComment = $("<div>");
+  newComment.addClass("card-title");
+
+  let commentName = $("<h5>");
+  commentName.addClass("card-title");
+
+  let commentText = $("<p>");
+  commentText.addClass("card-text");
+
+  var newNameCard = $("#cname").val().trim();
+  var newUserComment= $("#ccomment").val().trim();
+
+  commentName.text(newNameCard);
+  commentText.text(newUserComment);
+
+  newCommentCard.appendTo(newNameCard).appendTo(newUserComment);
+
+  $("#card-text-center").append(commentName);
+  $("#card-text-center").append(commentText);
+  $("#cname").val("");
+  $("#ccomment").val("");
+console.log("All this fucking shit");
+
+})
