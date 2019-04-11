@@ -147,7 +147,6 @@ $("#submitBtn").on("click", function() {
   $("#card-text-center").append(commentName);
   $("#card-text-center").append(commentText);
   $("#cname").val("");
+  $("#cemail").val("");
   $("#ccomment").val("");
-console.log("All this fucking shit");
-
 })
