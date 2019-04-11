@@ -5,7 +5,7 @@
 </p>
 
 
-ShowSpotter - A search engine where you can find Art/Music events within a given radius. Once information is submitted through the form it will return a list of events where you can view the Event Title, Date, Time, Venue.
+ShowSpotter - A search engine where you can find Art/Music events within a given radius. Once information is submitted through the form it will return a list of events where you can view the Event Title, Date, Time, Venue. User can create a profile page and save events, favorite bands, etc. 
 
 ![Website Screenshot](public/images/web1.png)
 <!--![Response Screenshot](public/images/image url)-->
@@ -22,6 +22,7 @@ ShowSpotter - A search engine where you can find Art/Music events within a given
 * TicketMaster API - The api used to pull event information
 * Google Distance Matrix API - The api used to show the distance and duration of travel between two points 
 * Google Static API - Returns a static image of venue map
+* Firebase API - Used to make profile page to save favorite bands, events, etc
 * Bideo - The video background
 * Bootstrap - The web framework used
 
@@ -30,6 +31,8 @@ ShowSpotter - A search engine where you can find Art/Music events within a given
 *  Change background video with each search submitted
 * Query different event APIs for things other than music related events
 * Create a profile page for individual user where they can save events and favorite bands
+* Use Spotify API to grab random track and play on search through audio player
+
 
 
 
