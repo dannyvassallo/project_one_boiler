@@ -20,6 +20,28 @@
         <h1>songlyrically</h1>
       </div>
     </div>
+    <form class="cmxform" id="commentForm" method="get" action="">
+      <fieldset>
+        <legend>Please provide your name, email address (won't be published) and a comment to let us know what you think!</legend>
+        <p>
+          <label for="cname">Name (required, at least 2 characters)</label>
+          <input id="cname" name="name" minlength="2" type="text" required>
+        </p>
+        <p>
+          <label for="cemail">E-Mail (required)</label>
+          <input id="cemail" type="email" name="email" required>
+        </p>
+        <p>
+          <label for="ccomment">Your comment (required)</label>
+          <textarea id="ccomment" name="comment" maxlength="200" required></textarea>
+        </p>
+        <p>
+          <input class="submit" id="submitBtn" type="submit" value="Submit">
+        </p>
+      </fieldset>
+    </form>
+    <div class="card text-center" id="card-text-center"></div>
+
   </div>
   <div class="row">
     <div class="col-sm-12">
