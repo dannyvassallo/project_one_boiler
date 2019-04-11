@@ -15,7 +15,7 @@
 .jqvmap-pin {
   pointer-events:none;
 }
-.jqvmap-zoomin, .jqvmap-zoomout
+/* .jqvmap-zoomin, .jqvmap-zoomout
 {
 	position: absolute;
 	left: 10px;
@@ -30,7 +30,7 @@
 	cursor: pointer;
 	line-height: 10px;
 	text-align: center;
-}
+} */
 .jqvmap-zoomin
 {
 	top: 10px;
