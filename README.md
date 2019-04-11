@@ -1,7 +1,7 @@
 # Project One
 
 <p align="center">
-<img width="460" height="300" src="public/images/logo.png">
+<img width="460" height="350" src="public/images/logo.png">
 </p>
 
 
