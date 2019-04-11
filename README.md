@@ -1,6 +1,8 @@
 # Project One
 
-###    ![logo](public/images/logo.png)
+<p align="center">
+<img width="460" height="300" src="public/images/logo.png">
+</p>
 
 
 ShowSpotter - A search engine where you can find Art/Music events within a given radius. Once information is submitted through the form it will return a list of events where you can view the Event Title, Date, Time, Venue.
