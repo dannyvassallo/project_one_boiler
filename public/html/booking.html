@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="./static/css//aos.css">
     <link rel="stylesheet" href="./static/css//style.css">
 
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+
   </head>
   <body>
 
@@ -48,7 +50,7 @@
                 </li>
                 <li><a href="./about">About</a></li>
                 <li><a href="./about#meet">Meet our Awesome Team</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="./login" id="logout" onclick="firebase.auth().signOut()">Logout</a></li>
 
                 <!-- <li><a href="booking.html">Book Online</a></li> -->
               </ul>
@@ -201,6 +203,7 @@
               </div>
               </footer>
 
+              <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -217,5 +220,6 @@
   <script src="./static/javascript/main.js"></script>
   <script src="./static/javascript/logic.js"></script>
   <script src="./static/javascript/weather.js"></script>
+  <script src="./static/javascript/scripts.js"></script>
   </body>
 </html>
