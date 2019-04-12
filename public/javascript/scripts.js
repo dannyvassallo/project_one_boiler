@@ -10,7 +10,7 @@ const config = {
 
 firebase.initializeApp (config);
 const database = firebase.database ();
-
+const comment = firebase.database().ref('/Comments');
 $ ('#original-lyrics-display').hide ();
 $ ('#translated-lyrics-display').hide ();
 
@@ -167,7 +167,7 @@ $("#submitBtn").on("click", function(event) {
     comment: newUserComment,
   };
 
-  database.ref().push(newUserInfo);
+  comment.push(newUserInfo);
 
   $("#cname").val("");
   $("#cemail").val("");
@@ -175,7 +175,7 @@ $("#submitBtn").on("click", function(event) {
 
 });
 
-database.ref().on("child_added", function(childSnapshot){
+comment.on("child_added", function(childSnapshot){
 
   var newNameCard = childSnapshot.val().name;
   var newUserEmail = childSnapshot.val().email;
@@ -189,8 +189,7 @@ database.ref().on("child_added", function(childSnapshot){
   commentName.addClass("card-title");
   let commentText = $("<p>");
   commentText.addClass("card-text");
-  var newNameCard = $("#cname").val().trim();
-  var newUserComment= $("#ccomment").val().trim();
+
 
   commentName.text (newNameCard);
   commentText.text (newUserComment);
