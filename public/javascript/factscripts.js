@@ -253,15 +253,55 @@ const states = [{
 },
 ];
 
-const panel = $('.showFactArea');
+//  copied from Kevin's us-map.js
+initializeMap = function () {
+  $('#vmap').vectorMap({
+    map: 'usa_en',
+    backgroundColor: '#a5bfdd',
+    borderColor: '#818181',
+    borderOpacity: 0.25,
+    borderWidth: 1,
+    color: '#f4f3f0',
+    enableZoom: true,
+    hoverColor: '#c9dfaf',
+    hoverOpacity: null,
+    multiSelectRegion: true,
+    normalizeFunction: 'linear',
+    scaleColors: ['#b6d6ff', '#005ace'],
+    selectedColor: '#c9dfaf',
+    selectedRegions: null,
+    showTooltip: true,
+    onRegionClick(element, code, region) {
+      code = code.toUpperCase();
+      playGame(element, code, region);
+    },
+  });
+};
+
+
+$(document).ready(() => {
+  initializeMap();
+});
+
+
+//  copied from Kevin's us-map.js  .............. end of kevin's code
+
+
+//  -------------below script is part of factscripts.js
+
+var panelSy = $('.showFactArea');
 let i = 0;
-const stateSelected = 'New York';
+console.log(region);
+var stateSelected ='New York';
+stateSelected = region;
+
+
 for (i = 0; i < states.length; i++) {
   // if ($("StateSelected")===states[i].state) {
   if (stateSelected === states[i].state) {
-    panel.append(`<h3>Weird Fun Fact : ${states[i].funFact}</h3>`);
-    panel.append(`<img id="ffphoto" src="${states[i].picLink}" />`);
+    panelSy.append(`<h3>Weird Fun Fact : ${states[i].funFact}</h3>`);
+    panelSy.append(`<img id="ffphoto" src="${states[i].picLink}" />`);
 
-    $('.showFactArea').append(panel);
+    $('.showFactArea').append(panelSy);
   }
 }

@@ -6,7 +6,7 @@
   gcse.src = `https://cse.google.com/cse.js?cx=${cx}`;
   const s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(gcse, s);
-}());
+})();
 
 const searchState = 'new york';
 const queryURL = `https://www.googleapis.com/customsearch/v1?key=AIzaSyDP85R1SUKp95n37SnpP6L6DzfYrZttGto&cx=002589851747781292632:otxq7bq4gda&q=top 10 news in ${searchState}`;
@@ -31,8 +31,8 @@ $.ajax({
       const hlink = $('<a>').attr('href', response.items[i].link).text('click here');
       trRow = $('<tr>').append($('<td>').html(hlink));
       $('.articleTitle').append(trRow);
-      // trRow = $('<tr>').append($('<td>').html('============================================================'));
-      // $('.articleTitle').append(trRow);
+      trRow = $('<tr>').append($('<td>').html('============================================================'));
+      $('.articleTitle').append(trRow);
     }
   });
 
