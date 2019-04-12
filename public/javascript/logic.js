@@ -102,7 +102,9 @@ $(document).ready(() => {
   function generateHTML(eventName, eventLogo, eventStartTime, venueAddr, ticket_Price, bookTicketURL) {
     // $('#resultBlock').empty();
     // cardHTML = "<div class='card' style='width: 400px;'><img class='card-img-top' src=\""+eventLogo+"\" alt='Card image' style='width: 400px; height: 200px;'><div class='card-body'><h4 class='card-title'> "+eventName+"</h4><p>Start Time : "+eventStartTime+"<br>End Time: "+eventEndTime+"<br>"+ticket_Price+"</p></div></div></div>"
-    cardHTML = `<div class='card'><div class='row'><div class='col-md-6'><div class='card-block'><h4 class='card-title' style='margin-left: 30px;'>${eventName}</h4><p class='card-text' style='margin-left: 30px;'>Start Time : ${eventStartTime}<br>Venue Address: <br>&nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp${venueAddr}<br>Ticket Price Starts : ${ticket_Price}</p><a href="${bookTicketURL}" style='margin-left: 30px;'  target='_blank' class='btn btn-primary'>Book Tickets</a></div></div><div class='col-md-6'><img style='color: #fff; height: 15rem; background-size: cover;' src="${eventLogo}"></div></div></div>`;
+    cardHTML = `<div class='card'><div class='row'><div class='col-md-6'><div class='card-block'><h4 class='card-title' style='margin-left: 30px;'>${eventName}</h4><p class='card-text' style='margin-left: 30px;'>Start Time : ${eventStartTime}<br>Venue Address: <br>&nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp${venueAddr}<br>Ticket Price Starts : ${ticket_Price}</p><a href="${bookTicketURL}" style='margin-left: 30px;'  target='_blank' class='btn btn-primary'>Book Tickets</a><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </a></div></div><div class='col-md-6'><img style='color: #fff; height: 15rem; background-size: cover;' src="${eventLogo}"></div></div></div>`;
     $('#resultBlock').append(cardHTML);
   }
 
@@ -119,6 +121,47 @@ $(document).ready(() => {
   // }
   // function topFunction() {window.location.reload();}
   /* eslint-disable */
+
+  var map, infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 5
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+  
+initMap()
+
+
   $('#gotop').on('click', () => {
     location.reload();
   });

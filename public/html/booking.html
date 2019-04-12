@@ -19,7 +19,25 @@
 
   </head>
   <body>
-
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
   <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -182,8 +200,12 @@
           <button style="display: none" id="gotop" title="Clear Search Results">Clear Search Results</button>
 
       </div>
+   
+
     <footer class="site-footer">
         <div class="container">
+          
+          <div class="map" id="map"></div>
           <div class="row">
             <div class="col-lg-12">
               <div class="mb-5">
@@ -208,6 +230,9 @@
   <script src="./static/javascript/jquery.magnific-popup.min.js"></script>
   <script src="./static/javascript/bootstrap-datepicker.min.js"></script>
   <script src="./static/javascript/aos.js"></script>
+  <script async 
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCahOpD-hh7GIlB7mN5K_pRydagpsE_UO8">
+</script>
   <script src="./static/javascript/main.js"></script>
   <script src="./static/javascript/logic.js"></script>
   </body>
