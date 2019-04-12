@@ -19,7 +19,6 @@ database.ref().on('value', (snapshot) => {
 });
 
 
-
 function videoSearch(song, artist) {
   const youtubeQueryUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${song} ${artist}&type=music&key=AIzaSyDm3Avv6gF5Xgw2YEm3GB5ILBO5-caJfwU`;
   const watchVideoUrl = 'https://www.youtube.com/embed/';
@@ -36,20 +35,9 @@ function videoSearch(song, artist) {
     videos.css('height', '400px');
     videos.css('width', '700px');
     $('#videos-display').append(videos);
+
   });
 }
-
-// ARTIST, TRACK, AND TRACKID FUNCTION (MUSIXMATCH)
-
-$('#submit-button').on('click', (event) => {
-  event.preventDefault();
-
-  const songQuery = $('#song-title-input').val().trim();
-  const artistQuery = $('#song-artist-input').val().trim();
-
-  songInfoSearch(songQuery, artistQuery);
-  videoSearch(songQuery, artistQuery);
-});
 
 function translateLyrics(originalLyrics) {
   const yandexBaseUrl = 'https://translate.yandex.net/api/v1.5/tr.json/translate';
@@ -98,13 +86,9 @@ function lyricsSearch(trackId) {
     },
   });
 }
+
 function songInfoSearch(song, artist) {
   let trackId;
-  const trackSearch = song;
-  const artistSearch = artist;
-  const hasLyrics = true;
-  const matchApiKey = '601f04e0a4bfae6c0d2125b377f1b935';
-
 
   $.ajax({
     type: 'GET',
@@ -136,6 +120,21 @@ function songInfoSearch(song, artist) {
     },
   });
 }
+
+// ARTIST, TRACK, AND TRACKID FUNCTION (MUSIXMATCH)
+
+$('#submit-button').on('click', (event) => {
+  event.preventDefault();
+
+  const songQuery = $('#song-title-input').val().trim();
+  const artistQuery = $('#song-artist-input').val().trim();
+
+  songInfoSearch(songQuery, artistQuery);
+  videoSearch(songQuery, artistQuery);
+
+  $('#song-title-input').val('');
+  $('#song-artist-input').val('');
+});
 
 $('#commentForm').validate();
 
