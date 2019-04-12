@@ -26,10 +26,11 @@ $(document).ready(() => {
     const user = firebase.auth().currentUser;
     // console.log(newUser);
     // const myPassword = 'Password';
-    //const encryptedPassword = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), password);
-    //const res = String(encryptedPassword);
-    //const decryptedPassword = CryptoJS.AES.decrypt(res, password);
-    //const decryptedToString = decryptedPassword.toString(CryptoJS.enc.Utf8);
+    // const encryptedPassword = CryptoJS.AES.encrypt
+    // ($('#exampleInputPassword1').val().trim(), password);
+    // const res = String(encryptedPassword);
+    // const decryptedPassword = CryptoJS.AES.decrypt(res, password);
+    // const decryptedToString = decryptedPassword.toString(CryptoJS.enc.Utf8);
     // window.alert(encryptedPassword)
     // window.alert(res)
     // window.alert(decryptedPassword)
@@ -69,21 +70,22 @@ $(document).ready(() => {
     const email = $('#exampleInputEmail1').val().trim();
     const password = $('#exampleInputPassword1').val().trim();
     // const myPassword = 'Password';
-    //const encryptedPassword = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), Password);
-    //const res = String(encryptedPassword);
+    // const encryptedPassword = CryptoJS.AES.encrypt
+    // ($('#exampleInputPassword1').val().trim(), Password);
+    // const res = String(encryptedPassword);
     // window.alert(encryptedPassword)
     // window.alert(res)
-    //const decryptedPassword = CryptoJS.AES.decrypt(res, password);
-    //const decryptedToString = decryptedPassword.toString(CryptoJS.enc.Utf8);
+    // const decryptedPassword = CryptoJS.AES.decrypt(res, password);
+    // const decryptedToString = decryptedPassword.toString(CryptoJS.enc.Utf8);
     // const resLogin = String(password);
     // const user = firebase.auth().currentUser;
 
     firebase.auth().signInWithEmailAndPassword(email, password)
-    .then(function(user) {
-      if(user){
-        window.location = "http://localhost:3000/booking"
-      }
-    })
+      .then((user) => {
+        if (user) {
+          window.location = 'http://localhost:3000/booking';
+        }
+      })
       .catch((error) => {
         const errorToast = error;
         $('#signin-error').text(errorToast.message);
@@ -108,35 +110,32 @@ $(document).ready(() => {
 
   $('#logout').on('click', (event) => {
     event.preventDefault();
-    console.log("clicked")
-    firebase.auth().signOut()
-    console.log("signed out")
-      // Sign-out successful.
+    firebase.auth().signOut();
+    // Sign-out successful.
     // }).catch((error) => {
-      // An error happened.
+    // An error happened.
     // });
 
-      const user = firebase.auth().currentUser;
-      if (user) {
-        // console.log(user);
-        window.location = 'http://localhost:3000/login';
-      }
-
+    const user = firebase.auth().currentUser;
+    if (user) {
+      // console.log(user);
+      window.location = 'http://localhost:3000/login';
+    }
   });
 
-  firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    // User is signed in.
-    const { displayName } = user;
-    const { email } = user;
-    const { emailVerified } = user;
-    const { photoURL } = user;
-    const { isAnonymous } = user;
-    const { uid } = user;
-    const { providerData } = user;
-    console.log(user);
-    console.log(email);
-  } else {
-  }
-  });
+  // firebase.auth().onAuthStateChanged((user) => {
+  //   if (user) {
+  //   // User is signed in.
+  //     const { displayName } = user;
+  //     const { email } = user;
+  //     const { emailVerified } = user;
+  //     const { photoURL } = user;
+  //     const { isAnonymous } = user;
+  //     const { uid } = user;
+  //     const { providerData } = user;
+  //     console.log(user);
+  //     console.log(email);
+  //   } else {
+  //   }
+  // });
 });
