@@ -14,7 +14,7 @@ $(document).ready(() => {
   $('#signup').on('click', (event) => {
     event.preventDefault();
     const email = $('#exampleInputEmail1').val().trim();
-    //const password = $('#exampleInputPassword1').val().trim();
+    // const password = $('#exampleInputPassword1').val().trim();
     const name = $('#name').val().trim();
     const number = $('#ph-number').val().trim();
     const zip = $('#zip-code').val().trim();
@@ -25,30 +25,30 @@ $(document).ready(() => {
     };
     const user = firebase.auth().currentUser;
     // console.log(newUser);
-    //const myPassword = 'Password';
-    var encryptedPassword = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), password)
-    const res = String(encryptedPassword)
-    var decryptedPassword = CryptoJS.AES.decrypt(res, password)
-    var decryptedToString = decryptedPassword.toString(CryptoJS.enc.Utf8)
-    //window.alert(encryptedPassword)
-    //window.alert(res)
-    //window.alert(decryptedPassword)
-    //window.alert(decryptedToString)
+    // const myPassword = 'Password';
+    const encryptedPassword = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), password);
+    const res = String(encryptedPassword);
+    const decryptedPassword = CryptoJS.AES.decrypt(res, password);
+    const decryptedToString = decryptedPassword.toString(CryptoJS.enc.Utf8);
+    // window.alert(encryptedPassword)
+    // window.alert(res)
+    // window.alert(decryptedPassword)
+    // window.alert(decryptedToString)
 
     firebase.auth().createUserWithEmailAndPassword(email, decryptedToString)
-      .then((userCredential) => {
-        if (user) {
-          firebase.auth().signOut();
-          window.location = 'http://localhost:3000/login'
-        }
-      })
+      // .then((userCredential) => {
+      //   if (user) {
+      //     firebase.auth().signOut();
+      //     window.location = 'http://localhost:3000/login';
+      //   }
+      // })
       .catch((error) => {
         // const errorToast = error;
-        //location.reload();
-        $('#signup-error').text(error.message)
+        // location.reload();
+        $('#signup-error').text(error.message);
       });
 
-    firebase.database().ref(`/users/${user.uid}`).child('/profile').push(newUser)
+    firebase.database().ref(`/users/${user.uid}`).child('/profile').push(newUser);
 
     $('#exampleInputEmail1').val('');
     $('#exampleInputPassword1').val('');
@@ -62,14 +62,14 @@ $(document).ready(() => {
   $('#login').on('click', (event) => {
     event.preventDefault();
     const email = $('#exampleInputEmail1').val().trim();
-    //const password = $('#exampleInputPassword1').val().trim();
+    // const password = $('#exampleInputPassword1').val().trim();
     // const myPassword = 'Password';
-    var encryptedPassword = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), password)
-    var res = String(encryptedPassword)
-    //window.alert(encryptedPassword)
-    //window.alert(res)
-    var decryptedPassword = CryptoJS.AES.decrypt(res, password)
-    var decryptedToString = decryptedPassword.toString(CryptoJS.enc.Utf8);
+    const encryptedPassword = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), password);
+    const res = String(encryptedPassword);
+    // window.alert(encryptedPassword)
+    // window.alert(res)
+    const decryptedPassword = CryptoJS.AES.decrypt(res, password);
+    const decryptedToString = decryptedPassword.toString(CryptoJS.enc.Utf8);
     // const resLogin = String(password);
     // const user = firebase.auth().currentUser;
 
@@ -83,7 +83,7 @@ $(document).ready(() => {
       .catch((error) => {
         const errorToast = error;
         $('#signin-error').text(errorToast.message);
-        setTimeout(function(){location.reload()}, 3000);
+        //setTimeout(() => { location.reload(); }, 3000);
       });
 
     $('#exampleInputEmail1').val('');
