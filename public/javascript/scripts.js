@@ -32,10 +32,8 @@ function videoSearch(song, artist) {
     const youTubeVid = watchVideoUrl + results;
     const videos = $('<iframe>');
     videos.attr('src', youTubeVid);
-    videos.css('height', '400px');
-    videos.css('width', '700px');
+    videos.attr('class', 'embed-responsive-item');
     $('#videos-display').append(videos);
-
   });
 }
 
@@ -121,7 +119,6 @@ function songInfoSearch(song, artist) {
   });
 }
 
-// ARTIST, TRACK, AND TRACKID FUNCTION (MUSIXMATCH)
 
 $('#submit-button').on('click', (event) => {
   event.preventDefault();
