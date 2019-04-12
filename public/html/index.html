@@ -14,11 +14,12 @@
   <!-- <link rel="stylesheet" href="./static/css/us-map.css" media="screen">
   this styling is not rrquired for project -->
   <link rel="stylesheet" href="./static/css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
 </head>
 
 <body>
 
-  <!-- header -->
+<!-- header -->
   <div class="jumbotron jumbotron-fluid bg-dark" id="header">
     <div class="container">
       <h1 class="display-4 text-center text-white">ge<img height="80px" width="auto" src="./static/images/rotating-earth-1.gif">ST<img
@@ -26,7 +27,7 @@
     </div>
   </div>
 
-  <!-- home page -->
+<!-- home page -->
   <div class="container-fluid">
     <div class="row mt-4">
       <div class="col-md-12">
@@ -35,9 +36,9 @@
             <div class="col-md-8 clickMap">
               <p class="clickMap">How well do you know your United States?<br>Test that knowledge with our map.</p>
               <div id="vmap" style="height: 400px;"></div>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Open modal</button>
               <button id="startGame" class="button1 btn-lg btn-primary" onclick="playGame()">Start <i class="fas fa-map"></i></button>
               <button id="mapReset" class="button1 btn-lg btn-primary" onclick="resetMap()">Reset Map <i class="fas fa-map"></i></button>
+
               <div class="wrong-answer-info"></div>
             </div>
             <div class="col-md-2" id="stateInfo">STATE INFO <i class="fas fa-flag-usa"></i>
@@ -48,9 +49,9 @@
             </div>
 
             <div class="col-md-2" id="legend"></i></i>
-              <p>LINKS <i class="fas fa-home"></i></p>
-              <p><a href="/trivia" class='btn-lg btn-primary' id="triviaBtn">Trivia <i class="fas fa-award"></i></a></p>
-              <p><a href="/" class='btn-lg btn-primary' id="factsBtn">Home <i class="fas fa-bacon"></i></a></p>
+              <p>LINKS <i class="fas fa-hotdog"></i></p>
+              <p><a href="/" class='btn-lg btn-primary' id="factsBtn">Home <i class="fas fa-home"></i></a></p>
+              <p><a href="/trivia" class='btn-lg btn-primary' id="triviaBtn">Fun Facts <i class="fas fa-award"></i></a></p>
             </div>
           </div>
         </div>
@@ -58,33 +59,7 @@
     </div>
   </div>
 
-
-              <!-- The Modal -->
-              <div class="modal" id="myModal">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                      <h4 class="modal-title">Modal Heading</h4>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                      Modal body..
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
+<!-- footer -->
   <div class="jumbotron jumbotron-fluid bg-dark" id="footer">
     <div class="container">
       <h5 class="text-center text-white"><i class="far fa-copyright"></i> Rachael Michelle Sushmita Kevin</h5>
