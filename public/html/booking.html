@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="./static/css//aos.css">
     <link rel="stylesheet" href="./static/css//style.css">
 
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+
   </head>
   <body>
 
@@ -48,15 +50,17 @@
                 </li>
                 <li><a href="./about">About</a></li>
                 <li><a href="./about#meet">Meet our Awesome Team</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="./login" id="logout" onclick="firebase.auth().signOut()">Logout</a></li>
+
+
                 <!-- <li><a href="booking.html">Book Online</a></li> -->
               </ul>
             </nav>
           </div>
 
           <div class="col-6 col-xl-2 text-right">
-            <div class="d-none d-xl-inline-block">
-              <ul class="site-menu js-clone-nav ml-auto list-unstyled d-flex text-right mb-0" data-class="social">
+            <div class="d-none d-xl-inline-block" id="weatherReport">
+              <!-- <ul class="site-menu js-clone-nav ml-auto list-unstyled d-flex text-right mb-0" data-class="social">
                 <li>
                   <a href="#" class="pl-0 pr-3 text-black"><span class="icon-tripadvisor"></span></a>
                 </li>
@@ -70,7 +74,8 @@
                   <a href="#" class="pl-3 pr-3 text-black"><span class="icon-instagram"></span></a>
                 </li>
 
-              </ul>
+              </ul> -->
+
             </div>
 
             <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
@@ -178,7 +183,11 @@
         </div>
       </div>
       <div id="spinnerContainer" class="spinner"></div>
+      <div  class="container">
+        <h1 id="noresult" style="color: orange; display: none">Sorry No Events found, Please try another date or location</h1>
+      </div>
       <div class="container" id="resultBlock" style="background: #ccc">
+
           <button style="display: none" id="gotop" title="Clear Search Results">Clear Search Results</button>
 
       </div>
@@ -195,6 +204,7 @@
               </div>
               </footer>
 
+              <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -210,5 +220,8 @@
   <script src="./static/javascript/aos.js"></script>
   <script src="./static/javascript/main.js"></script>
   <script src="./static/javascript/logic.js"></script>
+  <script src="./static/javascript/weather.js"></script>
+  <script src="./static/javascript/scripts.js"></script>
+
   </body>
 </html>

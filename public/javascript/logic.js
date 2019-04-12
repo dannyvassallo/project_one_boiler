@@ -47,6 +47,10 @@ $(document).ready(() => {
     }).then((response) => {
       console.log(response);
       console.log(queryURL);
+      console.log(response.events.length)
+      if(response.events.length == 0) {
+        $("#noresult").css('display', 'block');
+      }
       //  console.log(response.events[0].ticket_classes[1].cost.display)
       for (let i = 0; i < 10; i++) {
         console.log(`Event Name: ${response.events[i].name.text}`);
