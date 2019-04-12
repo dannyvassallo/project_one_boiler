@@ -8,38 +8,37 @@ const config = {
   messagingSenderId: '910125473880',
 };
 
-firebase.initializeApp(config);
-const database = firebase.database();
+firebase.initializeApp (config);
+const database = firebase.database ();
 
-$('#original-lyrics-display').hide();
-$('#translated-lyrics-display').hide();
+$ ('#original-lyrics-display').hide ();
+$ ('#translated-lyrics-display').hide ();
 
-database.ref().on('value', (snapshot) => {
-  $('#last-song').text(snapshot.val().lastSong);
-
+database.ref ().on ('value', snapshot => {
+  $ ('#last-song').text (snapshot.val ().lastSong);
 });
 
 // SUBMIT BUTTON ONCLICK FUNCTION
-$('#submit-button').on('click', () => {
-  event.preventDefault();
+$ ('#submit-button').on ('click', () => {
+  event.preventDefault ();
 
-  const songQuery = $('#song-title-input').val().trim();
-  const artistQuery = $('#song-artist-input').val().trim();
+  const songQuery = $ ('#song-title-input').val ().trim ();
+  const artistQuery = $ ('#song-artist-input').val ().trim ();
 
-  songInfoSearch(songQuery, artistQuery);
-  videoSearch(songQuery, artistQuery);
+  songInfoSearch (songQuery, artistQuery);
+  videoSearch (songQuery, artistQuery);
 });
 
 // VIDEO FUNCTION (YOUTUBE)
-function videoSearch(song, artist) {
+function videoSearch (song, artist) {
   const youtubeQueryUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${song} ${artist}&type=music&key=AIzaSyDm3Avv6gF5Xgw2YEm3GB5ILBO5-caJfwU`;
   const watchVideoUrl = 'https://www.youtube.com/embed/';
 
-  $.ajax({
+  $.ajax ({
     url: youtubeQueryUrl,
     method: 'GET',
-  }).then((response) => {
-    $('#videos-display').empty();
+  }).then (response => {
+    $ ('#videos-display').empty ();
     const results = response.items[0].id.videoId;
     const youTubeVid = watchVideoUrl + results;
     const videos = $('<iframe>');
@@ -52,7 +51,7 @@ function videoSearch(song, artist) {
 }
 
 // ARTIST, TRACK, AND TRACKID FUNCTION (MUSIXMATCH)
-function songInfoSearch(song, artist) {
+function songInfoSearch (song, artist) {
   let trackId;
   const trackSearch = song;
   const artistSearch = artist;
@@ -60,7 +59,7 @@ function songInfoSearch(song, artist) {
   const matchApiKey = '601f04e0a4bfae6c0d2125b377f1b935';
   const matchURL = `https://api.musixmatch.com/ws/1.1/track.search?q=${artistSearch} ${trackSearch}&apikey=${matchApiKey}&has_lyrics=${hasLyrics}`;
 
-  $.ajax({
+  $.ajax ({
     type: 'GET',
     data: {
       apikey: '601f04e0a4bfae6c0d2125b377f1b935',
@@ -73,29 +72,29 @@ function songInfoSearch(song, artist) {
     dataType: 'jsonp',
     jsonpCallback: 'jsonp_callback',
     contentType: 'application/json',
-    success(response) {
-      $('#song-name-display').empty();
+    success (response) {
+      $ ('#song-name-display').empty ();
 
-      const songDiv = $('<div>');
-      songDiv.attr('class', 'artist');
-      songDiv.html(response.message.body.track_list[0].track.track_name);
-      console.log(response);
+      const songDiv = $ ('<div>');
+      songDiv.attr ('class', 'artist');
+      songDiv.html (response.message.body.track_list[0].track.track_name);
+      console.log (response);
       trackId = response.message.body.track_list[0].track.track_id;
-      console.log(trackId);
-      $('#song-name-display').append(songDiv);
+      console.log (trackId);
+      $ ('#song-name-display').append (songDiv);
 
-      database.ref().set({
+      database.ref ().set ({
         lastSong: response.message.body.track_list[0].track.track_name,
       });
 
-      lyricsSearch(trackId);
+      lyricsSearch (trackId);
     },
   });
 }
 
 // LYRICS FUNCTION (MUSIXMATCH)
-function lyricsSearch(trackId) {
-  $.ajax({
+function lyricsSearch (trackId) {
+  $.ajax ({
     type: 'GET',
     data: {
       apikey: '601f04e0a4bfae6c0d2125b377f1b935',
@@ -107,49 +106,51 @@ function lyricsSearch(trackId) {
     dataType: 'jsonp',
     jsonpCallback: 'jsonp_callback',
     contentType: 'application/json',
-    success(response) {
-      $('#translated-lyrics-display').empty();
+    success (response) {
+      $ ('#translated-lyrics-display').empty ();
 
       const lyrics = response.message.body.lyrics.lyrics_body;
 
-      console.log(lyrics);
+      console.log (lyrics);
 
-      $('#original-lyrics-display').html(`Original Lyrics:<br> ${lyrics}`);
+      $ ('#original-lyrics-display').html (`Original Lyrics:<br> ${lyrics}`);
 
-      translateLyrics(lyrics);
+      translateLyrics (lyrics);
     },
-    error(jqXHR, textStatus, errorThrown) {
-      console.log(jqXHR);
-      console.log(textStatus);
-      console.log(errorThrown);
+    error (jqXHR, textStatus, errorThrown) {
+      console.log (jqXHR);
+      console.log (textStatus);
+      console.log (errorThrown);
     },
   });
 }
 
 // TRANSLATOR FUNCTION (YANDEX)
-function translateLyrics(originalLyrics) {
-  const yandexBaseUrl = 'https://translate.yandex.net/api/v1.5/tr.json/translate';
-  const yandexAPIKey = 'trnsl.1.1.20190406T143223Z.056b981f8fc972d3.8e9576d91e670036aa4c8e89760c7acfa28805f4';
-  const translateLang = $('#language-input option:selected').text();
-  const translateLangCode = $('#language-input option:selected').val();
+function translateLyrics (originalLyrics) {
+  const yandexBaseUrl =
+    'https://translate.yandex.net/api/v1.5/tr.json/translate';
+  const yandexAPIKey =
+    'trnsl.1.1.20190406T143223Z.056b981f8fc972d3.8e9576d91e670036aa4c8e89760c7acfa28805f4';
+  const translateLang = $ ('#language-input option:selected').text ();
+  const translateLangCode = $ ('#language-input option:selected').val ();
   const rawTranslateText = originalLyrics;
-  const translateText = rawTranslateText.replace(/ /g, '+');
+  const translateText = rawTranslateText.replace (/ /g, '+');
   const yandexQueryURL = `${yandexBaseUrl}?key=${yandexAPIKey}&lang=${translateLangCode}&text=${translateText}&format=plain`;
 
-  $.ajax({
+  $.ajax ({
     url: yandexQueryURL,
     method: 'GET',
-  }).then((response) => {
-    $('#language-display').text(`Language: ${translateLang}`);
-    $('#translated-lyrics-display').html(
-      `Translated Lyrics:<br> ${response.text}`,
+  }).then (response => {
+    $ ('#language-display').text (`Language: ${translateLang}`);
+    $ ('#translated-lyrics-display').html (
+      `Translated Lyrics:<br> ${response.text}`
     );
 
-    $('#original-lyrics-display').show();
-    $('#translated-lyrics-display').show();
+    $ ('#original-lyrics-display').show ();
+    $ ('#translated-lyrics-display').show ();
   });
 }
-$("#commentForm").validate();
+$ ('#commentForm').validate ();
 
 $("#submitBtn").on("click", function(event) {
   event.preventDefault();
@@ -191,14 +192,14 @@ database.ref().on("child_added", function(childSnapshot){
   var newNameCard = $("#cname").val().trim();
   var newUserComment= $("#ccomment").val().trim();
 
-  commentName.text(newNameCard);
-  commentText.text(newUserComment);
+  commentName.text (newNameCard);
+  commentText.text (newUserComment);
 
-  newCommentCard.appendTo(newNameCard).appendTo(newUserComment);
+  newCommentCard.appendTo (newNameCard).appendTo (newUserComment);
 
-  $("#card-text-center").append(commentName);
-  $("#card-text-center").append(commentText);
-  $("#cname").val("");
-  $("#cemail").val("");
-  $("#ccomment").val("");
-})
+  $ ('#card-text-center').append (commentName);
+  $ ('#card-text-center').append (commentText);
+  $ ('#cname').val ('');
+  $ ('#cemail').val ('');
+  $ ('#ccomment').val ('');
+});
