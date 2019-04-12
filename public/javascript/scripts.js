@@ -264,6 +264,7 @@ function initMap() {
 }
 
 $(document).on("click", ".modal-btn", function(){
+  $(".modal-title").empty();
   findDistance();
   var eventShowName = $(this).data("title");
   $(".modal-title").text(eventShowName);
