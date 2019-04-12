@@ -20,10 +20,13 @@
         <h1>songlyrically</h1>
       </div>
     </div>
+  </div>
+  <div class="container">
 
     <div class="row">
-      <div class="col-sm-12 col-md-9 col-lg-9">
-        <form>
+      <div class="col-sm-12 col-md-6 col-lg-6">
+        <form id="song-search-form">
+          <h2>song search</h2>
           Song Title:
           <input type="text" id="song-title-input">
           <br>
@@ -61,32 +64,49 @@
           <input id="submit-button" type="submit" value="Submit">
         </form>
       </div>
-      <div class="col-sm-12 col-md-3 col-lg 3">
-        <div id="last-song-div"></div>
-      </div>
 
-    <form class="cmxform" id="commentForm" method="get" action="">
-      <fieldset>
-        <legend>Please provide your name, email address (won't be published) and a comment to let us know what you think!</legend>
-        <p>
-          <label for="cname">Name (required, at least 2 characters)</label>
-          <input id="cname" name="name" minlength="2" type="text" required>
-        </p>
-        <p>
-          <label for="cemail">E-Mail (required)</label>
-          <input id="cemail" type="email" name="email" required>
-        </p>
-        <p>
-          <label for="ccomment">Your comment (required)</label>
-          <textarea id="ccomment" name="comment" maxlength="200" required></textarea>
-        </p>
-        <p>
-          <input class="submit" id="submitBtn" type="submit" value="Submit">
-        </p>
-      </fieldset>
-    </form>
-    <div class="card text-center" id="card-text-center"></div>
+
+      <div class="col-sm-12 col-md-6 col-lg-6">
+        <div id="last-song-div">
+          <h2>last song searched</h2>
+          <div id="last-song"></div>
+        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-6">
+          <form class="cmxform" id="commentForm" method="get" action="">
+              <fieldset>
+                <h2>leave a comment!</h2>
+                <p>
+                  <label for="cname">Name</label>
+                  <input id="cname" name="name" minlength="2" type="text" required>
+                </p>
+                <p>
+                  <label for="cemail">E-Mail</label>
+                  <input id="cemail" type="email" name="email" required>
+                </p>
+                <p>
+                  <label for="ccomment">Comment</label>
+                  <textarea id="ccomment" name="comment" maxlength="200" required></textarea>
+                </p>
+                <p>
+                  <input class="submit" id="submitBtn" type="submit" value="Submit">
+                </p>
+              </fieldset>
+            </form>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-6">
+        <div id="comment-log">
+          <h2>comment log</h2>
+          <div class="card text-center" id="card-text-center"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+
     <div class="row">
       <div class="col-sm-12">
         <div id="song-name-display"></div>
@@ -102,6 +122,7 @@
         <div id="translated-lyrics-display"></div>
       </div>
     </div>
+  </div>
   </div>
 
   <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
