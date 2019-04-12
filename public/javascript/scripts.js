@@ -26,7 +26,7 @@ let venueTravelTime;
   };
 
   firebase.initializeApp(config);
-
+$("#btnLogin").on("click", function() {
   // Get elements and define buttons
   const txtEmail = $("#txtEmail").val().trim();
   const txtPassword = $("#txtPassword").val().trim();
@@ -74,8 +74,7 @@ let venueTravelTime;
      // btnLogout.classList.add('hide');
     }
   });
-
-
+});
 
 
 function loadVideoBackground() {
@@ -141,9 +140,9 @@ function requestTicketmaster() {
     method: 'GET',
   }).then(function (response) {
     let responseX = response['_embedded'];
-    
+
 //if else statements added
-    if (reponseX === undifined) {
+    if (responseX === undefined) {
       console.log("tryagain");
       var noResults = $("<div");
       noResults.text("Try Again")
@@ -187,9 +186,20 @@ function requestTicketmaster() {
           let cardBody = $("<div class='card-body'>");
           cardHeader.append(cardBody);
 
+          let modalInfo = $("<div");
+          modalInfo.atr("data-title", eventTitle);
+          modalInfo.attr("data-date", eventDate);
+          modalInfo.attr("data-time", eventTime);
+          modalInfo.attr("data-url", eventUrl);
+          modalInfo.attr("data-venue", eventVenueName);
+          modalInfo.attr("data-long", eventVenueLong);
+          modalInfo.attr("data-lat", eventVenueLati);
+          cardBody.append(modalInfo);
+
           let button = $("<button>");
           button.attr("type", "button");
           button.attr("class", "btn btn-primary");
+          button.attr("id", "modal-btn");
           button.attr("data-toggle", "modal");
           button.attr("data-target", "#exampleModal");
           button.text("More Info");
@@ -205,17 +215,12 @@ function requestTicketmaster() {
         })
       }
     }
-
-
-
-
   })
 };
 
 function findDistance() {
   let myUrl = 'http://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyBix0KNYLf70SQQTX8ghmRR59vDqArz2Wk&units=imperial&origins=' + eventVenueLong
     + ',' + eventVenueLati + '&destinations=' + userLocation
-
 
   $.ajax({
     url: myUrl,
@@ -227,4 +232,4 @@ function findDistance() {
 }
 
 $('#submit-btn').on('click', retrieveForm);
-
+$('#modal-btn').on('click', findDistance);
