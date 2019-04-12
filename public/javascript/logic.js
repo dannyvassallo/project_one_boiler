@@ -1,9 +1,9 @@
 $(document).ready(() => {
-  let zipcode = '';
-  let eventType = '';
-  let dollar = '';
-  let date = '';
-  let newEndDate = '';
+  let zipcode = "";
+  let eventType = "";
+  let dollar = "";
+  let date = "";
+  let newEndDate = "";
   let newStartDate;
   let catogoryID;
   /* eslint-disable */
@@ -17,34 +17,41 @@ $(document).ready(() => {
       radius: 25, // The radius of the inner circle
       scale: 1.5, // Scales overall size of the spinner
       corners: 1, // Corner roundness (0..1)
-      color: '#ef6c57', // CSS color or array of colors
-      fadeColor: 'transparent', // CSS color or array of colors
+      color: "#ef6c57", // CSS color or array of colors
+      fadeColor: "transparent", // CSS color or array of colors
       speed: 0.7, // Rounds per second
       rotate: 19, // The rotation offset
-      animation: 'spinner-line-fade-quick', // The CSS animation name for the lines
+      animation: "spinner-line-fade-quick", // The CSS animation name for the lines
       direction: 1, // 1: clockwise, -1: counterclockwise
       zIndex: 2e9, // The z-index (defaults to 2000000000)
-      className: 'spinner', // The CSS class to assign to the spinner
-      top: '99%', // Top position relative to parent
-      left: '50%', // Left position relative to parent
-      shadow: '0 0 1px transparent', // Box-shadow for the lines
-      position: 'absolute', // Element positioning
+      className: "spinner", // The CSS class to assign to the spinner
+      top: "99%", // Top position relative to parent
+      left: "50%", // Left position relative to parent
+      shadow: "0 0 1px transparent", // Box-shadow for the lines
+      position: "absolute" // Element positioning
     };
-    const target = document.getElementById('spinnerContainer');
+    const target = document.getElementById("spinnerContainer");
     const spinner = new Spinner(opts).spin(target);
     setTimeout(() => {
-      $('#spinnerContainer').css('display', 'none');
+      $("#spinnerContainer").css("display", "none");
     }, 3000);
   }
 
-
-  function getJSON(eventType, catogoryID, zipcode, dollar, date, newendDate, sortID) {
-    $('.tdArticle').empty();
+  function getJSON(
+    eventType,
+    catogoryID,
+    zipcode,
+    dollar,
+    date,
+    newendDate,
+    sortID
+  ) {
+    $(".tdArticle").empty();
     const queryURL = `https://www.eventbriteapi.com/v3/events/search/?q=${eventType}&sort_by=${sortID}&location.address=${zipcode}&location.within=100mi&expand=organizer,venue,ticket_classes&categories=${catogoryID}&price=${dollar}&start_date.range_start=${date}T00%3A00%3A00&start_date.range_end=${newEndDate}T11%3A59%3A00&token=RRNZXROPSLKJ26CN7LW2`;
     $.ajax({
       url: queryURL,
-      method: 'GET',
-    }).then((response) => {
+      method: "GET"
+    }).then(response => {
       console.log(response);
       console.log(queryURL);
       //  console.log(response.events[0].ticket_classes[1].cost.display)
@@ -57,15 +64,19 @@ $(document).ready(() => {
         console.log(`Event Logo URL -->${eventLogo}`);
         // console.log("Event Start Time: "+response.events[i].start.local)
         eventStart_unformated = response.events[i].start.local;
-        eventStartTime = moment(eventStart_unformated).format('YYYY-MM-DD HH:mm:ss');
+        eventStartTime = moment(eventStart_unformated).format(
+          "YYYY-MM-DD HH:mm:ss"
+        );
         // console.log("Event Number"+ i+ "End Time"+response.events[i].end.local)
         eventEnd_unformated = response.events[i].end.local;
-        eventEndTime = moment(eventEnd_unformated).format('YYYY-MM-DD HH:mm:ss');
+        eventEndTime = moment(eventEnd_unformated).format(
+          "YYYY-MM-DD HH:mm:ss"
+        );
         ticket_class = response.events[i].ticket_classes;
         ticket_class_length = ticket_class.length;
         if (ticket_class_length == 0) {
           // console.log("Event : "+response.events[i].name.text+" is Free");
-          var ticket_Price = 'FREE';
+          var ticket_Price = "FREE";
         } else {
           for (let j = 0; j < ticket_class_length; j++) {
             if (ticket_class[j] != undefined) {
@@ -74,38 +85,55 @@ $(document).ready(() => {
                   var ticket_Price = ticket_class[j].cost.display;
                   console.log(`Ticket Price: ${ticket_Price}`);
                 } else {
-                  var ticket_Price = 'FREE';
+                  var ticket_Price = "FREE";
                 }
               } else {
-                var ticket_Price = 'FREE';
+                var ticket_Price = "FREE";
               }
             } else {
-              var ticket_Price = 'FREE';
+              var ticket_Price = "FREE";
             }
           }
         }
-        localized_multi_line_address_display = response.events[i].venue.address.localized_multi_line_address_display;
+        localized_multi_line_address_display =
+          response.events[i].venue.address.localized_multi_line_address_display;
         venueName = response.events[i].venue.name;
         if (venueName) {
           venueAddr = `${venueName} , ${localized_multi_line_address_display}`;
-          console.log(`address array --> ${venueName} , ${localized_multi_line_address_display}`);
+          console.log(
+            `address array --> ${venueName} , ${localized_multi_line_address_display}`
+          );
         } else {
           venueAddr = localized_multi_line_address_display;
         }
         bookTicketURL = response.events[i].url;
 
-        generateHTML(eventName, eventLogo, eventStartTime, venueAddr, ticket_Price, bookTicketURL);
+        generateHTML(
+          eventName,
+          eventLogo,
+          eventStartTime,
+          venueAddr,
+          ticket_Price,
+          bookTicketURL
+        );
       }
     });
   }
 
-  function generateHTML(eventName, eventLogo, eventStartTime, venueAddr, ticket_Price, bookTicketURL) {
+  function generateHTML(
+    eventName,
+    eventLogo,
+    eventStartTime,
+    venueAddr,
+    ticket_Price,
+    bookTicketURL
+  ) {
     // $('#resultBlock').empty();
     // cardHTML = "<div class='card' style='width: 400px;'><img class='card-img-top' src=\""+eventLogo+"\" alt='Card image' style='width: 400px; height: 200px;'><div class='card-body'><h4 class='card-title'> "+eventName+"</h4><p>Start Time : "+eventStartTime+"<br>End Time: "+eventEndTime+"<br>"+ticket_Price+"</p></div></div></div>"
     cardHTML = `<div class='card'><div class='row'><div class='col-md-6'><div class='card-block'><h4 class='card-title' style='margin-left: 30px;'>${eventName}</h4><p class='card-text' style='margin-left: 30px;'>Start Time : ${eventStartTime}<br>Venue Address: <br>&nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp${venueAddr}<br>Ticket Price Starts : ${ticket_Price}</p><a href="${bookTicketURL}" style='margin-left: 30px;'  target='_blank' class='btn btn-primary'>Book Tickets</a><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Launch demo modal
   </a></div></div><div class='col-md-6'><img style='color: #fff; height: 15rem; background-size: cover;' src="${eventLogo}"></div></div></div>`;
-    $('#resultBlock').append(cardHTML);
+    $("#resultBlock").append(cardHTML);
   }
 
   /* eslint-enable */
@@ -121,81 +149,93 @@ $(document).ready(() => {
   // }
   // function topFunction() {window.location.reload();}
   /* eslint-disable */
-
+  var userLa;
+  var userLng;
   var map, infoWindow;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 5
-        });
-        infoWindow = new google.maps.InfoWindow;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: -34.397, lng: 150.644 },
+      zoom: 4
+    });
+    infoWindow = new google.maps.InfoWindow();
 
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+         
+          infoWindow.setPosition(pos);
+          infoWindow.setContent("Hello There!");
+          infoWindow.open(map);
+          map.setCenter(pos);
+        },
+        function() {
+          handleLocationError(true, infoWindow, map.getCenter());
         }
-      }
-initMap()
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
+      );
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+  }
+  initMap();
   
+  console.log(map)
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(
+      browserHasGeolocation
+        ? "Error: The Geolocation service failed."
+        : "Error: Your browser doesn't support geolocation."
+    );
+    infoWindow.open(map);
+  }
 
-
-
-  $('#gotop').on('click', () => {
+  $("#gotop").on("click", () => {
     location.reload();
   });
   /* eslint-enable */
 
-  $('#eventType').on('change', () => {
+  $("#eventType").on("change", () => {
     // catogoryID = $('#eventType').attr('data-catogory');
-    catogoryID = $('#eventType option:selected').attr('data-catogory');
+    catogoryID = $("#eventType option:selected").attr("data-catogory");
     // console.log(catogoryID)
     /* eslint-disable */
 
-    if ($('#eventType').val() == 'other') { $('#refinedDiv').css('display', 'block'); } else { $('#refinedDiv').css('display', 'none'); }
-  });
-  $('#submit').on('click', () => {
-    if ($('#eventType').val() == 'other') {
-      eventType = $('#refinedSearch').val().trim();
+    if ($("#eventType").val() == "other") {
+      $("#refinedDiv").css("display", "block");
     } else {
-      eventType = $('#eventType').val();
+      $("#refinedDiv").css("display", "none");
     }
-  /* eslint-enable */
+  });
+  $("#submit").on("click", () => {
+    if ($("#eventType").val() == "other") {
+      eventType = $("#refinedSearch")
+        .val()
+        .trim();
+    } else {
+      eventType = $("#eventType").val();
+    }
+    /* eslint-enable */
 
     //  catogoryID = $('#eventType').attr('data-catogory');
     //  console.log(catogoryID)
-    zipcode = $('#zip').val();
-    dollar = $('#dollar').val();
-    date = $('#date').val();
-    sortID = $('#sortID').val();
-    newStartDate = moment(date).format('YYYY-MM-DD');
+    zipcode = $("#zip").val();
+    // console.log(zipcode)
+    dollar = $("#dollar").val();
+    date = $("#date").val();
+    sortID = $("#sortID").val();
+    newStartDate = moment(date).format("YYYY-MM-DD");
 
-    const endDate = moment(date).add(1, 'days');
-    newEndDate = endDate.format('YYYY-MM-DD');
-    $('#mainBlock').empty();
+    const endDate = moment(date).add(1, "days");
+    newEndDate = endDate.format("YYYY-MM-DD");
+    $("#mainBlock").empty();
     spining();
-    $('#gotop').css('display', 'block');
+    $("#gotop").css("display", "block");
 
     // console.log(eventType)
     // console.log(catogoryID)
@@ -203,7 +243,19 @@ initMap()
     // console.log(dollar)
     // console.log(newStartDate)
     // console.log(newEndDate)
-    getJSON(eventType, catogoryID, zipcode, dollar, newStartDate, newEndDate, sortID);
+    getJSON(
+      eventType,
+      catogoryID,
+      zipcode,
+      dollar,
+      newStartDate,
+      newEndDate,
+      sortID
+    );
     // generateHTML(eventName, eventLogo, eventStartTime, eventEndTime, ticket_Price)
   });
+
+  $(".directions").on("click", function(){
+
+  })
 });
