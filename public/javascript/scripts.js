@@ -1,4 +1,5 @@
 
+
 $(document).ready(() => {
   const config = {
     apiKey: 'AIzaSyBiZI8F7hHMaxIdiE35dtF2zcyg2pecbSM',
@@ -13,7 +14,7 @@ $(document).ready(() => {
   $('#signup').on('click', (event) => {
     event.preventDefault();
     const email = $('#exampleInputEmail1').val().trim();
-    const password = $('#exampleInputPassword1').val().trim();
+    // const password = $('#exampleInputPassword1').val().trim();
     const name = $('#name').val().trim();
     const number = $('#ph-number').val().trim();
     const zip = $('#zip-code').val().trim();
@@ -25,6 +26,16 @@ $(document).ready(() => {
     const user = firebase.auth().currentUser;
     // console.log(newUser);
     // const myPassword = 'Password';
+    const encryptedPassword = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), password);
+    const res = String(encryptedPassword);
+    const decryptedPassword = CryptoJS.AES.decrypt(res, password);
+    const decryptedToString = decryptedPassword.toString(CryptoJS.enc.Utf8);
+    // window.alert(encryptedPassword)
+    // window.alert(res)
+    // window.alert(decryptedPassword)
+    // window.alert(decryptedToString)
+
+    firebase.auth().createUserWithEmailAndPassword(email, decryptedToString)
     // var password = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), myPassword);
     // const res = String(password);
     firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -36,6 +47,7 @@ $(document).ready(() => {
       // })
       .catch((error) => {
         // const errorToast = error;
+        // location.reload();
         $('#signup-error').text(error.message);
       });
 
@@ -55,13 +67,18 @@ $(document).ready(() => {
     event.preventDefault();
 
     const email = $('#exampleInputEmail1').val().trim();
-    const password = $('#exampleInputPassword1').val().trim();
+    // const password = $('#exampleInputPassword1').val().trim();
     // const myPassword = 'Password';
-    // var password = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), myPassword);
+    const encryptedPassword = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), password);
+    const res = String(encryptedPassword);
+    // window.alert(encryptedPassword)
+    // window.alert(res)
+    const decryptedPassword = CryptoJS.AES.decrypt(res, password);
+    const decryptedToString = decryptedPassword.toString(CryptoJS.enc.Utf8);
     // const resLogin = String(password);
     // const user = firebase.auth().currentUser;
 
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    firebase.auth().signInWithEmailAndPassword(email, decryptedToString)
     // .then(function(user) {
     //   if(user){
     //     window.location = "http://localhost:3000"
@@ -70,7 +87,7 @@ $(document).ready(() => {
       .catch((error) => {
         const errorToast = error;
         $('#signin-error').text(errorToast.message);
-        // location.reload();
+        // setTimeout(() => { location.reload(); }, 3000);
       });
 
     $('#exampleInputEmail1').val('');
@@ -105,19 +122,19 @@ $(document).ready(() => {
     });
   });
 
-  //firebase.auth().onAuthStateChanged((user) => {
-    // if (user) {
-    //   // User is signed in.
-    //   const { displayName } = user;
-    //   const { email } = user;
-    //   const { emailVerified } = user;
-    //   const { photoURL } = user;
-    //   const { isAnonymous } = user;
-    //   const { uid } = user;
-    //   const { providerData } = user;
-    //   console.log(user);
-    //   console.log(email);
-    // } else {
-    // }
-  //});
+  // firebase.auth().onAuthStateChanged((user) => {
+  // if (user) {
+  //   // User is signed in.
+  //   const { displayName } = user;
+  //   const { email } = user;
+  //   const { emailVerified } = user;
+  //   const { photoURL } = user;
+  //   const { isAnonymous } = user;
+  //   const { uid } = user;
+  //   const { providerData } = user;
+  //   console.log(user);
+  //   console.log(email);
+  // } else {
+  // }
+  // });
 });
