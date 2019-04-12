@@ -83,7 +83,7 @@ $(document).ready(() => {
       .catch((error) => {
         const errorToast = error;
         $('#signin-error').text(errorToast.message);
-        //setTimeout(() => { location.reload(); }, 3000);
+        // setTimeout(() => { location.reload(); }, 3000);
       });
 
     $('#exampleInputEmail1').val('');
