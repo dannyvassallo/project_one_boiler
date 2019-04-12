@@ -15,7 +15,8 @@ $('#original-lyrics-display').hide();
 $('#translated-lyrics-display').hide();
 
 database.ref().on('value', (snapshot) => {
-  $('#last-song-div').text(snapshot.val().lastSong);
+  $('#last-song').text(snapshot.val().lastSong);
+
 });
 
 // SUBMIT BUTTON ONCLICK FUNCTION
@@ -43,7 +44,10 @@ function videoSearch(song, artist) {
     const youTubeVid = watchVideoUrl + results;
     const videos = $('<iframe>');
     videos.attr('src', youTubeVid);
+    videos.css("height", "400px");
+    videos.css("width", "700px");
     $('#videos-display').append(videos);
+    console.log(response);
   });
 }
 
@@ -147,23 +151,43 @@ function translateLyrics(originalLyrics) {
 }
 $("#commentForm").validate();
 
-$("#submitBtn").on("click", function() {
+$("#submitBtn").on("click", function(event) {
   event.preventDefault();
   $("#cname").val().trim();
   $("#ccomment").val().trim();
 
+  var newNameCard = $("#cname").val().trim();
+  var newUserComment= $("#ccomment").val().trim();
+  var newUserEmail = $("#cemail").val().trim();
+
+  var newUserInfo = {
+    name: newNameCard,
+    email: newUserEmail,
+    comment: newUserComment,
+  };
+
+  database.ref().push(newUserInfo);
+
+  $("#cname").val("");
+  $("#cemail").val("");
+  $("#ccomment").val("");
+
+});
+
+database.ref().on("child_added", function(childSnapshot){
+
+  var newNameCard = childSnapshot.val().name;
+  var newUserEmail = childSnapshot.val().email;
+  var newUserComment = childSnapshot.val().comment;
+
   let newCommentCard = $("<div>");
   newCommentCard.addClass("card text-center");
-
   let newComment = $("<div>");
   newComment.addClass("card-title");
-
   let commentName = $("<h5>");
   commentName.addClass("card-title");
-
   let commentText = $("<p>");
   commentText.addClass("card-text");
-
   var newNameCard = $("#cname").val().trim();
   var newUserComment= $("#ccomment").val().trim();
 
