@@ -130,3 +130,8 @@ html, body {
     margin-top: 30vh;
   }
 }
+
+#map {
+  height: 400px;
+  width: 100%;
+}
