@@ -145,26 +145,26 @@ $('#submitBtn').on('click', (event) => {
   const newUserEmail = $('#cemail').val().trim();
 
 
-  var object = [
+  const object = [
     {
       value: newNameCard,
-      jQ: $("#cname"),
-      message: "Please enter a name",
+      jQ: $('#cname'),
+      message: 'Please enter a name',
     },
     {
       value: newUserEmail,
-      jQ: $("#cemail"),
-      message: "Enter your email",
+      jQ: $('#cemail'),
+      message: 'Enter your email',
     },
     {
       value: newUserComment,
-      jQ: $("#ccomment"),
-      message: "Enter a message",
+      jQ: $('#ccomment'),
+      message: 'Enter a message',
     },
-  ]
+  ];
 
-  for(var i = 0; i < object.length; i++){
-    if(object[i].value.length === 0){
+  for (let i = 0; i < object.length; i++) {
+    if (object[i].value.length === 0) {
       object[i].jQ.css('background', 'red').val(object[i].message).css('color', 'white');
     }
   }
@@ -176,12 +176,12 @@ $('#submitBtn').on('click', (event) => {
   };
   if (newNameCard.length > 0 && newUserComment.length > 0 && newUserEmail.length > 0) {
     comment.push(newUserInfo);
-  $('#cname').val('');
-  $('#cemail').val('');
-  $('#ccomment').val('');
-}
-// else if (newNameCard.length === 0){
-//   $('#cname').css('background', 'red').val('Please enter a name').css('color', 'white');
+    $('#cname').val('');
+    $('#cemail').val('');
+    $('#ccomment').val('');
+  }
+  // else if (newNameCard.length === 0){
+  //   $('#cname').css('background', 'red').val('Please enter a name').css('color', 'white');
 
 
 // }
