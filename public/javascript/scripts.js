@@ -184,10 +184,10 @@ function requestTicketmaster() {
           cardHeader.text(eventTitle);
 
           let cardBody = $("<div class='card-body'>");
-          cardHeader.append(cardBody);
+          newCard.append(cardBody);
 
-          let modalInfo = $("<div");
-          modalInfo.atr("data-title", eventTitle);
+          let modalInfo = $("<div>");
+          modalInfo.attr("data-title", eventTitle);
           modalInfo.attr("data-date", eventDate);
           modalInfo.attr("data-time", eventTime);
           modalInfo.attr("data-url", eventUrl);
