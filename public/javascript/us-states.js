@@ -1,5 +1,5 @@
 
-const states = [
+const jqvStates = [
   {
     name: 'Alabama',
     abbreviation: 'AL',
