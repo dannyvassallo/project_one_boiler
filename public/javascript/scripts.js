@@ -27,6 +27,9 @@ const { $ } = window;
   let eventVenueLati;
   let venueDistance;
   let venueTravelTime;
+  let map;
+  let marker;
+  let position;
 
 $(document).ready(function() {
 
@@ -147,7 +150,7 @@ function requestTicketmaster() {
 
 //if else statements added
     if (responseX === undefined) {
-      console.log("tryagain");
+      console.log("Try Again");
       var noResults = $("<div class='card' id='errorMessage'>");
       noResults.text("Try Again! There's no results for this in your area.")
       $("#cardZone").append(noResults);
@@ -202,20 +205,30 @@ function requestTicketmaster() {
 
           let button = $("<button>");
           button.attr("type", "button");
-          button.attr("class", "btn btn-dark");
+          button.attr("class", "btn btn-dark modal-btn");
           button.attr("id", "modal-btn");
           button.attr("data-toggle", "modal");
           button.attr("data-target", "#exampleModal");
           button.text("More Info");
+          button.attr("data-url", eventUrl);
+          button.attr("data-title", eventTitle);
+          button.attr("data-name", eventVenueName);
+          button.attr("data-map-info", JSON.stringify({
+            lat: eventVenueLati,
+            lng: eventVenueLong
+          }));
 
           let info = $("<div>").append(
 
             $("<p>").text(eventDate),
             $("<p>").text(eventTime),
             $("<p>").text(eventVenueName),
-            $("<div>").append(button)
+            $("<div>").append(button),
           );
           cardBody.append(info);
+
+          let br = $("<br>");
+          $("#cardZone").append(br);
         })
       }
     }
@@ -237,3 +250,53 @@ function findDistance() {
 
 $('#submit-btn').on('click', retrieveForm);
 $('#modal-btn').on('click', findDistance);
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: position
+  });
+
+  marker = new google.maps.Marker({
+    position: position,
+    map: map,
+  });
+}
+
+$(document).on("click", ".modal-btn", function(){
+  findDistance();
+  var eventShowName = $(this).data("title");
+  $(".modal-title").text(eventShowName);
+
+  var modalDiv = $("<div>")
+
+  var venueName = $(this).data("name")
+
+  modalDiv.append($("<p>").text(venueName))
+
+  modalDiv.append($("<p>").text("Distance: " + venueDistance))
+
+  var link = $(this).data("url");
+  var pLink = $("<p>").text("Tickets Here!");
+  pLink.attr("href", link);
+  modalDiv.append(pLink);
+
+  $(".modal-body").append(modalDiv)
+
+  var eventLocation = $(this).data("map-info")
+  position = {
+    lat: parseFloat(eventLocation.lat),
+    lng: parseFloat(eventLocation.lng)
+  }
+  console.warn(position)
+  var venueName = $(this).data("name")
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    center: position
+  });
+
+  marker = new google.maps.Marker({
+    position: position,
+    map: map,
+  });
+})
