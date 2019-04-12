@@ -1,6 +1,11 @@
 $(document).ready(() => {
+<<<<<<< HEAD
   var latitude;
   var longitude;
+=======
+  let latitude;
+  let longitude;
+>>>>>>> 8d1e8b9c15c3e9854d1728073bcfb8b30d7110dd
   // navigator.geolocation.getCurrentPosition(function(position) {
   //   // console.log(position.coords.latitude, position.coords.longitude);
   //    var latitude = position.coords.latitude;
@@ -15,6 +20,11 @@ $(document).ready(() => {
   var latitude = sessionStorage.getItem('latitude');
   var longitude = sessionStorage.getItem('longitude');
 
+  /* eslint-disable */
+  navigator.geolocation.getCurrentPosition(showPosition);
+  var latitude = sessionStorage.getItem('latitude');
+  var longitude = sessionStorage.getItem('longitude');
+  /* eslint-enable */
   function getWeatherAPI(latitude, longitude) {
     $('#weatherReport').empty();
     const queryURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=6a7eccd734ea6cc33cc80c8d464a5eca`;

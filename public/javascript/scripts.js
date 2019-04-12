@@ -37,6 +37,7 @@ $(document).ready(() => {
     // window.alert(decryptedToString)
 
     firebase.auth().createUserWithEmailAndPassword(email, password);
+
     // var password = CryptoJS.AES.encrypt($('#exampleInputPassword1').val().trim(), myPassword);
     // const res = String(password);
     firebase.auth().createUserWithEmailAndPassword(email, password)
