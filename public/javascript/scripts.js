@@ -26,20 +26,23 @@ let venueTravelTime;
   };
 
   firebase.initializeApp(config);
-$("#btnLogin").on("click", function() {
+
+$(document).ready(function(event) {
+
   // Get elements and define buttons
-  // const txtEmail = $("#txtEmail").val().trim();
-  // const txtPassword = $("#txtPassword").val().trim();
+  const txtEmail = $("#txtEmail")
+  console.log(txtEmail);
+  const txtPassword = $("#txtPassword")
   const btnLogin = $("#btnLogin");
   const btnSignUp = $("#btnSignUp");
   const btnLogout = $("#btnLogout");
 
   //add login event
-  btnLogin.on("click", function(event) {
+  btnLogin.on("click", function() {
     event.preventDefault();
     // get email and pass
-    const email = txtEmail;
-    const pass = txtPassword;
+    const email = txtEmail.val().toString().trim();
+    const pass = txtPassword.val().trim();
     const auth = firebase.auth();
     // sign in
     const promise = auth.signInWithEmailAndPassword(email, pass);
@@ -47,11 +50,12 @@ $("#btnLogin").on("click", function() {
   })
 
   // add sign up event
-  btnSignUp.on("click", function(event) {
+  btnSignUp.on("click", function() {
     event.preventDefault();
     // get email and pass
-    const email = txtEmail;
-    const pass = txtPassword;
+    const email = txtEmail.val().toString().trim();
+    console.log(email);
+    const pass = txtPassword.val().trim();
     const auth = firebase.auth();
     // create user
     const promise = auth.createUserWithEmailAndPassword(email, pass);
@@ -59,8 +63,7 @@ $("#btnLogin").on("click", function() {
   })
 
   // log out current user
-  btnLogout.on("click", function(event){
-    event.preventDefault();
+  btnLogout.on("click", function(){
     firebase.auth().signOut();
   })
 
@@ -73,9 +76,8 @@ $("#btnLogin").on("click", function() {
       console.log('user not logged in');
      // btnLogout.classList.add('hide');
     }
-  });
+  })
 });
-
 
 function loadVideoBackground() {
   const bv = new Bideo(); // eslint-disable-line no-undef
@@ -144,14 +146,14 @@ function requestTicketmaster() {
 //if else statements added
     if (responseX === undefined) {
       console.log("tryagain");
-      var noResults = $("<div");
+      var noResults = $("<div>");
       noResults.text("Try Again")
-      $(".someclass").append(noResults);
+      $("#cardZone").append(noResults);
     } else {
       if (responseX.length === 0) {
-        var noResults = $("<div");
+        var noResults = $("<div>");
         noResults.text("Try Again")
-        $(".someclass").append(noResults);
+        $("#cardZone").append(noResults);
     } else {
 
         console.log(response);
@@ -198,7 +200,7 @@ function requestTicketmaster() {
 
           let button = $("<button>");
           button.attr("type", "button");
-          button.attr("class", "btn btn-primary");
+          button.attr("class", "btn btn-dark");
           button.attr("id", "modal-btn");
           button.attr("data-toggle", "modal");
           button.attr("data-target", "#exampleModal");
