@@ -7,14 +7,17 @@ let questionIndex; let
   answerIndex;
 
 
-playGame = function (element, code, region) {
+playGame = function(element, code, region) {
   if (!code) {
-		  numQuestions = prompt('How many questions would you like?');
+		//numQuestions = prompt('How many questions would you like?');
+    //numQuestions = document.getElementById('mapQuestion1').value;
+    numQuestions = 5;
+		//console.log('numQuestions = ' + numQuestions);
     generateNextQuestion();
     return;
   }
 
-  if (code == states[questionIndex].abbreviation) {
+  if (code == jqvStates[questionIndex].abbreviation) {
     rightAnswer();
     playOn();
   } else {
@@ -39,13 +42,17 @@ generateNextQuestion = function () {
 
   let nextQuestionFound = false;
   while (!nextQuestionFound) {
+    // figure out random state:
     const i = Math.floor(Math.random() * 50);
+    // ask about random 
 
-    if (!states[i].answered) {
-	      console.log(`Where is ${states[i].name}?`);
+    if (!jqvStates[i].answered) {
+	    console.log(`Where is ${jqvStates[i].name}?`);
+	    $(".question-target").text(`Where is ${jqvStates[i].name}?`)
+	    
 
       questionIndex = i;
-      states[i].answered = true;
+      jqvStates[i].answered = true;
       nextQuestionFound = true;
     }
   }
@@ -61,25 +68,28 @@ rightAnswer = function () {
 
 
 bonusQuestion = function () {
-  const bonusCapital = prompt(`What is the capital of ${states[questionIndex].name}?`);
+  const bonusCapital = prompt(`What is the capital of ${jqvStates[questionIndex].name}?`);
 
-  if (bonusCapital == states[questionIndex].capital) {
+  if (bonusCapital == jqvStates[questionIndex].capital) {
     console.log('Right Again! You scored 1 extra point.');
     rightAnswers++;
-  } else { console.log(`Sorry, the capital of ${states[questionIndex].name} is ${states[questionIndex].capital}`); }
+  } else {
+    $('.wrong-answer-info').text(`Sorry, the capital of ${jqvStates[questionIndex].name} is ${jqvStates[questionIndex].capital}`);
+    console.log(`Sorry, the capital of ${jqvStates[questionIndex].name} is ${jqvStates[questionIndex].capital}`);
+    }
 };
 
 
 wrongAnswer = function (code) {
   numGuesses++;
   let guessText;
-  for (i = 0; i < states.length; i++) {
-    if (states[i].abbreviation == code) {
+  for (i = 0; i < jqvStates.length; i++) {
+    if (jqvStates[i].abbreviation == code) {
       if (numGuesses == 1) guessText = '2 guesses left';
       else if (numGuesses == 2) guessText = '1 guess left';
       else guessText = 'Sorry, no more guesses.';
 
-      console.log(`No, that's ${states[i].name}. ${guessText}`);
+      console.log(`No, that's ${jqvStates[i].name}. ${guessText}`);
     }
   }
 };
