@@ -28,8 +28,8 @@ let venueTravelTime;
   firebase.initializeApp(config);
 
   // Get elements and define buttons
-  const txtEmail = $("#txtEmail").val().trim();
-  const txtPassword = $("#txtPassword").val().trim();
+  // const txtEmail = $("#txtEmail").val().trim();
+  // const txtPassword = $("#txtPassword").val().trim();
   const btnLogin = $("#btnLogin");
   const btnSignUp = $("#btnSignUp");
   const btnLogout = $("#btnLogout");
@@ -143,7 +143,7 @@ function requestTicketmaster() {
     let responseX = response['_embedded'];
     
 //if else statements added
-    if (reponseX === undifined) {
+    if (responseX === undefined) {
       console.log("tryagain");
       var noResults = $("<div");
       noResults.text("Try Again")
