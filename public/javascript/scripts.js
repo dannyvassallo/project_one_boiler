@@ -6,16 +6,8 @@ console.warn('Project One JS Initialized');
 // global variables
 const { $ } = window;
 /* eslint-disable */
-let eventName;
-let userLocation;
-let userRange;
-let formBlock = [];
-let eventVenueLong;
-let eventVenueLati;
-let venueDistance;
-let venueTravelTime;
 
-  // Initialize Firebase
+  // Initialize Firebase //ifelse,,, firebase push instead of acnt,
   const config = {
     apiKey: "AIzaSyAuYurRhlpUCigwzBy1q4ear58FUZox8OA",
     authDomain: "showspotter-10b13.firebaseapp.com",
@@ -27,21 +19,31 @@ let venueTravelTime;
 
   firebase.initializeApp(config);
 
-$(document).ready(function(event) {
+  let eventName;
+  let userLocation;
+  let userRange;
+  let formBlock = [];
+  let eventVenueLong;
+  let eventVenueLati;
+  let venueDistance;
+  let venueTravelTime;
+
+$(document).ready(function() {
 
   // Get elements and define buttons
-  const txtEmail = $("#txtEmail")
+  const txtEmail = $("#txtEmail");
   console.log(txtEmail);
-  const txtPassword = $("#txtPassword")
+  const txtPassword = $("#txtPassword");
   const btnLogin = $("#btnLogin");
   const btnSignUp = $("#btnSignUp");
   const btnLogout = $("#btnLogout");
 
   //add login event
-  btnLogin.on("click", function() {
+  btnLogin.on("click", function(event) {
     event.preventDefault();
     // get email and pass
-    const email = txtEmail.val().toString().trim();
+    const email = txtEmail.val().trim();
+    console.log(email);
     const pass = txtPassword.val().trim();
     const auth = firebase.auth();
     // sign in
@@ -50,7 +52,7 @@ $(document).ready(function(event) {
   })
 
   // add sign up event
-  btnSignUp.on("click", function() {
+  btnSignUp.on("click", function(event) {
     event.preventDefault();
     // get email and pass
     const email = txtEmail.val().toString().trim();
@@ -146,13 +148,13 @@ function requestTicketmaster() {
 //if else statements added
     if (responseX === undefined) {
       console.log("tryagain");
-      var noResults = $("<div>");
-      noResults.text("Try Again")
+      var noResults = $("<div class='card' id='errorMessage'>");
+      noResults.text("Try Again! There's no results for this in your area.")
       $("#cardZone").append(noResults);
     } else {
       if (responseX.length === 0) {
-        var noResults = $("<div>");
-        noResults.text("Try Again")
+        var noResults = $("<div class='card' id='errorMessage'>");
+        noResults.text("Try Again!")
         $("#cardZone").append(noResults);
     } else {
 

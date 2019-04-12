@@ -12,6 +12,13 @@
   background: transparent;
 }
 
+#errorMessage {
+ color: black;
+ font-weight: bolder;
+ padding: 10px;
+ margin: 10px;
+}
+
 .form-row {
   /* position: absolute; */
   /* top: 40vh; */
