@@ -150,7 +150,7 @@ $(document).ready(() => {
           handleLocationError(false, infoWindow, map.getCenter());
         }
       }
-
+initMap()
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
@@ -159,7 +159,7 @@ $(document).ready(() => {
         infoWindow.open(map);
       }
   
-initMap()
+
 
 
   $('#gotop').on('click', () => {
