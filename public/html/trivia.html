@@ -13,12 +13,11 @@
   <link rel="stylesheet" href="./static/css/style.css">
   <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
-
 </head>
 
 <body>
 
-  <!-- header -->
+<!-- header -->
   <div class="jumbotron jumbotron-fluid bg-dark" id="header">
     <div class="container">
       <h1 class="display-4 text-center text-white">ge<img height="80px" width="auto" src="./static/images/rotating-earth-1.gif">ST<img
@@ -26,7 +25,7 @@
     </div>
   </div>
 
-  <!-- second page -->
+<!-- second page -->
   <div class="container-fluid">
     <div class="row mt-4">
       <div class="col-md-12">
@@ -35,6 +34,7 @@
             <div class="col-md-10">
               <div class="row">
                 <div class="col-md-8 ">
+                  <h5>Click any where on the map to learn "State's Fun Fact"</h5>
                   <div id="vmap" style="height: 400px;"></div>
                   <div class="row showFactArea text-center"></div>
                 </div>
@@ -48,13 +48,10 @@
                 </div>
               </div>
             </div>
-
             <div class="col-md-2" id="legend"></i></i>
-              <p>LINKS <i class="fas fa-home"></i></p>
-              <p><a href="/trivia" class='btn-lg btn-primary' id="triviaBtn">Trivia <i class="fas fa-award"></i></a></p>
-
-              <p><a href="/" class='btn-lg btn-primary' id="factsBtn">Home <i class="fas fa-bacon"></i></a></p>
-
+              <p>LINKS <i class="fas fa-hotdog"></i></p>
+              <p><a href="/" class='btn-lg btn-primary' id="factsBtn">Home <i class="fas fa-home"></i></a></p>
+              <p><a href="/trivia" class='btn-lg btn-primary' id="triviaBtn">Fun Facts <i class="fas fa-award"></i></a></p>
             </div>
           </div>
         </div>
@@ -63,27 +60,23 @@
   </div>
   </div>
 
+<!-- footer -->
   <div class="jumbotron jumbotron-fluid bg-dark" id="footer">
     <div class="container">
       <h5 class="text-center text-white"><i class="far fa-copyright"></i> Rachael Michelle Sushmita Kevin</h5>
     </div>
   </div>
 
-
-  <!-- footer -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="./static/javascript/scripts.js"></script>
-  <script src="./static/javascript/us-map.js"></script>
-  <script src="./static/javascript/newsscript.js"></script>
-  <script src="./static/javascript/jquery.vmap.js"></script>
-  <script src="./static/javascript/jquery.vmap.usa.js"></script>
-  <script src="./static/javascript/factscripts.js"></script>
-  <script src="./static/javascript/iplocationscript.js"></script>
-
+<!-- javascript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="./static/javascript/jquery.vmap.js"></script>
+<script src="./static/javascript/jquery.vmap.usa.js"></script>
+<script src="./static/javascript/factscripts.js"></script>
+<script src="./static/javascript/newsscript.js"></script>
+<script src="./static/javascript/iplocationscript.js"></script>
 </body>
 
 </html>
