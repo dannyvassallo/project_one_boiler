@@ -272,6 +272,7 @@ function initMap() {
 }
 
 $(document).on("click", ".modal-btn", function(){
+  $(".modal-title").empty();
   findDistance();
 
   var eventShowName = $(this).data("title")
@@ -284,6 +285,12 @@ $(document).on("click", ".modal-btn", function(){
   modalDiv.append($("<p>").text(venueName))
 
   modalDiv.append($("<p>").text("Distance: " + venueDistance))
+
+  
+  var link = $(this).data("url");
+  var pLink = $("<a>").text("Tickets Here!");
+  pLink.attr("href", link);
+  modalDiv.append(pLink);
 
   $(".modal-body").append(modalDiv)
 
