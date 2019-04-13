@@ -14,6 +14,7 @@ ShowSpotter - A search engine where you can find Art/Music events within a given
 
 ![Map Screenshot](public/images/mapmodal.png)
 
+You can view our app here: <https://show-spotter.herokuapp.com/>
 
 ## Team Members
 
