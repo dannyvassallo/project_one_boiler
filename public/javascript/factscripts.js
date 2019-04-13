@@ -253,7 +253,7 @@ const states = [{
 },
 ];
 
-//  copied from Kevin's us-map.js
+//  --- Initialize US map, copied from us-map.js
 initializeMap = function () {
   $('#vmap').vectorMap({
     map: 'usa_en',
@@ -273,7 +273,11 @@ initializeMap = function () {
     showTooltip: true,
     onRegionClick(element, code, region) {
       code = code.toUpperCase();
-      playGame(element, code, region);
+      // $('.showFactArea').val("");
+      // $('.articleTitle').val("");
+      renderStateTrivia(element, code, region);
+      renderStateTriviaFacts(element, code, region);
+      resetMapSel();
     },
   });
 };
@@ -283,25 +287,21 @@ $(document).ready(() => {
   initializeMap();
 });
 
-
-//  copied from Kevin's us-map.js  .............. end of kevin's code
-
-
-//  -------------below script is part of factscripts.js
-
-var panelSy = $('.showFactArea');
-let i = 0;
-console.log(region);
-var stateSelected ='New York';
-stateSelected = region;
+resetMapSel = function () {
+  $('#vmap').vectorMap('deselect', 'us');
+};
 
 
-for (i = 0; i < states.length; i++) {
-  // if ($("StateSelected")===states[i].state) {
-  if (stateSelected === states[i].state) {
-    panelSy.append(`<h3>Weird Fun Fact : ${states[i].funFact}</h3>`);
-    panelSy.append(`<img id="ffphoto" src="${states[i].picLink}" />`);
 
-    $('.showFactArea').append(panelSy);
-  }
-}
+const renderStateTrivia = (element, code, region) => {
+  const selectedStateObject = states.filter(state => {
+      return state.state === region
+   })[0];
+   var panelSy = $('.showFactArea');
+    panelSy.append(`<h2>You have selected : ${selectedStateObject.state}</h3>`);
+    panelSy.append(`<h4>Weird Fun Fact : ${selectedStateObject.funFact}</h3>`);
+    panelSy.append(`<img id="ffphoto" src="${selectedStateObject.picLink}" />`);
+    panelSy.append(`<p>_______________________________________________________________</p>`);
+
+    $('.showFactArea').prepend(panelSy);
+};
