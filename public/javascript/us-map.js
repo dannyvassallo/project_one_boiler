@@ -1,18 +1,18 @@
 
 
-let
-  numQuestions; let numAnswers = 0; let numGuesses = 0;
+let numQuestions; let numAnswers = 0; let numGuesses = 0;
 let rightAnswers = 0; let wrongAnswers = 0;
-let questionIndex; let
-  answerIndex;
+let answeringBonus = false; let bonusCapital;
+let questionIndex; let answerIndex;
 
 
-playGame = function(element, code, region) {
+playGame = function (element, code, region) {
   if (!code) {
-		//numQuestions = prompt('How many questions would you like?');
-    //numQuestions = document.getElementById('mapQuestion1').value;
+    numQuestions = $('input[nq]:checked').val();
+    console.log(`numQuestions = ${numQuestions}`);
     numQuestions = 5;
-		//console.log('numQuestions = ' + numQuestions);
+
+    console.log(`numQuestions = ${numQuestions}`);
     generateNextQuestion();
     return;
   }
@@ -23,60 +23,53 @@ playGame = function(element, code, region) {
   } else {
     wrongAnswer(code);
     if (numGuesses < 3) { } else {
-	      wrongAnswers++;
-	      playOn();
+      wrongAnswers++;
+      $('#wrong-answers').text(wrongAnswers);
+      playOn();
     }
   }
 };
 
 
 playOn = function () {
-  numAnswers++;
-  if (numAnswers < numQuestions) generateNextQuestion();
-  else endGame();
-};
-
-generateNextQuestion = function () {
-  resetMap();
-  numGuesses = 0;
-
-  let nextQuestionFound = false;
-  while (!nextQuestionFound) {
-    // figure out random state:
-    const i = Math.floor(Math.random() * 50);
-    // ask about random
-
-    if (!jqvStates[i].answered) {
-	    console.log(`Where is ${jqvStates[i].name}?`);
-	    $(".question-target").text(`Where is ${jqvStates[i].name}?`)
-
-
-      questionIndex = i;
-      jqvStates[i].answered = true;
-      nextQuestionFound = true;
-    }
+  if (!answeringBonus) {
+    numAnswers++;
+    if (numAnswers < numQuestions) generateNextQuestion();
+    else endGame();
   }
 };
 
-
 rightAnswer = function () {
-  console.log('CORRECT - GREAT JOB!');
+  $('#display-bonus-question').html(`Right! Bonus question:<br>What is the capital of ${jqvStates[questionIndex].name}?`);
+  console.log(`Right! Bonus question: What is the capital of ${jqvStates[questionIndex].name}?`);
 
+  answeringBonus = true;
   rightAnswers++;
-  bonusQuestion();
+  $('#right-answers').text(rightAnswers);
+  // bonusQuestion();
 };
 
 
 bonusQuestion = function () {
-  const bonusCapital = prompt(`What is the capital of ${jqvStates[questionIndex].name}?`);
+  answeringBonus = false;
+  bonusCapital = $('#bq').val(); console.log(`bonusCapital = ${bonusCapital}`);
 
   if (bonusCapital == jqvStates[questionIndex].capital) {
-    console.log('Right Again! You scored 1 extra point.');
+    $('#display-bonus-answer').text('Right Again! You get an extra point.');
+    console.log('Right Again! You get an extra point.');
     rightAnswers++;
+    $('#right-answers').text(rightAnswers);
   } else {
-    $('.wrong-answer-info').text(`Sorry, the capital of ${jqvStates[questionIndex].name} is ${jqvStates[questionIndex].capital}`);
+    $('#display-bonus-answer').text(`Sorry, the capital of ${jqvStates[questionIndex].name} is ${jqvStates[questionIndex].capital}`);
     console.log(`Sorry, the capital of ${jqvStates[questionIndex].name} is ${jqvStates[questionIndex].capital}`);
-    }
+  }
+
+  setTimeout(() => {
+    $('#display-bonus-question').html('');
+    $('#display-bonus-answer').text('');
+    $('#bq').val('');
+    generateNextQuestion();
+  }, 3000);
 };
 
 
@@ -88,8 +81,33 @@ wrongAnswer = function (code) {
       if (numGuesses == 1) guessText = '2 guesses left';
       else if (numGuesses == 2) guessText = '1 guess left';
       else guessText = 'Sorry, no more guesses.';
+    }
 
+
+    setTimeout(() => {
+      $('#display-guesses-left').text(`No, that's ${jqvStates[i].name}. ${guessText}`);
       console.log(`No, that's ${jqvStates[i].name}. ${guessText}`);
+    }, 3000);
+    $('#display-guesses-left').text('');
+  }
+};
+
+
+generateNextQuestion = function () {
+  resetMap();
+  numGuesses = 0;
+
+  let nextQuestionFound = false;
+  while (!nextQuestionFound) {
+    const i = Math.floor(Math.random() * 50);
+
+    if (!jqvStates[i].answered) {
+	    $('#display-question').text(`Where is ${jqvStates[i].name}?`);
+	    console.log(`Where is ${jqvStates[i].name}?`);
+
+      questionIndex = i;
+      jqvStates[i].answered = true;
+      nextQuestionFound = true;
     }
   }
 };
