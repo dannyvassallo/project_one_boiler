@@ -11,8 +11,7 @@ const config = {
 firebase.initializeApp(config);
 const database = firebase.database();
 const comment = firebase.database().ref('/Comments');
-$('#original-lyrics-display').hide();
-$('#translated-lyrics-display').hide();
+$('#results-display').hide();
 
 database.ref('/songs').on('value', (snapshot) => {
   $('#last-song').text(snapshot.val().lastSong);
@@ -55,8 +54,7 @@ function translateLyrics(originalLyrics) {
       `Translated Lyrics:<br> ${response.text}`,
     );
 
-    $('#original-lyrics-display').show();
-    $('#translated-lyrics-display').show();
+    $('#results-display').show()
   });
 }
 
