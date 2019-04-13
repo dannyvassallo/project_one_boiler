@@ -7,7 +7,10 @@ $(document).ready(() => {
   let newStartDate;
   let catogoryID;
   /* eslint-disable */
-
+  let latitude;
+  let longitude;
+  let dataLat;
+  let dataLong;
   // Adding Spinner for 5 seconds while loading API
   function spining() {
     const opts = {
@@ -47,10 +50,6 @@ $(document).ready(() => {
     }).then((response) => {
       console.log(response);
       console.log(queryURL);
-      console.log(response.events.length)
-      if(response.events.length == 0) {
-        $("#noresult").css('display', 'block');
-      }
       //  console.log(response.events[0].ticket_classes[1].cost.display)
       for (let i = 0; i < 10; i++) {
         console.log(`Event Name: ${response.events[i].name.text}`);
@@ -90,6 +89,13 @@ $(document).ready(() => {
         }
         localized_multi_line_address_display = response.events[i].venue.address.localized_multi_line_address_display;
         venueName = response.events[i].venue.name;
+        // var latitude = response.events[i].venue.latitude;
+        // var longitude = response.event[i].venue.longitude;
+        // console.log(latitude, longitude)
+        console.log(response.events[i].venue.latitude);
+        console.log(response.events[i].venue.longitude);
+        latitude = response.events[i].venue.latitude;
+        longitude = response.events[i].venue.longitude;
         if (venueName) {
           venueAddr = `${venueName} , ${localized_multi_line_address_display}`;
           console.log(`address array --> ${venueName} , ${localized_multi_line_address_display}`);
@@ -98,42 +104,28 @@ $(document).ready(() => {
         }
         bookTicketURL = response.events[i].url;
 
-        generateHTML(eventName, eventLogo, eventStartTime, venueAddr, ticket_Price, bookTicketURL);
+        generateHTML(eventName, eventLogo, eventStartTime, venueAddr, ticket_Price, bookTicketURL, latitude, longitude);
       }
     });
   }
 
-  function generateHTML(eventName, eventLogo, eventStartTime, venueAddr, ticket_Price, bookTicketURL) {
+  function generateHTML(eventName, eventLogo, eventStartTime, venueAddr, ticket_Price, bookTicketURL, latitude, longitude) {
     // $('#resultBlock').empty();
     // cardHTML = "<div class='card' style='width: 400px;'><img class='card-img-top' src=\""+eventLogo+"\" alt='Card image' style='width: 400px; height: 200px;'><div class='card-body'><h4 class='card-title'> "+eventName+"</h4><p>Start Time : "+eventStartTime+"<br>End Time: "+eventEndTime+"<br>"+ticket_Price+"</p></div></div></div>"
-    cardHTML = `<div class='card'><div class='row'><div class='col-md-6'><div class='card-block'><h4 class='card-title' style='margin-left: 30px;'>${eventName}</h4><p class='card-text' style='margin-left: 30px;'>Start Time : ${eventStartTime}<br>Venue Address: <br>&nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp${venueAddr}<br>Ticket Price Starts : ${ticket_Price}</p><a href="${bookTicketURL}" style='margin-left: 30px;'  target='_blank' class='btn btn-primary'>Book Tickets</a></div></div><div class='col-md-6'><img style='color: #fff; height: 15rem; background-size: cover;' src="${eventLogo}"></div></div></div>`;
+    // cardHTML = `<div class='card'><div class='row'><div class='col-md-6'><div class='card-block'><h4 class='card-title' style='margin-left: 30px;'>${eventName}</h4><p class='card-text' style='margin-left: 30px;'>Start Time : ${eventStartTime}<br>Venue Address: <br>&nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp${venueAddr}<br>Ticket Price Starts : ${ticket_Price}</p> <button type='button' class='btn btn-primary myModal' data-toggle='modal' data-target='#myModal' data-lat="${latitude}" data-lng="${longitude}">View Map</button><a href="${bookTicketURL}" style='margin-left: 30px;'  target='_blank' class='btn btn-primary'>Book Tickets</a></div></div><div class='col-md-6'><img style='color: #fff; height: 15rem; background-size: cover;' src="${eventLogo}"></div></div></div>`;
+    cardHTML = `<div class='card'><div class='row'><div class='col-md-6'><div class='card-block'><h4 class='card-title' style='margin-left: 30px;'>${eventName}</h4><p class='card-text' style='margin-left: 30px;'>Start Time : ${eventStartTime}<br>Venue Address: <br>&nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp${venueAddr}<br>Ticket Price Starts : ${ticket_Price}</p><button type='button' class='btn btn-primary myModal' data-toggle='modal' data-target='#myModal' data-lat='${latitude}' data-lng='${longitude}'>View Map</button><a href="${bookTicketURL}" style='margin-left: 30px;'  target='_blank' class='btn btn-primary'>Book Tickets</a></div></div><div class='col-md-6'><img style='color: #fff; height: 15rem; background-size: cover;' src="${eventLogo}"></div></div></div>`;
     $('#resultBlock').append(cardHTML);
   }
 
-  /* eslint-enable */
 
-  // window.onscroll = function() {scrollFunction()};
-
-  // function scrollFunction() {
-  //   if (document.documentElement.scrollTop > 20) {
-  //     $("#gotop").css('display', 'block');
-  //   } else {
-  //     $("#gotop").css('display', 'none');
-  //   }
-  // }
-  // function topFunction() {window.location.reload();}
-  /* eslint-disable */
   $('#gotop').on('click', () => {
     location.reload();
   });
-  /* eslint-enable */
 
   $('#eventType').on('change', () => {
     // catogoryID = $('#eventType').attr('data-catogory');
     catogoryID = $('#eventType option:selected').attr('data-catogory');
     // console.log(catogoryID)
-    /* eslint-disable */
-
     if ($('#eventType').val() == 'other') { $('#refinedDiv').css('display', 'block'); } else { $('#refinedDiv').css('display', 'none'); }
   });
   $('#submit').on('click', () => {
@@ -142,7 +134,6 @@ $(document).ready(() => {
     } else {
       eventType = $('#eventType').val();
     }
-  /* eslint-enable */
 
     //  catogoryID = $('#eventType').attr('data-catogory');
     //  console.log(catogoryID)
@@ -151,7 +142,6 @@ $(document).ready(() => {
     date = $('#date').val();
     sortID = $('#sortID').val();
     newStartDate = moment(date).format('YYYY-MM-DD');
-
     const endDate = moment(date).add(1, 'days');
     newEndDate = endDate.format('YYYY-MM-DD');
     $('#mainBlock').empty();
@@ -167,4 +157,62 @@ $(document).ready(() => {
     getJSON(eventType, catogoryID, zipcode, dollar, newStartDate, newEndDate, sortID);
     // generateHTML(eventName, eventLogo, eventStartTime, eventEndTime, ticket_Price)
   });
+  // Modal Maps  Start here
+  let map = null;
+  let myMarker;
+  let myLatlng;
+
+
+  function initializeGMap(lat, lng) {
+    myLatlng = new google.maps.LatLng(lat, lng);
+    console.log(myLatlng);
+
+    const myOptions = {
+      zoom: 12,
+      zoomControl: true,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+    };
+
+    map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+
+    myMarker = new google.maps.Marker({
+      position: myLatlng,
+    });
+    myMarker.setMap(map);
+  }
+  // // $('.myModal').on('click', function(event){
+  //   $(document).on("click", ".myModal", function() {
+  //   // console.log("ready")
+  //   // console.log($(this).attr('data-lat'))
+  // Lat = $(this).attr('data-lat')
+  // dataLat = JSON.parse(Lat)
+  // Long = $(this).attr('data-lng')
+  // dataLong = JSON.parse(Long)
+  // })
+
+  // Re-init map before show modal
+  $('#myModal').on('show.bs.modal', (event) => {
+  // $(document).on("show.bs.modal", "#myModal", function(event) {
+
+    const button = $(event.relatedTarget);
+    console.log(button);
+    console.log(button.data('lat'));
+    console.log(button.data('lng'));
+    // initializeGMap(dataLat, dataLong);
+    initializeGMap(button.data('lat'), button.data('lng'));
+    $('#location-map').css('width', '100%');
+    // $("#location-map").css("display", "block");
+    $('#map_canvas').css('width', '100%');
+    // $("#map_canvas").css("display", "block");
+  });
+
+  // Trigger map resize event after modal shown
+  $(document).on('shown.bs.modal', '#myModal', (event) => {
+    // $('#myModal').on('shown.bs.modal', function() {
+      /* eslint-enable */
+    google.maps.event.trigger(map, 'resize');
+    map.setCenter(myLatlng);
+  });
+  // Modal Maps  Ends here
 });
