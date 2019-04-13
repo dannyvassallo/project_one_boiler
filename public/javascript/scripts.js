@@ -15,7 +15,8 @@ $ ('#original-lyrics-display').hide ();
 $ ('#translated-lyrics-display').hide ();
 
 database.ref ().on ('value', snapshot => {
-  $ ('#last-song').text (snapshot.val ().lastSong);
+  const lastSong = snapshot.val ().lastSong
+  $ ('#last-song').html (`Last song played:  <p id="last-song-p">${lastSong}</p>`);
 });
 
 // SUBMIT BUTTON ONCLICK FUNCTION
@@ -113,7 +114,7 @@ function lyricsSearch (trackId) {
 
       console.log (lyrics);
 
-      $ ('#original-lyrics-display').html (`Original Lyrics:<br> ${lyrics}`);
+      $ ('#original-lyrics-display').html (`<p class="lyrics-headers">Original Lyrics:</p> ${lyrics}`);
 
       translateLyrics (lyrics);
     },
@@ -143,7 +144,7 @@ function translateLyrics (originalLyrics) {
   }).then (response => {
     $ ('#language-display').text (`Language: ${translateLang}`);
     $ ('#translated-lyrics-display').html (
-      `Translated Lyrics:<br> ${response.text}`
+      `<p class="lyrics-headers">Translated Lyrics:</p> ${response.text}`
     );
 
     $ ('#original-lyrics-display').show ();
