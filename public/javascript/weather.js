@@ -1,11 +1,7 @@
 $(document).ready(() => {
-<<<<<<< HEAD
-  var latitude;
-  var longitude;
-=======
+
   let latitude;
   let longitude;
->>>>>>> 8d1e8b9c15c3e9854d1728073bcfb8b30d7110dd
   // navigator.geolocation.getCurrentPosition(function(position) {
   //   // console.log(position.coords.latitude, position.coords.longitude);
   //    var latitude = position.coords.latitude;
@@ -17,13 +13,13 @@ $(document).ready(() => {
     sessionStorage.setItem('longitude', position.coords.longitude);
   }
   navigator.geolocation.getCurrentPosition(showPosition);
-  var latitude = sessionStorage.getItem('latitude');
-  var longitude = sessionStorage.getItem('longitude');
+   latitude = sessionStorage.getItem('latitude');
+   longitude = sessionStorage.getItem('longitude');
 
   /* eslint-disable */
   navigator.geolocation.getCurrentPosition(showPosition);
-  var latitude = sessionStorage.getItem('latitude');
-  var longitude = sessionStorage.getItem('longitude');
+   latitude = sessionStorage.getItem('latitude');
+   longitude = sessionStorage.getItem('longitude');
   /* eslint-enable */
   function getWeatherAPI(latitude, longitude) {
     $('#weatherReport').empty();

@@ -4,19 +4,23 @@
     <title>Eventualities Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgvV2gVfYFsb-n9LzUSCrV5x3ryHu6Q_c"></script> -->
     <link rel="stylesheet" href="./static/css/bootstrap.min.css">
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="./static/css//magnific-popup.css">
-    <link rel="stylesheet" href="./static/css//jquery-ui.css">
-    <link rel="stylesheet" href="./static/css//owl.carousel.min.css">
-    <link rel="stylesheet" href="./static/css//owl.theme.default.min.css">
+    <!-- <link rel="stylesheet" href="./static/css//jquery-ui.css"> -->
+    <!-- <link rel="stylesheet" href="./static/css//owl.carousel.min.css"> -->
+    <!-- <link rel="stylesheet" href="./static/css//owl.theme.default.min.css"> -->
     <link rel="stylesheet" href="./static/css//bootstrap-datepicker.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.js"></script>
     <link rel="stylesheet" href="./static/css//spin.css">
     <link rel="stylesheet" href="./static/css//aos.css">
     <link rel="stylesheet" href="./static/css//style.css">
-
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
 
   </head>
@@ -191,6 +195,22 @@
           <button style="display: none" id="gotop" title="Clear Search Results">Clear Search Results</button>
 
       </div>
+            <!-- Modal Area for Maps display -->
+            <div class="modal fade show" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="row">
+                      <div class="col-md-12 modal_body_map">
+                        <div class="location-map" id="location-map">
+                          <div style="width: 400px; height: 300px;" id="map_canvas"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <!-- Modal Area End -->
     <footer class="site-footer">
         <div class="container">
           <div class="row">
@@ -204,20 +224,30 @@
               </div>
               </footer>
 
-              <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+              <!-- <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script> -->
 
 
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
+  <!-- <script src="./static/javascript/jquery-3.3.1.min.js"></script> -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgvV2gVfYFsb-n9LzUSCrV5x3ryHu6Q_c"></script> -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgvV2gVfYFsb-n9LzUSCrV5x3ryHu6Q_c"></script>
   <script src="./static/javascript/jquery-migrate-3.0.1.min.js"></script>
-  <script src="./static/javascript/jquery-ui.js"></script>
+  <!-- <script src="./static/javascript/jquery-ui.js"></script> -->
+  <script  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
   <script src="./static/javascript/popper.min.js"></script>
-  <script src="./static/javascript/bootstrap.min.js"></script>
+  <!-- <script src="./static/javascript/bootstrap.min.js"></script> -->
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
   <script src="./static/javascript/owl.carousel.min.js"></script>
   <script src="./static/javascript/jquery.stellar.min.js"></script>
   <script src="./static/javascript/jquery.countdown.min.js"></script>
   <script src="./static/javascript/jquery.magnific-popup.min.js"></script>
   <script src="./static/javascript/bootstrap-datepicker.min.js"></script>
-  <script src="./static/javascript/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="./static/javascript/main.js"></script>
   <script src="./static/javascript/logic.js"></script>
   <script src="./static/javascript/weather.js"></script>
