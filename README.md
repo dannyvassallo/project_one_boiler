@@ -10,9 +10,9 @@ ShowSpotter - A search engine where you can find Art/Music events within a given
 ![Website Screenshot](public/images/web1.png)
 ![Response Screenshot](public/images/results.png)
 
-### Added a modal which shows more info on returned events. Specifically a google map with a plot marker of where the venue is for each result returned.
+### Added a modal which shows more info on returned events. Specifically a google map with a plot marker of where the Venue is for each result returned and distance.
 
-![Response Screenshot](public/images/map.png)
+![Map Screenshot](public/images/Map.png)
 
 ## Team Members
 
