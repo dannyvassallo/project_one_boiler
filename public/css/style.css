@@ -75,10 +75,12 @@ html, body {
 }
 #background_video {
   position: absolute;
-  width: 125%;
-  height: auto;
+  /* width: 125%;
+  height: auto; */
   /* background: url(../images/thebots-blinded_moment2.jpg) no-repeat; */
-  background-size: cover;
+  /* background-size: cover; */
+  object-fit: cover;
+  height: 100%; width: 100%;
   background-position: center;
   top: 0;
   left: -12.5%;
@@ -118,13 +120,13 @@ html, body {
 }
 
 @media only screen and (max-width: 1050px) {
-  #background_video {
+  /* #background_video {
     display: none;
   }
 
   body {
     background: url('../images/thebots-blinded_Moment3.jpg') no-repeat fixed center;
-  }
+  } */
 
   .form-row {
     margin-top: 30vh;
