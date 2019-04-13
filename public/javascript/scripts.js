@@ -13,7 +13,7 @@ const database = firebase.database();
 const comment = firebase.database().ref('/Comments');
 $('#results-display').hide();
 
-database.ref().on('value', (snapshot) => {
+database.ref('/songs').on('value', (snapshot) => {
   $('#last-song').text(snapshot.val().lastSong);
 });
 
@@ -31,10 +31,8 @@ function videoSearch(song, artist) {
     const youTubeVid = watchVideoUrl + results;
     const videos = $('<iframe>');
     videos.attr('src', youTubeVid);
-    videos.css('height', '400px');
-    videos.css('width', '700px');
+    videos.attr('class', 'embed-responsive-item');
     $('#videos-display').append(videos);
-
   });
 }
 
@@ -110,7 +108,7 @@ function songInfoSearch(song, artist) {
       trackId = response.message.body.track_list[0].track.track_id;
       $('#song-name-display').append(songDiv);
 
-      database.ref().set({
+      database.ref('/songs').set({
         lastSong: response.message.body.track_list[0].track.track_name,
       });
 
@@ -119,7 +117,6 @@ function songInfoSearch(song, artist) {
   });
 }
 
-// ARTIST, TRACK, AND TRACKID FUNCTION (MUSIXMATCH)
 
 $('#submit-button').on('click', (event) => {
   event.preventDefault();
@@ -145,17 +142,47 @@ $('#submitBtn').on('click', (event) => {
   const newUserComment = $('#ccomment').val().trim();
   const newUserEmail = $('#cemail').val().trim();
 
+
+  const object = [
+    {
+      value: newNameCard,
+      jQ: $('#cname'),
+      message: 'Please enter a name',
+    },
+    {
+      value: newUserEmail,
+      jQ: $('#cemail'),
+      message: 'Enter your email',
+    },
+    {
+      value: newUserComment,
+      jQ: $('#ccomment'),
+      message: 'Enter a message',
+    },
+  ];
+
+  for (let i = 0; i < object.length; i += 1) {
+    if (object[i].value.length === 0) {
+      object[i].jQ.css('background', 'red').val(object[i].message).css('color', 'white');
+    }
+  }
+
   const newUserInfo = {
     name: newNameCard,
     email: newUserEmail,
     comment: newUserComment,
   };
+  if (newNameCard.length > 0 && newUserComment.length > 0 && newUserEmail.length > 0) {
+    comment.push(newUserInfo);
+    $('#cname').val('');
+    $('#cemail').val('');
+    $('#ccomment').val('');
+  }
+  // else if (newNameCard.length === 0){
+  //   $('#cname').css('background', 'red').val('Please enter a name').css('color', 'white');
 
-  comment.push(newUserInfo);
 
-  $('#cname').val('');
-  $('#cemail').val('');
-  $('#ccomment').val('');
+// }
 });
 
 comment.on('child_added', (childSnapshot) => {
@@ -171,11 +198,10 @@ comment.on('child_added', (childSnapshot) => {
   const commentText = $('<p>');
   commentText.addClass('card-text');
 
-
   commentName.text(newNameCard);
   commentText.text(newUserComment);
 
-  newCommentCard.appendTo(newNameCard).appendTo(newUserComment);
+  newCommentCard.append(newNameCard).append(newUserComment);
 
   $('#card-text-center').append(commentName);
   $('#card-text-center').append(commentText);
