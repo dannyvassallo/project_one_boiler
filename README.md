@@ -13,7 +13,7 @@ The choice is 1 to 50!  Should you have confidence you are a master of the State
 
 ## Screenshots
 
-The suggestion is to include a screenshot of what the user can anticpate. 
+The suggestion is to include a screenshot of what the user can anticipate.
 
 ## Thoughts: Inclusions
 

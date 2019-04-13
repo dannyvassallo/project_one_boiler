@@ -254,7 +254,7 @@ const states = [{
 ];
 
 //  --- Initialize US map, copied from us-map.js
-initializeMap = function () {
+initializeMap1 = function () {
   $('#vmap').vectorMap({
     map: 'usa_en',
     backgroundColor: '#a5bfdd',
@@ -284,7 +284,7 @@ initializeMap = function () {
 
 
 $(document).ready(() => {
-  initializeMap();
+  initializeMap1();
 });
 
 resetMapSel = function () {

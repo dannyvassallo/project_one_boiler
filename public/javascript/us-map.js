@@ -44,12 +44,12 @@ generateNextQuestion = function () {
   while (!nextQuestionFound) {
     // figure out random state:
     const i = Math.floor(Math.random() * 50);
-    // ask about random 
+    // ask about random
 
     if (!jqvStates[i].answered) {
 	    console.log(`Where is ${jqvStates[i].name}?`);
 	    $(".question-target").text(`Where is ${jqvStates[i].name}?`)
-	    
+
 
       questionIndex = i;
       jqvStates[i].answered = true;
