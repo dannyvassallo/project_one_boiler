@@ -6,19 +6,10 @@ console.warn('Project One JS Initialized');
 // global variables
 const { $ } = window;
 /* eslint-disable */
-let eventName;
-let userLocation;
-let userRange;
-let formBlock = [];
-let eventVenueLong;
-let eventVenueLati;
-let venueDistance;
-let venueTravelTime;
-let map;
-let marker;
-let position;
 
-  // Initialize Firebase
+
+  // Initialize Firebase //ifelse,,, firebase push instead of acnt,
+
   const config = {
     apiKey: "AIzaSyAuYurRhlpUCigwzBy1q4ear58FUZox8OA",
     authDomain: "showspotter-10b13.firebaseapp.com",
@@ -29,10 +20,25 @@ let position;
   };
 
   firebase.initializeApp(config);
-$("#btnLogin").on("click", function() {
+
+  let eventName;
+  let userLocation;
+  let userRange;
+  let formBlock = [];
+  let eventVenueLong;
+  let eventVenueLati;
+  let venueDistance;
+  let venueTravelTime;
+  let map;
+  let marker;
+  let position;
+
+$(document).ready(function() {
+
   // Get elements and define buttons
-  // const txtEmail = $("#txtEmail").val().trim();
-  // const txtPassword = $("#txtPassword").val().trim();
+  const txtEmail = $("#txtEmail");
+  console.log(txtEmail);
+  const txtPassword = $("#txtPassword");
   const btnLogin = $("#btnLogin");
   const btnSignUp = $("#btnSignUp");
   const btnLogout = $("#btnLogout");
@@ -41,8 +47,9 @@ $("#btnLogin").on("click", function() {
   btnLogin.on("click", function(event) {
     event.preventDefault();
     // get email and pass
-    const email = txtEmail;
-    const pass = txtPassword;
+    const email = txtEmail.val().trim();
+    console.log(email);
+    const pass = txtPassword.val().trim();
     const auth = firebase.auth();
     // sign in
     const promise = auth.signInWithEmailAndPassword(email, pass);
@@ -53,8 +60,9 @@ $("#btnLogin").on("click", function() {
   btnSignUp.on("click", function(event) {
     event.preventDefault();
     // get email and pass
-    const email = txtEmail;
-    const pass = txtPassword;
+    const email = txtEmail.val().toString().trim();
+    console.log(email);
+    const pass = txtPassword.val().trim();
     const auth = firebase.auth();
     // create user
     const promise = auth.createUserWithEmailAndPassword(email, pass);
@@ -62,8 +70,7 @@ $("#btnLogin").on("click", function() {
   })
 
   // log out current user
-  btnLogout.on("click", function(event){
-    event.preventDefault();
+  btnLogout.on("click", function(){
     firebase.auth().signOut();
   })
 
@@ -76,9 +83,8 @@ $("#btnLogin").on("click", function() {
       console.log('user not logged in');
      // btnLogout.classList.add('hide');
     }
-  });
+  })
 });
-
 
 function loadVideoBackground() {
   const bv = new Bideo(); // eslint-disable-line no-undef
@@ -146,15 +152,15 @@ function requestTicketmaster() {
 
 //if else statements added
     if (responseX === undefined) {
-      console.log("tryagain");
-      var noResults = $("<div");
-      noResults.text("Try Again")
-      $(".someclass").append(noResults);
+      console.log("Try Again");
+      var noResults = $("<div class='card' id='errorMessage'>");
+      noResults.text("Try Again! There's no results for this in your area.")
+      $("#cardZone").append(noResults);
     } else {
       if (responseX.length === 0) {
-        var noResults = $("<div");
-        noResults.text("Try Again")
-        $(".someclass").append(noResults);
+        var noResults = $("<div class='card' id='errorMessage'>");
+        noResults.text("Try Again!")
+        $("#cardZone").append(noResults);
     } else {
 
         console.log(response);
@@ -201,12 +207,18 @@ function requestTicketmaster() {
 
           let button = $("<button>");
           button.attr("type", "button");
-          button.attr("class", "btn btn-primary modal-btn");
+
+          button.attr("class", "btn btn-dark modal-btn");
+
           button.attr("id", "modal-btn");
           button.attr("data-toggle", "modal");
           button.attr("data-target", "#exampleModal");
           button.text("More Info");
-          button.attr("data-name", eventVenueName)
+
+          button.attr("data-url", eventUrl);
+          button.attr("data-title", eventTitle);
+          button.attr("data-name", eventVenueName);
+
           button.attr("data-map-info", JSON.stringify({
             lat: eventVenueLati,
             lng: eventVenueLong
@@ -217,9 +229,12 @@ function requestTicketmaster() {
             $("<p>").text(eventDate),
             $("<p>").text(eventTime),
             $("<p>").text(eventVenueName),
-            $("<div>").append(button)
+            $("<div>").append(button),
           );
           cardBody.append(info);
+
+          let br = $("<br>");
+          $("#cardZone").append(br);
         })
       }
     }
@@ -255,10 +270,12 @@ function initMap() {
 }
 
 $(document).on("click", ".modal-btn", function(){
-  findDistance();
 
-  var eventShowName = $(this).data("title")
-  $(".modal-title").text(eventShowName)
+  $(".modal-title").empty();
+  findDistance();
+  var eventShowName = $(this).data("title");
+  $(".modal-title").text(eventShowName);
+r
 
   var modalDiv = $("<div>")
 
@@ -267,6 +284,13 @@ $(document).on("click", ".modal-btn", function(){
   modalDiv.append($("<p>").text(venueName))
 
   modalDiv.append($("<p>").text("Distance: " + venueDistance))
+
+
+  var link = $(this).data("url");
+  var pLink = $("<p>").text("Tickets Here!");
+  pLink.attr("href", link);
+  modalDiv.append(pLink);
+
 
   $(".modal-body").append(modalDiv)
 
@@ -277,7 +301,10 @@ $(document).on("click", ".modal-btn", function(){
   }
   console.warn(position)
   var venueName = $(this).data("name")
-  $(".modal-title").text(venueName)
+
+
+  // $(".modal-title").text(venueName)
+
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
     center: position

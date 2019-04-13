@@ -12,6 +12,13 @@
   background: transparent;
 }
 
+#errorMessage {
+ color: black;
+ font-weight: bolder;
+ padding: 10px;
+ margin: 10px;
+}
+
 .form-row {
   /* position: absolute; */
   /* top: 40vh; */
@@ -29,7 +36,6 @@ button {
   color: rgba(53, 49, 49, 0.363);
 }
 
-
 .cardZone {
   z-index: 2;
 }
@@ -40,7 +46,7 @@ background-color: rgba(54, 53, 53, 0.863);
   background-color: rgba(53, 49, 49, 0.363);
 }
 .card-header > eventTitle {
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 .card {
@@ -84,6 +90,11 @@ html, body {
   left: -12.5%;
   z-index: -1;
 }
+
+#logo {
+  background-color: rgba(239, 243, 243, 0.363)
+}
+
 #video_cover {
   position: absolute;
   width: 100%; height: 100%;
