@@ -245,6 +245,8 @@ function findDistance() {
   let myUrl = 'http://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyBix0KNYLf70SQQTX8ghmRR59vDqArz2Wk&units=imperial&origins=' + eventVenueLong
     + ',' + eventVenueLati + '&destinations=' + userLocation
 
+  console.log(myUrl)
+
   $.ajax({
     url: myUrl,
     method: 'GET'
@@ -269,13 +271,23 @@ function initMap() {
   });
 }
 
-$(document).on("click", ".modal-btn", function(){
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: position
+  });
 
-  $(".modal-title").empty();
+  marker = new google.maps.Marker({
+    position: position,
+    map: map,
+  });
+}
+
+$(document).on("click", ".modal-btn", function(){
   findDistance();
-  var eventShowName = $(this).data("title");
-  $(".modal-title").text(eventShowName);
-r
+
+  var eventShowName = $(this).data("title")
+  $(".modal-title").text(eventShowName)
 
   var modalDiv = $("<div>")
 
@@ -284,13 +296,6 @@ r
   modalDiv.append($("<p>").text(venueName))
 
   modalDiv.append($("<p>").text("Distance: " + venueDistance))
-
-
-  var link = $(this).data("url");
-  var pLink = $("<p>").text("Tickets Here!");
-  pLink.attr("href", link);
-  modalDiv.append(pLink);
-
 
   $(".modal-body").append(modalDiv)
 
@@ -301,10 +306,7 @@ r
   }
   console.warn(position)
   var venueName = $(this).data("name")
-
-
-  // $(".modal-title").text(venueName)
-
+  $(".modal-title").text(venueName)
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
     center: position
