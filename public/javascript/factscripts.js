@@ -253,15 +253,55 @@ const states = [{
 },
 ];
 
-const panel = $('.showFactArea');
-let i = 0;
-const stateSelected = 'New York';
-for (i = 0; i < states.length; i++) {
-  // if ($("StateSelected")===states[i].state) {
-  if (stateSelected === states[i].state) {
-    panel.append(`<h3>Weird Fun Fact : ${states[i].funFact}</h3>`);
-    panel.append(`<img id="ffphoto" src="${states[i].picLink}" />`);
+//  --- Initialize US map, copied from us-map.js
+initializeMap = function () {
+  $('#vmap').vectorMap({
+    map: 'usa_en',
+    backgroundColor: '#a5bfdd',
+    borderColor: '#818181',
+    borderOpacity: 0.25,
+    borderWidth: 1,
+    color: '#f4f3f0',
+    enableZoom: true,
+    hoverColor: '#c9dfaf',
+    hoverOpacity: null,
+    multiSelectRegion: true,
+    normalizeFunction: 'linear',
+    scaleColors: ['#b6d6ff', '#005ace'],
+    selectedColor: '#c9dfaf',
+    selectedRegions: null,
+    showTooltip: true,
+    onRegionClick(element, code, region) {
+      code = code.toUpperCase();
+      // $('.showFactArea').val("");
+      // $('.articleTitle').val("");
+      renderStateTrivia(element, code, region);
+      renderStateTriviaFacts(element, code, region);
+      resetMapSel();
+    },
+  });
+};
 
-    $('.showFactArea').append(panel);
-  }
-}
+
+$(document).ready(() => {
+  initializeMap();
+});
+
+resetMapSel = function () {
+  $('#vmap').vectorMap('deselect', 'us');
+};
+
+
+
+const renderStateTrivia = (element, code, region) => {
+  const selectedStateObject = states.filter(state => {
+      return state.state === region
+   })[0];
+   var panelSy = $('.showFactArea');
+    panelSy.append(`<h2>You have selected : ${selectedStateObject.state}</h3>`);
+    panelSy.append(`<h4>Weird Fun Fact : ${selectedStateObject.funFact}</h3>`);
+    panelSy.append(`<img id="ffphoto" src="${selectedStateObject.picLink}" />`);
+    panelSy.append(`<p>_______________________________________________________________</p>`);
+
+    $('.showFactArea').prepend(panelSy);
+};
