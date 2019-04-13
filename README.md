@@ -12,9 +12,9 @@ ShowSpotter - A search engine where you can find Art/Music events within a given
 
 ### Added a modal which shows more info on returned events. Specifically a google map with a plot marker of where the Venue is for each result returned and distance.
 
-![Map Screenshot](public/images/map.png)
+![Map Screenshot](public/images/maps.png)
 
-You can view our app here: <https://show-spotter.herokuapp.com/>
+You can view our Showspotter app here: <https://show-spotter.herokuapp.com/>
 
 ## Team Members
 
