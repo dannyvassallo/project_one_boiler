@@ -93,10 +93,6 @@ html, body {
   z-index: -1;
 }
 
-#logo {
-  background-color: rgba(239, 243, 243, 0.363)
-}
-
 #video_cover {
   position: absolute;
   width: 100%; height: 100%;
