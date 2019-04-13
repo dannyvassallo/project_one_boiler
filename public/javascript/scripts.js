@@ -180,9 +180,9 @@ function requestTicketmaster() {
           console.log("eventUrl: ", eventUrl);
           let eventVenueName = event['_embedded'].venues[0].name;
           console.log("eventVenueName: ", eventVenueName);
-          let eventVenueLong = event['_embedded'].venues[0].location.longitude;
+          eventVenueLong = event['_embedded'].venues[0].location.longitude;
           console.log("eventVenueLong: ", eventVenueLong);
-          let eventVenueLati = event['_embedded'].venues[0].location.latitude;
+          eventVenueLati = event['_embedded'].venues[0].location.latitude;
           console.log("eventVenueLati", eventVenueLati);
 
           let newCard = $("<div class='card'>");
