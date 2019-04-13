@@ -5,14 +5,14 @@
 </p>
 
 
-ShowSpotter - A search engine where you can find Art/Music events within a given radius. Once information is submitted through the form it will return a list of events where you can view the Event Title, Date, Time, Venue. User can create a profile page and save events, favorite bands, etc. 
+ShowSpotter - A search engine where you can find Art/Music events within a given radius. Once information is submitted through the form it will return a list of events where you can view the Event Title, Date, Time, and Venue. User can create a profile page to save events, favorite bands, etc. 
 
 ![Website Screenshot](public/images/web1.png)
 ![Response Screenshot](public/images/results.png)
 
 ### Added a modal which shows more info on returned events. Specifically a google map with a plot marker of where the Venue is for each result returned and distance.
 
-![Map Screenshot](public/images/Map.png)
+![Map Screenshot](public/images/map.png)
 
 ## Team Members
 
