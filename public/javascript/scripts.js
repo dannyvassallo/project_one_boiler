@@ -271,18 +271,6 @@ function initMap() {
   });
 }
 
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: position
-  });
-
-  marker = new google.maps.Marker({
-    position: position,
-    map: map,
-  });
-}
-
 $(document).on("click", ".modal-btn", function(){
   findDistance();
 
