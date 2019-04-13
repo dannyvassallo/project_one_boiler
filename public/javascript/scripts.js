@@ -14,8 +14,14 @@ const comment = firebase.database().ref('/Comments');
 $('#original-lyrics-display').hide();
 $('#translated-lyrics-display').hide();
 
+
+database.ref ().on ('value', snapshot => {
+  const lastSong = snapshot.val ().lastSong
+  $ ('#last-song').html (`Last song played:  <p id="last-song-p">${lastSong}</p>`);
+
 database.ref().on('value', (snapshot) => {
   $('#last-song').text(snapshot.val().lastSong);
+
 });
 
 
@@ -112,9 +118,13 @@ function songInfoSearch(song, artist) {
       trackId = response.message.body.track_list[0].track.track_id;
       $('#song-name-display').append(songDiv);
 
+
+      $ ('#original-lyrics-display').html (`<p class="lyrics-headers">Original Lyrics:</p> ${lyrics}`);
+
       database.ref().set({
         lastSong: response.message.body.track_list[0].track.track_name,
       });
+
 
       lyricsSearch(trackId);
     },
@@ -123,8 +133,19 @@ function songInfoSearch(song, artist) {
 
 // ARTIST, TRACK, AND TRACKID FUNCTION (MUSIXMATCH)
 
+
+  $.ajax ({
+    url: yandexQueryURL,
+    method: 'GET',
+  }).then (response => {
+    $ ('#language-display').text (`Language: ${translateLang}`);
+    $ ('#translated-lyrics-display').html (
+      `<p class="lyrics-headers">Translated Lyrics:</p> ${response.text}`
+    );
+
 $('#submit-button').on('click', (event) => {
   event.preventDefault();
+
 
   const songQuery = $('#song-title-input').val().trim();
   const artistQuery = $('#song-artist-input').val().trim();
