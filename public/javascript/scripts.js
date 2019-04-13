@@ -7,7 +7,9 @@ console.warn('Project One JS Initialized');
 const { $ } = window;
 /* eslint-disable */
 
+
   // Initialize Firebase //ifelse,,, firebase push instead of acnt,
+
   const config = {
     apiKey: "AIzaSyAuYurRhlpUCigwzBy1q4ear58FUZox8OA",
     authDomain: "showspotter-10b13.firebaseapp.com",
@@ -205,14 +207,18 @@ function requestTicketmaster() {
 
           let button = $("<button>");
           button.attr("type", "button");
+
           button.attr("class", "btn btn-dark modal-btn");
+
           button.attr("id", "modal-btn");
           button.attr("data-toggle", "modal");
           button.attr("data-target", "#exampleModal");
           button.text("More Info");
+
           button.attr("data-url", eventUrl);
           button.attr("data-title", eventTitle);
           button.attr("data-name", eventVenueName);
+
           button.attr("data-map-info", JSON.stringify({
             lat: eventVenueLati,
             lng: eventVenueLong
@@ -264,10 +270,12 @@ function initMap() {
 }
 
 $(document).on("click", ".modal-btn", function(){
+
   $(".modal-title").empty();
   findDistance();
   var eventShowName = $(this).data("title");
   $(".modal-title").text(eventShowName);
+r
 
   var modalDiv = $("<div>")
 
@@ -277,10 +285,12 @@ $(document).on("click", ".modal-btn", function(){
 
   modalDiv.append($("<p>").text("Distance: " + venueDistance))
 
+
   var link = $(this).data("url");
   var pLink = $("<p>").text("Tickets Here!");
   pLink.attr("href", link);
   modalDiv.append(pLink);
+
 
   $(".modal-body").append(modalDiv)
 
@@ -291,6 +301,10 @@ $(document).on("click", ".modal-btn", function(){
   }
   console.warn(position)
   var venueName = $(this).data("name")
+
+
+  // $(".modal-title").text(venueName)
+
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
     center: position
