@@ -7,12 +7,12 @@ let questionIndex; let answerIndex;
 
 
 playGame = function (element, code, region) {
-  if (!code) {    
-    numQuestions = $("input[nq]:checked").val()
-    console.log('numQuestions = ' + numQuestions);
+  if (!code) {
+    numQuestions = $('input[nq]:checked').val();
+    console.log(`numQuestions = ${numQuestions}`);
     numQuestions = 5;
 
-    console.log('numQuestions = ' + numQuestions);
+    console.log(`numQuestions = ${numQuestions}`);
     generateNextQuestion();
     return;
   }
@@ -32,7 +32,7 @@ playGame = function (element, code, region) {
 
 
 playOn = function () {
-  if (! answeringBonus) {
+  if (!answeringBonus) {
     numAnswers++;
     if (numAnswers < numQuestions) generateNextQuestion();
     else endGame();
@@ -46,13 +46,13 @@ rightAnswer = function () {
   answeringBonus = true;
   rightAnswers++;
   $('#right-answers').text(rightAnswers);
-  //bonusQuestion();
+  // bonusQuestion();
 };
 
 
 bonusQuestion = function () {
   answeringBonus = false;
-  bonusCapital = $('#bq').val(); console.log('bonusCapital = ' + bonusCapital);
+  bonusCapital = $('#bq').val(); console.log(`bonusCapital = ${bonusCapital}`);
 
   if (bonusCapital == jqvStates[questionIndex].capital) {
     $('#display-bonus-answer').text('Right Again! You get an extra point.');
@@ -64,13 +64,12 @@ bonusQuestion = function () {
     console.log(`Sorry, the capital of ${jqvStates[questionIndex].name} is ${jqvStates[questionIndex].capital}`);
   }
 
-  setTimeout(function() {
-    $('#display-bonus-question').html("");
-    $('#display-bonus-answer').text("");
-    $('#bq').val("");
+  setTimeout(() => {
+    $('#display-bonus-question').html('');
+    $('#display-bonus-answer').text('');
+    $('#bq').val('');
     generateNextQuestion();
   }, 3000);
-
 };
 
 
@@ -85,11 +84,11 @@ wrongAnswer = function (code) {
     }
 
 
-    setTimeout(function() {
+    setTimeout(() => {
       $('#display-guesses-left').text(`No, that's ${jqvStates[i].name}. ${guessText}`);
       console.log(`No, that's ${jqvStates[i].name}. ${guessText}`);
     }, 3000);
-    $('#display-guesses-left').text(``);
+    $('#display-guesses-left').text('');
   }
 };
 
