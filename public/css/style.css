@@ -55,3 +55,58 @@ a {
 #ffphoto {
   margin: 0 auto;
 }
+
+
+/*  Kevin Q&A CSS  */
+
+#stateInfo { 
+  font-size: 14px;
+  text-align: left;
+}
+
+#mapQuestion1 {}
+
+#nqs input {
+  width: 25px;
+}
+
+#display-question {
+  margin-top: 20px;
+}
+
+#display-bonus-question {
+  position: absolute;
+  top: -90px; left: 15px;
+  width: 150px;
+}
+
+#display-bonus-congrats {
+  position: absolute;
+  top: 250px; left: 0px;
+}
+
+#display-bonus-answer {
+  position: absolute;
+  top: 300px; left: 0px;
+}
+
+#bq {
+  position: absolute; top: 240px;
+}
+
+#bonus-question {
+  position: absolute; top: 260px;
+}
+
+#answers {
+  position: absolute;
+  top: 440px; left: 10px;
+}
+
+#answers, #answers p, #answers span {
+  text-align: right;
+}
+
+#wrong-answers {
+  
+}
