@@ -1,3 +1,7 @@
 body {
   background-color: darkgray;
 }
+
+form {
+  text-align: center;
+}
